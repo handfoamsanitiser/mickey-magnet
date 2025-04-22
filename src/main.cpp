@@ -7,7 +7,7 @@
 #endif
 
 
-Player player(0, 0, true);
+Player player(200, 200, true);
 
 void UpdateDrawFrame();
 

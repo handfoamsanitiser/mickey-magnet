@@ -11,7 +11,7 @@ public:
     Vector2 pos;
     Vector2 vel;
     Vector2 acc;
-    int rotation;
+    float rotation;
     int radius;
     int speed;
     bool isEnabled;
