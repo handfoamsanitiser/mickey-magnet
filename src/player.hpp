@@ -10,7 +10,6 @@ public:
 
     Vector2 pos;
     Vector2 vel;
-    Vector2 acc;
     float rotation;
     int radius;
     int speed;
