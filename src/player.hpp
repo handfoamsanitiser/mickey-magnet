@@ -12,6 +12,14 @@ public:
     Vector2 vel;
     float rotation;
     int radius;
-    int speed;
     bool isEnabled;
+
+private:
+    void Drag();
+    void Accelerate();
+    void ClampVel();
 };
+
+extern const float PLAYER_MAX_SPEED;
+extern const float PLAYER_DRAG;
+extern const float MAX_DISTANCE;
