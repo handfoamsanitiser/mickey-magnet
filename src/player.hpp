@@ -14,6 +14,4 @@ public:
     int radius;
     int speed;
     bool isEnabled;
-
-    bool c;
 };

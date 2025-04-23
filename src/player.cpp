@@ -16,6 +16,12 @@ Player::Player(int x, int y, bool isEnabled):
 
 void Player::Update() {
     if (!isEnabled) return;
+
+    // update position
+    pos.x += vel.x;
+    pos.y += vel.y;
+
+    // targeting detection
     rotation = atan2((GetMouseY() - pos.y), (GetMouseX() - pos.x));
 
     for (int i = 0; i < (int)anchors.size(); ++i) {
@@ -28,6 +34,25 @@ void Player::Update() {
         anchors[i].isRed = true;
         if (CheckCollisionPointCircle(final, anchors[i].pos, anchors[i].strength * 50)) {
             anchors[i].isRed = false;
+
+            if (IsMouseButtonDown(MOUSE_BUTTON_LEFT)) {
+                float accX = anchors[i].strength * (xDiff / (xDiff + yDiff)) / 100;
+                float accY = anchors[i].strength * (yDiff / (xDiff + yDiff)) / 100;
+                if (xDiff < 0) {
+                    accX = -abs(accX);
+                } else {
+                    accX = abs(accX);
+                }
+
+                if (yDiff < 0) {
+                    accY = -abs(accY);
+                } else {
+                    accY = abs(accX);
+                }
+
+                vel.x += accX;
+                vel.y += accY;
+            }
         }
     }
 }
