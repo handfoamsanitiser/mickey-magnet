@@ -14,6 +14,8 @@ public:
     int radius;
     bool isEnabled;
 
+    
+
 private:
     void Drag();
     void Accelerate();
