@@ -20,10 +20,12 @@ public:
 private:
     void Drag();
     void Accelerate();
-    void ClampVel();
 
     Vector2 Attract(int strength, Vector2 dir, float xDiff, float yDiff);
     Vector2 Repel(int strength, Vector2 dir, float xDiff, float yDiff);
+
+    void ClampVel();
+    void ClampPos();
 };
 
 extern const float PLAYER_MAX_SPEED;

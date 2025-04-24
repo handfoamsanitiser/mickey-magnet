@@ -2,7 +2,6 @@
 #include <cmath>
 #include <vector>
 #include "raymath.h"
-
 #include "globals.hpp"
 
 const float PLAYER_MAX_SPEED = 5;
@@ -13,7 +12,7 @@ Player::Player(int x, int y, bool isEnabled):
     pos(Vector2 { (float)x, (float)y }),
     vel(Vector2 { 0, 0 }),
     rotation(0),
-    radius(50),
+    radius(100),
     isEnabled(isEnabled) {}
 
 void Player::Update() {
@@ -30,8 +29,12 @@ void Player::Update() {
 
 void Player::Render() {
     if (!isEnabled) return;
-    DrawCircle(pos.x, pos.y, radius, RED);
-    DrawPoly(Vector2 { pos.x, pos.y }, 4, radius / 3, rotation * 180/PI, BLACK);
+    // DrawCircle(pos.x, pos.y, radius, RED);
+    // DrawPoly(Vector2 { pos.x, pos.y }, 4, radius / 3, rotation * 180/PI, BLACK);
+
+    DrawTexturePro(playerBase, Rectangle { 0, 0, 100, 100 }, Rectangle { pos.x, pos.y, (float)radius * 2, (float)radius * 2 }, Vector2 { (float)radius, (float)radius }, 0, WHITE);
+    DrawTexturePro(playerBody, Rectangle { 0, 0, 100, 100 }, Rectangle { pos.x, pos.y, (float)radius * 2, (float)radius * 2 }, Vector2 { (float)radius, (float)radius }, rotation * 180/PI + 90, WHITE);
+    DrawTexturePro(playerFace, Rectangle { 0, 0, 100, 100 }, Rectangle { pos.x, pos.y, (float)radius * 2, (float)radius * 2 }, Vector2 { (float)radius, (float)radius }, 0, WHITE);
 }
 
 void Player::Drag() {
@@ -133,4 +136,8 @@ void Player::ClampVel() {
     } else if (vel.y > 0 && vel.y > PLAYER_MAX_SPEED){
         vel.y = PLAYER_MAX_SPEED;
     }
+}
+
+void Player::ClampPos() {
+    
 }

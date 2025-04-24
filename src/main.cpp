@@ -17,7 +17,11 @@ Player player(500, 400, true);
 void UpdateDrawFrame();
 
 int main() {
-    InitWindow(1440, 810, "Mick");
+    InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "Mick");
+
+    playerBase = LoadTextureFromImage(LoadImage("resources/magnet-base.png"));
+    playerBody = LoadTextureFromImage(LoadImage("resources/magnet-body.png"));
+    playerFace = LoadTextureFromImage(LoadImage("resources/magnet-face.png"));
 
     anchors.push_back(Anchor(500, 500, 1, false));
     anchors.push_back(Anchor(800, 600, 1, true));
@@ -32,6 +36,8 @@ int main() {
         UpdateDrawFrame();
     }
 #endif
+
+    UnloadTexture(playerBase);
 
     CloseWindow();
     return 0;
