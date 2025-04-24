@@ -15,10 +15,47 @@
 Player player(500, 400, true);
 
 void UpdateDrawFrame();
+void LoadTextures();
+void UnloadTextures();
 
 int main() {
     InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "Mick");
+    InitAudioDevice();
+    LoadTextures();
 
+    anchors.push_back(Anchor(500, 500, 100, 1, false));
+    anchors.push_back(Anchor(800, 600, 100, 1, true));
+    
+#if defined(PLATFORM_WEB)
+    emscripten_set_main_loop(UpdateDrawFrame, 60, 1);
+#else
+    SetTargetFPS(60);
+
+    while (!WindowShouldClose()) {
+        UpdateDrawFrame();
+    }
+#endif
+
+    UnloadTextures();
+    CloseAudioDevice();
+    CloseWindow();
+    return 0;
+}
+
+void UpdateDrawFrame() {
+    player.Update();
+    Anchor::UpdateAnimation();
+
+    BeginDrawing();
+        ClearBackground(RAYWHITE);
+        for (Anchor anchor : anchors) {
+            anchor.Render();
+        }
+        player.Render();
+    EndDrawing();
+}
+
+void LoadTextures() {
     playerBase = LoadTextureFromImage(LoadImage("resources/magnet/magnet-base.png"));
     playerBody = LoadTextureFromImage(LoadImage("resources/magnet/magnet-body.png"));
     playerFace = LoadTextureFromImage(LoadImage("resources/magnet/magnet-face.png"));
@@ -32,21 +69,9 @@ int main() {
     blueAnchor2 = LoadTextureFromImage(LoadImage("resources/blue-anchor/blue-anchor-2.png"));
     blueAnchor3 = LoadTextureFromImage(LoadImage("resources/blue-anchor/blue-anchor-3.png"));
     blueAnchor4 = LoadTextureFromImage(LoadImage("resources/blue-anchor/blue-anchor-4.png"));
+}
 
-    anchors.push_back(Anchor(500, 500, 1, false));
-    anchors.push_back(Anchor(800, 600, 1, true));
-    
-#if defined(PLATFORM_WEB)
-    emscripten_set_main_loop(UpdateDrawFrame, 60, 1);
-#else
-    SetTargetFPS(60);
-
-    while (!WindowShouldClose())
-    {
-        UpdateDrawFrame();
-    }
-#endif
-
+void UnloadTextures() {
     UnloadTexture(playerBase);
     UnloadTexture(playerBody);
     UnloadTexture(playerFace);
@@ -60,20 +85,4 @@ int main() {
     UnloadTexture(blueAnchor2);
     UnloadTexture(blueAnchor3);
     UnloadTexture(blueAnchor4);
-
-    CloseWindow();
-    return 0;
 }
-
-void UpdateDrawFrame() {
-    player.Update();
-
-    BeginDrawing();
-        ClearBackground(RAYWHITE);
-        for (Anchor anchor : anchors) {
-            anchor.Render();
-        }
-        player.Render();
-    EndDrawing();
-}
-

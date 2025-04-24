@@ -6,6 +6,9 @@ extern const int SCREEN_WIDTH;
 extern const int SCREEN_HEIGHT;
 
 extern std::vector<Anchor> anchors;
+extern int anchorAnimationFrame;
+extern float anchorAnimationTimer;
+extern const float ANCHOR_ANIMATION_TIME;
 
 extern Texture2D playerBase;
 extern Texture2D playerBody;

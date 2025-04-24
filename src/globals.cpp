@@ -4,6 +4,9 @@ const int SCREEN_WIDTH = 1920;
 const int SCREEN_HEIGHT = 1080;
 
 std::vector<Anchor> anchors;
+int anchorAnimationFrame = 0;
+float anchorAnimationTimer = 0.0f;
+const float ANCHOR_ANIMATION_TIME = 0.25f;
 
 Texture2D playerBase;
 Texture2D playerBody;
