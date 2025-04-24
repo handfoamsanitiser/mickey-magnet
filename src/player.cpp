@@ -4,8 +4,8 @@
 #include "raymath.h"
 #include "globals.hpp"
 
-const float PLAYER_MAX_SPEED = 6;
-const float PLAYER_DRAG = 2;
+const float PLAYER_MAX_SPEED = 7;
+const float PLAYER_DRAG = 3;
 const float MAX_DISTANCE = 1200;
 const float MIN_PLAYER_ACC_MULT = 0.6f;
 
@@ -24,7 +24,7 @@ void Player::Update() {
     pos.y += vel.y * GetFrameTime() * 50;
 
     Drag();
-    Accelerate();
+    AnchorInteract();
     ClampVel();
 }
 
@@ -53,7 +53,7 @@ void Player::Drag() {
     }
 }
 
-void Player::Accelerate() {
+void Player::AnchorInteract() {
     // targeting detection
     rotation = atan2((GetMouseY() - pos.y), (GetMouseX() - pos.x));
 
@@ -65,10 +65,13 @@ void Player::Accelerate() {
 
         Vector2 final1 = { pos.x + xDiff, pos.y + yDiff };
         Vector2 final2 = { pos.x - xDiff, pos.y - yDiff };
-        
+    
+        // reset white colour of anchor before collison check
+        anchors[i].isActive = false;
         if (IsMouseButtonDown(MOUSE_BUTTON_LEFT)) {
             // forward check (red)
             if (CheckCollisionPointCircle(final1, anchors[i].pos, anchors[i].radius)) {
+                anchors[i].isActive = true;
                 if (anchors[i].isRed) {
                     vel = Vector2Add(vel, Repel(anchors[i].strength, dir, xDiff, yDiff, dist)); 
                 } else {
@@ -78,10 +81,50 @@ void Player::Accelerate() {
 
             // backward check (blue)
             if (CheckCollisionPointCircle(final2, anchors[i].pos, anchors[i].radius)) {
+                anchors[i].isActive = true;
                 if (anchors[i].isRed) {
                     vel = Vector2Add(vel, Attract(anchors[i].strength, dir, -xDiff, -yDiff, dist)); 
                 } else {
                     vel = Vector2Add(vel, Repel(anchors[i].strength, dir, -xDiff, -yDiff, dist)); 
+                }
+            }
+        }
+    }
+}
+
+void Player::SpikeInteract() {
+    // targeting detection
+    rotation = atan2((GetMouseY() - pos.y), (GetMouseX() - pos.x));
+
+    for (int i = 0; i < (int)spikes.size(); ++i) {
+        float dist = Vector2Distance(pos, spikes[i].pos);
+        float xDiff = dist * cos(rotation);
+        float yDiff = dist * sin(rotation);
+        Vector2 dir = Vector2Normalize(Vector2Subtract(GetMousePosition(), pos));
+
+        Vector2 final1 = { pos.x + xDiff, pos.y + yDiff };
+        Vector2 final2 = { pos.x - xDiff, pos.y - yDiff };
+    
+        // reset animation of spike before collison check
+        spikes[i].isActive = false;
+        if (IsMouseButtonDown(MOUSE_BUTTON_LEFT)) {
+            // forward check (red)
+            if (CheckCollisionPointCircle(final1, spikes[i].pos, spikes[i].radius)) {
+                spikes[i].isActive = true;
+                if (spikes[i].isRed) {
+                    vel = Vector2Add(vel, Repel(spikes[i].strength, dir, xDiff, yDiff, dist)); 
+                } else {
+                    vel = Vector2Add(vel, Attract(spikes[i].strength, dir, xDiff, yDiff, dist)); 
+                }
+            }
+
+            // backward check (blue)
+            if (CheckCollisionPointCircle(final2, spikes[i].pos, spikes[i].radius)) {
+                spikes[i].isActive = true;
+                if (spikes[i].isRed) {
+                    vel = Vector2Add(vel, Attract(spikes[i].strength, dir, -xDiff, -yDiff, dist)); 
+                } else {
+                    vel = Vector2Add(vel, Repel(spikes[i].strength, dir, -xDiff, -yDiff, dist)); 
                 }
             }
         }

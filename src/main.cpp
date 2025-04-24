@@ -23,10 +23,11 @@ int main() {
     InitAudioDevice();
     LoadTextures();
 
-    anchors.push_back(Anchor(500, 500, 50, 10, false));
-    anchors.push_back(Anchor(800, 600, 50, 10, true));
+    anchors.push_back(Anchor(500, 500, 50, 15, false));
+    anchors.push_back(Anchor(800, 600, 50, 15, true));
 
     spikes.push_back(Spike(1000, 800, 50, 1, true));
+    spikes.push_back(Spike(50, 80, 50, 1, false));
     
 #if defined(PLATFORM_WEB)
     emscripten_set_main_loop(UpdateDrawFrame, 60, 1);
@@ -46,11 +47,13 @@ int main() {
 
 void UpdateDrawFrame() {
     player.Update();
-    Anchor::UpdateAnimation();
+    for (int i = 0; i < (int)anchors.size(); ++i) {
+        anchors[i].UpdateAnimation();
+    }
     Spike::UpdateAnimation();
 
     BeginDrawing();
-        ClearBackground(RAYWHITE);
+        ClearBackground(BLACK);
 
         for (Anchor anchor : anchors) {
             anchor.Render();
@@ -79,11 +82,16 @@ void LoadTextures() {
     blueAnchor3 = LoadTextureFromImage(LoadImage("resources/blue-anchor/blue-anchor-3.png"));
     blueAnchor4 = LoadTextureFromImage(LoadImage("resources/blue-anchor/blue-anchor-4.png"));
 
+    whiteAnchor1 = LoadTextureFromImage(LoadImage("resources/white-anchor/white-anchor-1.png"));
+    whiteAnchor2 = LoadTextureFromImage(LoadImage("resources/white-anchor/white-anchor-2.png"));
+    whiteAnchor3 = LoadTextureFromImage(LoadImage("resources/white-anchor/white-anchor-3.png"));
+    whiteAnchor4 = LoadTextureFromImage(LoadImage("resources/white-anchor/white-anchor-4.png"));
+
     redSpike1 = LoadTextureFromImage(LoadImage("resources/red-spike/red-spike-1.png"));
     redSpike2 = LoadTextureFromImage(LoadImage("resources/red-spike/red-spike-2.png"));
 
     blueSpike1 = LoadTextureFromImage(LoadImage("resources/blue-spike/blue-spike-1.png"));
-    blueSpike2 = LoadTextureFromImage(LoadImage("resources/blue-spike/blue-spike-1.png"));
+    blueSpike2 = LoadTextureFromImage(LoadImage("resources/blue-spike/blue-spike-2.png"));
 }
 
 void UnloadTextures() {
@@ -100,6 +108,11 @@ void UnloadTextures() {
     UnloadTexture(blueAnchor2);
     UnloadTexture(blueAnchor3);
     UnloadTexture(blueAnchor4);
+
+    UnloadTexture(whiteAnchor1);
+    UnloadTexture(whiteAnchor2);
+    UnloadTexture(whiteAnchor3);
+    UnloadTexture(whiteAnchor4);
 
     UnloadTexture(redSpike1);
     UnloadTexture(redSpike2);

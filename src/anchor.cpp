@@ -5,7 +5,8 @@ Anchor::Anchor(int x, int y, int radius, int strength, bool isRed):
     pos(Vector2 { (float)x, (float)y }),
     radius(radius),
     strength(strength),
-    isRed(isRed) {}
+    isRed(isRed),
+    isActive(false) {}
 
 void Anchor::UpdateAnimation() {
     anchorAnimationTimer += GetFrameTime();
@@ -16,6 +17,26 @@ void Anchor::UpdateAnimation() {
 }
 
 void Anchor::Render() {
+    if (isActive) {
+        switch (anchorAnimationFrame) {
+            case 0:
+                DrawTexturePro(whiteAnchor1, Rectangle { 0, 0, 100, 100 }, Rectangle { pos.x, pos.y, (float)radius * 4, (float)radius * 4 }, Vector2 { (float)radius * 2, (float)radius * 2}, 0, WHITE);
+                break;
+            case 1:
+                DrawTexturePro(whiteAnchor2, Rectangle { 0, 0, 100, 100 }, Rectangle { pos.x, pos.y, (float)radius * 4, (float)radius * 4 }, Vector2 { (float)radius * 2, (float)radius * 2}, 0, WHITE);
+                break;
+            case 2:
+                DrawTexturePro(whiteAnchor3, Rectangle { 0, 0, 100, 100 }, Rectangle { pos.x, pos.y, (float)radius * 4, (float)radius * 4 }, Vector2 { (float)radius * 2, (float)radius * 2}, 0, WHITE);
+                break;
+            case 3: 
+                DrawTexturePro(whiteAnchor4, Rectangle { 0, 0, 100, 100 }, Rectangle { pos.x, pos.y, (float)radius * 4, (float)radius * 4 }, Vector2 { (float)radius * 2, (float)radius * 2}, 0, WHITE);
+                break;
+            default:
+                break;
+        }
+        return;
+    }
+
     if (isRed) {
         //DrawCircle(pos.x, pos.y, radius, RED);
         switch (anchorAnimationFrame) {

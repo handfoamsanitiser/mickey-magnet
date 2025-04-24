@@ -11,4 +11,5 @@ public:
     int radius;
     int strength;
     bool isRed;
+    bool isActive;
 };
