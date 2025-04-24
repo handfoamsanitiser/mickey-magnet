@@ -25,6 +25,7 @@ void Player::Update() {
 
     Drag();
     AnchorInteract();
+    SpikeInteract();
     ClampVel();
 }
 
