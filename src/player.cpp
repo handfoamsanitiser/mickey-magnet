@@ -4,11 +4,6 @@
 #include "raymath.h"
 #include "globals.hpp"
 
-const float PLAYER_MAX_SPEED = 7;
-const float PLAYER_DRAG = 3;
-const float MAX_DISTANCE = 1200;
-const float MIN_PLAYER_ACC_MULT = 0.6f;
-
 Player::Player(int x, int y, bool isEnabled): 
     pos(Vector2 { (float)x, (float)y }),
     vel(Vector2 { 0, 0 }),
@@ -113,9 +108,11 @@ void Player::SpikeInteract() {
             if (CheckCollisionPointCircle(final1, spikes[i].pos, spikes[i].radius)) {
                 spikes[i].isActive = true;
                 if (spikes[i].isRed) {
-                    vel = Vector2Add(vel, Repel(spikes[i].strength, dir, xDiff, yDiff, dist)); 
+                    vel = Vector2Add(vel, Repel(spikes[i].strength, dir, xDiff, yDiff, dist));
+                    spikes[i].vel = Vector2Add(spikes[i].vel, Attract(spikes[i].strength, dir, xDiff, yDiff, dist));
                 } else {
                     vel = Vector2Add(vel, Attract(spikes[i].strength, dir, xDiff, yDiff, dist)); 
+                    spikes[i].vel = Vector2Add(spikes[i].vel, Repel(spikes[i].strength, dir, xDiff, yDiff, dist));
                 }
             }
 
@@ -124,8 +121,10 @@ void Player::SpikeInteract() {
                 spikes[i].isActive = true;
                 if (spikes[i].isRed) {
                     vel = Vector2Add(vel, Attract(spikes[i].strength, dir, -xDiff, -yDiff, dist)); 
+                    spikes[i].vel = Vector2Add(spikes[i].vel, Attract(spikes[i].strength, dir, xDiff, yDiff, dist));
                 } else {
-                    vel = Vector2Add(vel, Repel(spikes[i].strength, dir, -xDiff, -yDiff, dist)); 
+                    vel = Vector2Add(vel, Repel(spikes[i].strength, dir, -xDiff, -yDiff, dist));
+                    spikes[i].vel = Vector2Add(spikes[i].vel, Repel(spikes[i].strength, dir, xDiff, yDiff, dist));
                 }
             }
         }

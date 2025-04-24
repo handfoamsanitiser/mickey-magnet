@@ -1,10 +1,17 @@
 #pragma once
 #include <vector>
+#include "player.hpp"
 #include "anchor.hpp"
 #include "spike.hpp"
 
 extern const int SCREEN_WIDTH;
 extern const int SCREEN_HEIGHT;
+
+extern Player player;
+extern const float PLAYER_MAX_SPEED;
+extern const float PLAYER_DRAG;
+extern const float MAX_DISTANCE;
+extern const float MIN_PLAYER_ACC_MULT;
 
 extern std::vector<Anchor> anchors;
 extern const float ANCHOR_ANIMATION_TIME;

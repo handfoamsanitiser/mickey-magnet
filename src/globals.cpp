@@ -3,6 +3,12 @@
 const int SCREEN_WIDTH = 1920;
 const int SCREEN_HEIGHT = 1080;
 
+Player player(50, SCREEN_HEIGHT / 2, true);
+const float PLAYER_MAX_SPEED = 7;
+const float PLAYER_DRAG = 3;
+const float MAX_DISTANCE = 1200;
+const float MIN_PLAYER_ACC_MULT = 0.6f;
+
 std::vector<Anchor> anchors;
 extern const float ANCHOR_ANIMATION_TIME = 0.25f;
 float anchorAnimationTimer = 0.0f;

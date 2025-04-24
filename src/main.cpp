@@ -11,9 +11,6 @@
     #include <emscripten/emscripten.h>
 #endif
 
-
-Player player(500, 400, true);
-
 void UpdateDrawFrame();
 void LoadTextures();
 void UnloadTextures();
@@ -27,7 +24,7 @@ int main() {
     anchors.push_back(Anchor(800, 600, 50, 15, true));
 
     spikes.push_back(Spike(1000, 800, 50, 10, true));
-    spikes.push_back(Spike(50, 80, 50, 10, false));
+    spikes.push_back(Spike(70, 80, 50, 10, false));
     
 #if defined(PLATFORM_WEB)
     emscripten_set_main_loop(UpdateDrawFrame, 60, 1);
@@ -47,9 +44,11 @@ int main() {
 
 void UpdateDrawFrame() {
     player.Update();
-    for (int i = 0; i < (int)anchors.size(); ++i) {
-        anchors[i].UpdateAnimation();
+    for (int i = 0; i < (int)spikes.size(); ++i) {
+        spikes[i].Update();
     }
+
+    Anchor::UpdateAnimation();
     Spike::UpdateAnimation();
 
     BeginDrawing();

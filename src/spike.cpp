@@ -3,6 +3,7 @@
 
 Spike::Spike(int x, int y, int radius, int strength, bool isRed): 
     pos(Vector2 { (float)x, (float)y }),
+    vel(Vector2 { 0.0f, 0.0f }),
     radius(radius),
     strength(strength),
     isRed(isRed) {}
@@ -16,7 +17,10 @@ void Spike::UpdateAnimation() {
 }
 
 void Spike::Update() {
-    
+    pos.x += vel.x * GetFrameTime() * 50;
+    pos.y += vel.y * GetFrameTime() * 50;
+
+    Drag();
 }
 
 void Spike::Render() {
@@ -42,5 +46,35 @@ void Spike::Render() {
             default:
                 break;
         }
+    }
+}
+
+void Spike::Drag() {
+     // drag
+     if (vel.x < 0) {
+        vel.x = std::min(vel.x + PLAYER_DRAG * GetFrameTime(), 0.0f);
+    } else if (vel.x > 0){
+        vel.x = std::max(vel.x - PLAYER_DRAG * GetFrameTime(), 0.0f);
+    }
+
+    if (vel.y < 0) {
+        vel.y = std::min(vel.y + PLAYER_DRAG * GetFrameTime(), 0.0f);
+    } else if (vel.y > 0){
+        vel.y = std::max(vel.y - PLAYER_DRAG * GetFrameTime(), 0.0f);
+    }
+}
+
+void Spike::ClampVel() {
+    // clamp velocity
+    if (vel.x < 0 && vel.x < -PLAYER_MAX_SPEED) {
+        vel.x = -PLAYER_MAX_SPEED;
+    } else if (vel.x > 0 && vel.x > PLAYER_MAX_SPEED){
+        vel.x = PLAYER_MAX_SPEED;
+    }
+
+    if (vel.y < 0 && vel.y < -PLAYER_MAX_SPEED) {
+        vel.y = -PLAYER_MAX_SPEED;
+    } else if (vel.y > 0 && vel.y > PLAYER_MAX_SPEED){
+        vel.y = PLAYER_MAX_SPEED;
     }
 }

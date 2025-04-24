@@ -10,6 +10,7 @@ public:
     void Render();
 
     Vector2 pos;
+    Vector2 vel;
     int radius;
     int strength;
     bool isRed;
@@ -17,4 +18,5 @@ public:
 
 private:
     void Drag();
+    void ClampVel();
 };

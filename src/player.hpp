@@ -15,8 +15,6 @@ public:
     int radius;
     bool isEnabled;
 
-    
-
 private:
     void Drag();
     void AnchorInteract();
@@ -28,8 +26,3 @@ private:
     void ClampVel();
     void ClampPos();
 };
-
-extern const float PLAYER_MAX_SPEED;
-extern const float PLAYER_DRAG;
-extern const float MAX_DISTANCE;
-extern const float MIN_PLAYER_ACC_MULT;
