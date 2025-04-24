@@ -4,7 +4,6 @@
 #include "raymath.h"
 
 #include "globals.hpp"
-#include "anchor.hpp"
 
 const float PLAYER_MAX_SPEED = 5;
 const float PLAYER_DRAG = 2;
@@ -31,9 +30,6 @@ void Player::Update() {
 
 void Player::Render() {
     if (!isEnabled) return;
-    // DrawText(TextFormat("Rotation: %f", rotation), 0, 0, 20, BLACK);
-    // DrawText(TextFormat("Rotation: %f", vel.x), 0, 20, 20, BLACK);
-    // DrawText(TextFormat("Rotation: %f", vel.y), 0, 40, 20, BLACK);
     DrawCircle(pos.x, pos.y, radius, RED);
     DrawPoly(Vector2 { pos.x, pos.y }, 4, radius / 3, rotation * 180/PI, BLACK);
 }
@@ -63,32 +59,65 @@ void Player::Accelerate() {
         float yDiff = dist * sin(rotation);
         Vector2 dir = Vector2Normalize(Vector2Subtract(anchors[i].pos, pos));
 
-        Vector2 final = { pos.x + xDiff, pos.y + yDiff };
-
-        anchors[i].isRed = true;
-        if (CheckCollisionPointCircle(final, anchors[i].pos, anchors[i].strength * 50)) {
-            anchors[i].isRed = false;
-
-            if (IsMouseButtonDown(MOUSE_BUTTON_LEFT)) {
-                float accX = anchors[i].strength * dir.x * GetFrameTime() * 10/** Clamp(Remap(dist, 0, MAX_DISTANCE, 1, 0), 0.5, 1)*/;
-                float accY = anchors[i].strength * dir.y * GetFrameTime() * 10/** Clamp(Remap(dist, 0, MAX_DISTANCE, 1, 0), 0.5, 1)*/;
-                if (xDiff < 0) {
-                    accX = -abs(accX);
+        Vector2 final1 = { pos.x + xDiff, pos.y + yDiff };
+        Vector2 final2 = { pos.x - xDiff, pos.y - yDiff };
+        
+        if (IsMouseButtonDown(MOUSE_BUTTON_LEFT)) {
+            // forward check (red)
+            if (CheckCollisionPointCircle(final1, anchors[i].pos, anchors[i].strength * 50)) {
+                if (anchors[i].isRed) {
+                    vel = Vector2Add(vel, Repel(anchors[i].strength, dir, xDiff, yDiff)); 
                 } else {
-                    accX = abs(accX);
+                    vel = Vector2Add(vel, Attract(anchors[i].strength, dir, xDiff, yDiff)); 
                 }
+            }
 
-                if (yDiff < 0) {
-                    accY = -abs(accY);
+            // backward check (blue)
+            if (CheckCollisionPointCircle(final2, anchors[i].pos, anchors[i].strength * 50)) {
+                if (anchors[i].isRed) {
+                    vel = Vector2Add(vel, Attract(anchors[i].strength, dir, -xDiff, -yDiff)); 
                 } else {
-                    accY = abs(accY);
+                    vel = Vector2Add(vel, Repel(anchors[i].strength, dir, -xDiff, -yDiff)); 
                 }
-
-                vel.x += accX;
-                vel.y += accY;
             }
         }
     }
+}
+
+Vector2 Player::Attract(int strength, Vector2 dir, float xDiff, float yDiff) {
+    float accX = strength * dir.x * GetFrameTime() * 10/** Clamp(Remap(dist, 0, MAX_DISTANCE, 1, 0), 0.5, 1)*/;
+    float accY = strength * dir.y * GetFrameTime() * 10/** Clamp(Remap(dist, 0, MAX_DISTANCE, 1, 0), 0.5, 1)*/;
+    if (xDiff < 0) {
+        accX = -abs(accX);
+    } else {
+        accX = abs(accX);
+    }
+
+    if (yDiff < 0) {
+        accY = -abs(accY);
+    } else {
+        accY = abs(accY);
+    }
+
+    return Vector2 { accX, accY };
+}
+
+Vector2 Player::Repel(int strength, Vector2 dir, float xDiff, float yDiff) {
+    float accX = strength * -dir.x * GetFrameTime() * 10/** Clamp(Remap(dist, 0, MAX_DISTANCE, 1, 0), 0.5, 1)*/;
+    float accY = strength * -dir.y * GetFrameTime() * 10/** Clamp(Remap(dist, 0, MAX_DISTANCE, 1, 0), 0.5, 1)*/;
+    if (xDiff < 0) {
+        accX = abs(accX);
+    } else {
+        accX = -abs(accX);
+    }
+
+    if (yDiff < 0) {
+        accY = abs(accY);
+    } else {
+        accY = -abs(accY);
+    }
+
+    return Vector2 { accX, accY };
 }
 
 void Player::ClampVel() {

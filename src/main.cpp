@@ -12,15 +12,15 @@
 #endif
 
 
-Player player(300, 300, true);
+Player player(500, 400, true);
 
 void UpdateDrawFrame();
 
 int main() {
     InitWindow(1440, 810, "Mick");
 
-    anchors.push_back(Anchor(500, 500, 1, true));
-    anchors.push_back(Anchor(100, 100, 1, true));
+    anchors.push_back(Anchor(500, 500, 1, false));
+    anchors.push_back(Anchor(800, 600, 1, true));
     
 #if defined(PLATFORM_WEB)
     emscripten_set_main_loop(UpdateDrawFrame, 60, 1);
