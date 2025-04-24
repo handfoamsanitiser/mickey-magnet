@@ -4,7 +4,7 @@
 #include "globals.hpp"
 #include "player.hpp"
 #include "anchor.hpp"
-
+#include "spike.hpp"
 
 // #define PLATFORM_WEB
 #if defined(PLATFORM_WEB)
@@ -25,6 +25,8 @@ int main() {
 
     anchors.push_back(Anchor(500, 500, 100, 1, false));
     anchors.push_back(Anchor(800, 600, 100, 1, true));
+
+    spikes.push_back(Spike(1000, 800, 50, 1, true));
     
 #if defined(PLATFORM_WEB)
     emscripten_set_main_loop(UpdateDrawFrame, 60, 1);
@@ -45,12 +47,19 @@ int main() {
 void UpdateDrawFrame() {
     player.Update();
     Anchor::UpdateAnimation();
+    Spike::UpdateAnimation();
 
     BeginDrawing();
         ClearBackground(RAYWHITE);
+
         for (Anchor anchor : anchors) {
             anchor.Render();
         }
+
+        for (Spike spike : spikes) {
+            spike.Render();
+        }
+
         player.Render();
     EndDrawing();
 }
@@ -69,6 +78,12 @@ void LoadTextures() {
     blueAnchor2 = LoadTextureFromImage(LoadImage("resources/blue-anchor/blue-anchor-2.png"));
     blueAnchor3 = LoadTextureFromImage(LoadImage("resources/blue-anchor/blue-anchor-3.png"));
     blueAnchor4 = LoadTextureFromImage(LoadImage("resources/blue-anchor/blue-anchor-4.png"));
+
+    redSpike1 = LoadTextureFromImage(LoadImage("resources/red-spike/red-spike-1.png"));
+    redSpike2 = LoadTextureFromImage(LoadImage("resources/red-spike/red-spike-2.png"));
+
+    blueSpike1 = LoadTextureFromImage(LoadImage("resources/blue-spike/blue-spike-1.png"));
+    blueSpike2 = LoadTextureFromImage(LoadImage("resources/blue-spike/blue-spike-1.png"));
 }
 
 void UnloadTextures() {
@@ -85,4 +100,10 @@ void UnloadTextures() {
     UnloadTexture(blueAnchor2);
     UnloadTexture(blueAnchor3);
     UnloadTexture(blueAnchor4);
+
+    UnloadTexture(redSpike1);
+    UnloadTexture(redSpike2);
+
+    UnloadTexture(blueSpike1);
+    UnloadTexture(blueSpike2);
 }
