@@ -21,8 +21,8 @@ private:
     void Drag();
     void Accelerate();
 
-    Vector2 Attract(int strength, Vector2 dir, float xDiff, float yDiff);
-    Vector2 Repel(int strength, Vector2 dir, float xDiff, float yDiff);
+    Vector2 Attract(int strength, Vector2 dir, float xDiff, float yDiff, float dist);
+    Vector2 Repel(int strength, Vector2 dir, float xDiff, float yDiff, float dist);
 
     void ClampVel();
     void ClampPos();
@@ -31,3 +31,4 @@ private:
 extern const float PLAYER_MAX_SPEED;
 extern const float PLAYER_DRAG;
 extern const float MAX_DISTANCE;
+extern const float MIN_PLAYER_ACC_MULT;

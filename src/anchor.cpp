@@ -17,19 +17,19 @@ void Anchor::UpdateAnimation() {
 
 void Anchor::Render() {
     if (isRed) {
-        //DrawCircle(pos.x, pos.y, strength * 50, RED);
+        //DrawCircle(pos.x, pos.y, radius, RED);
         switch (anchorAnimationFrame) {
             case 0:
-                DrawTexturePro(redAnchor1, Rectangle { 0, 0, 100, 100 }, Rectangle { pos.x, pos.y, (float)radius * 2, (float)radius * 2 }, Vector2 { (float)radius, (float)radius }, 0, WHITE);
+                DrawTexturePro(redAnchor1, Rectangle { 0, 0, 100, 100 }, Rectangle { pos.x, pos.y, (float)radius * 4, (float)radius * 4 }, Vector2 { (float)radius * 2, (float)radius * 2}, 0, WHITE);
                 break;
             case 1:
-                DrawTexturePro(redAnchor2, Rectangle { 0, 0, 100, 100 }, Rectangle { pos.x, pos.y, (float)radius * 2, (float)radius * 2 }, Vector2 { (float)radius, (float)radius }, 0, WHITE);
+                DrawTexturePro(redAnchor2, Rectangle { 0, 0, 100, 100 }, Rectangle { pos.x, pos.y, (float)radius * 4, (float)radius * 4 }, Vector2 { (float)radius * 2, (float)radius * 2}, 0, WHITE);
                 break;
             case 2:
-                DrawTexturePro(redAnchor3, Rectangle { 0, 0, 100, 100 }, Rectangle { pos.x, pos.y, (float)radius * 2, (float)radius * 2 }, Vector2 { (float)radius, (float)radius }, 0, WHITE);
+                DrawTexturePro(redAnchor3, Rectangle { 0, 0, 100, 100 }, Rectangle { pos.x, pos.y, (float)radius * 4, (float)radius * 4 }, Vector2 { (float)radius * 2, (float)radius * 2}, 0, WHITE);
                 break;
             case 3: 
-                DrawTexturePro(redAnchor4, Rectangle { 0, 0, 100, 100 }, Rectangle { pos.x, pos.y, (float)radius * 2, (float)radius * 2 }, Vector2 { (float)radius, (float)radius }, 0, WHITE);
+                DrawTexturePro(redAnchor4, Rectangle { 0, 0, 100, 100 }, Rectangle { pos.x, pos.y, (float)radius * 4, (float)radius * 4 }, Vector2 { (float)radius * 2, (float)radius * 2}, 0, WHITE);
                 break;
             default:
                 break;
@@ -38,16 +38,16 @@ void Anchor::Render() {
         //DrawCircle(pos.x, pos.y, radius, BLUE);
         switch (anchorAnimationFrame) {
             case 0:
-                DrawTexturePro(blueAnchor1, Rectangle { 0, 0, 100, 100 }, Rectangle { pos.x, pos.y, (float)radius * 2, (float)radius * 2 }, Vector2 { (float)radius, (float)radius }, 0, WHITE);
+                DrawTexturePro(blueAnchor1, Rectangle { 0, 0, 100, 100 }, Rectangle { pos.x, pos.y, (float)radius * 4, (float)radius * 4 }, Vector2 { (float)radius * 2, (float)radius * 2}, 0, WHITE);
                 break;
             case 1:
-                DrawTexturePro(blueAnchor2, Rectangle { 0, 0, 100, 100 }, Rectangle { pos.x, pos.y, (float)radius * 2, (float)radius * 2 }, Vector2 { (float)radius, (float)radius }, 0, WHITE);
+                DrawTexturePro(blueAnchor2, Rectangle { 0, 0, 100, 100 }, Rectangle { pos.x, pos.y, (float)radius * 4, (float)radius * 4 }, Vector2 { (float)radius * 2, (float)radius * 2}, 0, WHITE);
                 break;
             case 2:
-                DrawTexturePro(blueAnchor3, Rectangle { 0, 0, 100, 100 }, Rectangle { pos.x, pos.y, (float)radius * 2, (float)radius * 2 }, Vector2 { (float)radius, (float)radius }, 0, WHITE);
+                DrawTexturePro(blueAnchor3, Rectangle { 0, 0, 100, 100 }, Rectangle { pos.x, pos.y, (float)radius * 4, (float)radius * 4 }, Vector2 { (float)radius * 2, (float)radius * 2}, 0, WHITE);
                 break;
             case 3: 
-                DrawTexturePro(blueAnchor4, Rectangle { 0, 0, 100, 100 }, Rectangle { pos.x, pos.y, (float)radius * 2, (float)radius * 2 }, Vector2 { (float)radius, (float)radius }, 0, WHITE);
+                DrawTexturePro(blueAnchor4, Rectangle { 0, 0, 100, 100 }, Rectangle { pos.x, pos.y, (float)radius * 4, (float)radius * 4 }, Vector2 { (float)radius * 2, (float)radius * 2}, 0, WHITE);
                 break;
             default:
                 break;

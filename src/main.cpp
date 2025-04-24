@@ -23,8 +23,8 @@ int main() {
     InitAudioDevice();
     LoadTextures();
 
-    anchors.push_back(Anchor(500, 500, 100, 1, false));
-    anchors.push_back(Anchor(800, 600, 100, 1, true));
+    anchors.push_back(Anchor(500, 500, 50, 10, false));
+    anchors.push_back(Anchor(800, 600, 50, 10, true));
 
     spikes.push_back(Spike(1000, 800, 50, 1, true));
     
