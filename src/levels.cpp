@@ -47,6 +47,8 @@ void LoadLevel1() {
 
     levelExit = Exit(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2);
 
+    star = Star(500, 500);
+
     anchors.push_back(Anchor(SCREEN_WIDTH - 200, SCREEN_HEIGHT / 2, false));
 }
 

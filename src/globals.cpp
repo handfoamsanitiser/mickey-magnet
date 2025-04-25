@@ -34,7 +34,8 @@ std::vector<Rock> rocks;
 // exit
 Exit levelExit(-1000, -1000);
 
-// stars
+// star
+Star star(-1000, -1000);
 
 // textures
 Texture2D playerBody1;
@@ -82,3 +83,7 @@ Texture2D exit1;
 Texture2D exit2;
 Texture2D exit3;
 Texture2D exit4;
+
+Texture2D star1;
+Texture2D star2;
+Texture2D star3;

@@ -4,12 +4,9 @@
 Rock::Rock(int x, int y):
     pos(Vector2 { (float)x, (float)y }),
     radius(59),
-    spriteRadius(60),
-    isVisible(true) {}
+    spriteRadius(60) {}
 
 void Rock::Render() {
-    if (!isVisible) return;
-
     switch (spikeAnimationFrame) {
         case 0:
             DrawTexturePro(greySpike1, Rectangle { 22, 21, 61, 57 }, Rectangle { pos.x, pos.y, (float)spriteRadius * 2, (float)spriteRadius * 2 }, Vector2 { (float)spriteRadius, (float)spriteRadius}, 0, WHITE);
@@ -20,5 +17,4 @@ void Rock::Render() {
         default:
             break;
     }
-
 }

@@ -8,6 +8,7 @@
 #include "spike.hpp"
 #include "rock.hpp"
 #include "exit.hpp"
+#include "star.hpp"
 
 //#define PLATFORM_WEB
 #if defined(PLATFORM_WEB)
@@ -54,6 +55,8 @@ void UpdateDrawFrame() {
         ClearBackground(BLACK);
 
         levelExit.Render();
+
+        star.Render();
 
         for (Anchor anchor : anchors) {
             anchor.Render();
@@ -117,6 +120,10 @@ void LoadTextures() {
     exit2 = LoadTextureFromImage(LoadImage("resources/exit/exit-2.png"));
     exit3 = LoadTextureFromImage(LoadImage("resources/exit/exit-3.png"));
     exit4 = LoadTextureFromImage(LoadImage("resources/exit/exit-4.png"));
+
+    star1 = LoadTextureFromImage(LoadImage("resources/star/star-1.png"));
+    star2 = LoadTextureFromImage(LoadImage("resources/star/star-2.png"));
+    star3 = LoadTextureFromImage(LoadImage("resources/star/star-3.png"));
 }
 
 void UnloadTextures() {
@@ -165,4 +172,8 @@ void UnloadTextures() {
     UnloadTexture(exit2);
     UnloadTexture(exit3);
     UnloadTexture(exit4);
+
+    UnloadTexture(star1);
+    UnloadTexture(star2);
+    UnloadTexture(star3);
 }

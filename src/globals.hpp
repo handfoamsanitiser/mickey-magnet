@@ -5,6 +5,7 @@
 #include "spike.hpp"
 #include "rock.hpp"
 #include "exit.hpp"
+#include "star.hpp"
 
 // game
 extern const int SCREEN_WIDTH;
@@ -39,7 +40,8 @@ extern std::vector<Rock> rocks;
 // exit
 extern Exit levelExit;
 
-// stars
+// star
+extern Star star;
 
 // textures
 extern Texture2D playerBody1;
@@ -87,3 +89,7 @@ extern Texture2D exit1;
 extern Texture2D exit2;
 extern Texture2D exit3;
 extern Texture2D exit4;
+
+extern Texture2D star1;
+extern Texture2D star2;
+extern Texture2D star3;
