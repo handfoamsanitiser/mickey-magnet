@@ -62,3 +62,6 @@ extern Texture2D redSpike2;
 
 extern Texture2D blueSpike1;
 extern Texture2D blueSpike2;
+
+extern Texture2D greySpike1;
+extern Texture2D greySpike2;

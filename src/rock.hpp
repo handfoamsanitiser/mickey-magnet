@@ -3,9 +3,14 @@
 
 class Rock {
 public:
-    Rock();
+    Rock(int x, int y);
 
     void Render();
+
+    Vector2 pos;
+    int radius;
+    int spriteRadius;
+    bool isEnabled;
 
 private:
 };

@@ -26,6 +26,8 @@ int main() {
 
     spikes.push_back(Spike(1000, 800, 50, 10, true));
     spikes.push_back(Spike(70, 80, 50, 10, false));
+
+    rocks.push_back(Rock(1300, 300));
     
 #if defined(PLATFORM_WEB)
     emscripten_set_main_loop(UpdateDrawFrame, 60, 1);
@@ -63,6 +65,10 @@ void UpdateDrawFrame() {
             spike.Render();
         }
 
+        for (Rock rock : rocks) {
+            rock.Render();
+        }
+
         player.Render();
     EndDrawing();
 }
@@ -92,6 +98,9 @@ void LoadTextures() {
 
     blueSpike1 = LoadTextureFromImage(LoadImage("resources/blue-spike/blue-spike-1.png"));
     blueSpike2 = LoadTextureFromImage(LoadImage("resources/blue-spike/blue-spike-2.png"));
+
+    greySpike1 = LoadTextureFromImage(LoadImage("resources/grey-spike/grey-spike-1.png"));
+    greySpike2 = LoadTextureFromImage(LoadImage("resources/grey-spike/grey-spike-2.png"));
 }
 
 void UnloadTextures() {
@@ -119,4 +128,7 @@ void UnloadTextures() {
 
     UnloadTexture(blueSpike1);
     UnloadTexture(blueSpike2);
+
+    UnloadTexture(greySpike1);
+    UnloadTexture(greySpike2);
 }

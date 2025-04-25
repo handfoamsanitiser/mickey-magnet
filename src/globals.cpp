@@ -58,3 +58,6 @@ Texture2D redSpike2;
 
 Texture2D blueSpike1;
 Texture2D blueSpike2;
+
+Texture2D greySpike1;
+Texture2D greySpike2;
