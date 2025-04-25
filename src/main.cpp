@@ -26,8 +26,8 @@ int main() {
     anchors.push_back(Anchor(500, 500, 50, 15, false));
     anchors.push_back(Anchor(800, 600, 50, 15, true));
 
-    spikes.push_back(Spike(1000, 800, 50, 10, true));
-    spikes.push_back(Spike(70, 80, 50, 10, false));
+    spikes.push_back(Spike(1000, 800, true));
+    spikes.push_back(Spike(70, 80, false));
 
     rocks.push_back(Rock(1300, 300));
     

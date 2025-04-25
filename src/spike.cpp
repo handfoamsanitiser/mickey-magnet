@@ -1,11 +1,12 @@
 #include "spike.hpp"
 #include "globals.hpp"
 
-Spike::Spike(int x, int y, int radius, int strength, bool isRed): 
+Spike::Spike(int x, int y, bool isRed): 
     pos(Vector2 { (float)x, (float)y }),
     vel(Vector2 { 0.0f, 0.0f }),
-    radius(radius),
-    strength(strength),
+    radius(50),
+    spriteRadius(60),
+    strength(10),
     isRed(isRed),
     isActive(false),
     isEnabled(true) {}
@@ -31,22 +32,22 @@ void Spike::Render() {
     if (isRed) {
         switch (spikeAnimationFrame) {
             case 0:
-                DrawTexturePro(redSpike1, Rectangle { 0, 0, 100, 100 }, Rectangle { pos.x, pos.y, (float)radius * 4, (float)radius * 4 }, Vector2 { (float)radius * 2, (float)radius * 2}, 0, WHITE);
+                DrawTexturePro(redSpike1, Rectangle { 22, 21, 61, 57 }, Rectangle { pos.x, pos.y, (float)spriteRadius * 2, (float)spriteRadius * 2 }, Vector2 { (float)spriteRadius, (float)spriteRadius}, 0, WHITE);
                 break;
             case 1:
-                DrawTexturePro(redSpike2, Rectangle { 0, 0, 100, 100 }, Rectangle { pos.x, pos.y, (float)radius * 4, (float)radius * 4 }, Vector2 { (float)radius * 2, (float)radius * 2}, 0, WHITE);
-               break;
+                DrawTexturePro(redSpike2, Rectangle { 22, 21, 58, 61 }, Rectangle { pos.x, pos.y, (float)spriteRadius * 2, (float)spriteRadius * 2 }, Vector2 { (float)spriteRadius, (float)spriteRadius}, 0, WHITE);
+                break;
             default:
                 break;
         }
     } else {
         switch (spikeAnimationFrame) {
             case 0:
-                DrawTexturePro(blueSpike1, Rectangle { 0, 0, 100, 100 }, Rectangle { pos.x, pos.y, (float)radius * 4, (float)radius * 4 }, Vector2 { (float)radius * 2, (float)radius * 2}, 0, WHITE);
+                DrawTexturePro(blueSpike1, Rectangle { 22, 21, 61, 57 }, Rectangle { pos.x, pos.y, (float)spriteRadius * 2, (float)spriteRadius * 2 }, Vector2 { (float)spriteRadius, (float)spriteRadius}, 0, WHITE);
                 break;
             case 1:
-                DrawTexturePro(blueSpike2, Rectangle { 0, 0, 100, 100 }, Rectangle { pos.x, pos.y, (float)radius * 4, (float)radius * 4 }, Vector2 { (float)radius * 2, (float)radius * 2}, 0, WHITE);
-               break;
+                DrawTexturePro(blueSpike2, Rectangle { 22, 21, 58, 61 }, Rectangle { pos.x, pos.y, (float)spriteRadius * 2, (float)spriteRadius * 2 }, Vector2 { (float)spriteRadius, (float)spriteRadius}, 0, WHITE);
+                break;
             default:
                 break;
         }
