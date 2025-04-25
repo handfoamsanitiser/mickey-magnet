@@ -4,6 +4,8 @@
 const int SCREEN_WIDTH = 1920;
 const int SCREEN_HEIGHT = 1080;
 
+int curLevel = 1;
+
 // player
 Player player(50, SCREEN_HEIGHT / 2, true);
 const float PLAYER_MAX_SPEED = 7;
@@ -30,6 +32,7 @@ float curSpikeAnimationTime = BASE_SPIKE_ANIMATION_TIME;
 std::vector<Rock> rocks;
 
 // exit
+Exit levelExit(1000, 200);
 
 // stars
 
@@ -61,3 +64,8 @@ Texture2D blueSpike2;
 
 Texture2D greySpike1;
 Texture2D greySpike2;
+
+Texture2D exit1;
+Texture2D exit2;
+Texture2D exit3;
+Texture2D exit4;

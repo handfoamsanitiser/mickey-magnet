@@ -4,10 +4,13 @@
 #include "anchor.hpp"
 #include "spike.hpp"
 #include "rock.hpp"
+#include "exit.hpp"
 
 // game
 extern const int SCREEN_WIDTH;
 extern const int SCREEN_HEIGHT;
+
+extern int curLevel;
 
 // player
 extern Player player;
@@ -34,6 +37,7 @@ extern const float BASE_SPIKE_ANIMATION_TIME;
 extern std::vector<Rock> rocks;
 
 // exit
+extern Exit levelExit;
 
 // stars
 
@@ -65,3 +69,8 @@ extern Texture2D blueSpike2;
 
 extern Texture2D greySpike1;
 extern Texture2D greySpike2;
+
+extern Texture2D exit1;
+extern Texture2D exit2;
+extern Texture2D exit3;
+extern Texture2D exit4;

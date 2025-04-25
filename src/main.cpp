@@ -2,12 +2,14 @@
 #include <vector>
 
 #include "globals.hpp"
+#include "levels.hpp"
 #include "player.hpp"
 #include "anchor.hpp"
 #include "spike.hpp"
 #include "rock.hpp"
+#include "exit.hpp"
 
-// #define PLATFORM_WEB
+//#define PLATFORM_WEB
 #if defined(PLATFORM_WEB)
     #include <emscripten/emscripten.h>
 #endif
@@ -57,6 +59,8 @@ void UpdateDrawFrame() {
     BeginDrawing();
         ClearBackground(BLACK);
 
+        levelExit.Render();
+
         for (Anchor anchor : anchors) {
             anchor.Render();
         }
@@ -101,6 +105,11 @@ void LoadTextures() {
 
     greySpike1 = LoadTextureFromImage(LoadImage("resources/grey-spike/grey-spike-1.png"));
     greySpike2 = LoadTextureFromImage(LoadImage("resources/grey-spike/grey-spike-2.png"));
+
+    exit1 = LoadTextureFromImage(LoadImage("resources/exit/exit-1.png"));
+    exit2 = LoadTextureFromImage(LoadImage("resources/exit/exit-2.png"));
+    exit3 = LoadTextureFromImage(LoadImage("resources/exit/exit-3.png"));
+    exit4 = LoadTextureFromImage(LoadImage("resources/exit/exit-4.png"));
 }
 
 void UnloadTextures() {
@@ -131,4 +140,9 @@ void UnloadTextures() {
 
     UnloadTexture(greySpike1);
     UnloadTexture(greySpike2);
+
+    UnloadTexture(exit1);
+    UnloadTexture(exit2);
+    UnloadTexture(exit3);
+    UnloadTexture(exit4);
 }
