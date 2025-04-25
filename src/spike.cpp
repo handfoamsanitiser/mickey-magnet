@@ -9,7 +9,8 @@ Spike::Spike(int x, int y, bool isRed):
     strength(10),
     isRed(isRed),
     isActive(false),
-    isEnabled(true) {}
+    isEnabled(false),
+    isVisible(true) {}
 
 void Spike::UpdateAnimation() {
     spikeAnimationTimer += GetFrameTime();
@@ -20,6 +21,8 @@ void Spike::UpdateAnimation() {
 }
 
 void Spike::Update() {
+    if (!isEnabled) return;
+
     pos.x += vel.x * GetFrameTime() * 50;
     pos.y += vel.y * GetFrameTime() * 50;
 
@@ -29,6 +32,8 @@ void Spike::Update() {
 }
 
 void Spike::Render() {
+    if (!isVisible) return;
+
     if (isRed) {
         switch (spikeAnimationFrame) {
             case 0:

@@ -7,7 +7,7 @@ const int SCREEN_HEIGHT = 1080;
 int curLevel = 1;
 
 // player
-Player player(50, SCREEN_HEIGHT / 2, true);
+Player player(-1000, -1000);
 const float PLAYER_MAX_SPEED = 7;
 const float PLAYER_MIN_SPEED = 0.1f;
 const float PLAYER_DRAG = 3;
@@ -32,7 +32,7 @@ float curSpikeAnimationTime = BASE_SPIKE_ANIMATION_TIME;
 std::vector<Rock> rocks;
 
 // exit
-Exit levelExit(1000, 200);
+Exit levelExit(-1000, -1000);
 
 // stars
 

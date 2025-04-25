@@ -5,10 +5,10 @@ Rock::Rock(int x, int y):
     pos(Vector2 { (float)x, (float)y }),
     radius(50),
     spriteRadius(60),
-    isEnabled(true) {}
+    isVisible(true) {}
 
 void Rock::Render() {
-    if (!isEnabled) return;
+    if (!isVisible) return;
 
     switch (spikeAnimationFrame) {
         case 0:

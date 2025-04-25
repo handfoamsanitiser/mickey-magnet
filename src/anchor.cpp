@@ -1,10 +1,10 @@
 #include "anchor.hpp"
 #include "globals.hpp"
 
-Anchor::Anchor(int x, int y, int radius, int strength, bool isRed): 
+Anchor::Anchor(int x, int y, bool isRed): 
     pos(Vector2 { (float)x, (float)y }),
-    radius(radius),
-    strength(strength),
+    radius(50),
+    strength(15),
     isRed(isRed),
     isActive(false) {}
 

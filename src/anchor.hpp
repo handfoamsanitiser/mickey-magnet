@@ -3,7 +3,7 @@
 
 class Anchor {
 public:
-    Anchor(int x, int y, int radius, int strength, bool isRed);
+    Anchor(int x, int y, bool isRed);
     static void UpdateAnimation();
     void Render();
 

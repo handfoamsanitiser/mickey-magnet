@@ -3,14 +3,15 @@
 #include <vector>
 #include "raymath.h"
 #include "globals.hpp"
+#include "levels.hpp"
 
-Player::Player(int x, int y, bool isEnabled): 
+Player::Player(int x, int y): 
     pos(Vector2 { (float)x, (float)y }),
     vel(Vector2 { 0, 0 }),
     rotation(0),
     radius(100),
     spriteRadius(100),
-    isEnabled(isEnabled) {}
+    isEnabled(false) {}
 
 void Player::Update() {
     if (!isEnabled) return;
@@ -23,6 +24,7 @@ void Player::Update() {
     Drag();
     AnchorInteract();
     SpikeInteract();
+    ExitInteract();
     ClampVel();
 }
 
@@ -130,6 +132,13 @@ void Player::SpikeInteract() {
                 }
             }
         }
+    }
+}
+
+void Player::ExitInteract() {
+    if (CheckCollisionCircles(pos, radius, levelExit.pos, levelExit.radius)) {
+        curLevel++;
+        LoadLevel(curLevel);
     }
 }
 

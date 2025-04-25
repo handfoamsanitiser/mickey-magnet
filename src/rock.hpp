@@ -10,7 +10,7 @@ public:
     Vector2 pos;
     int radius;
     int spriteRadius;
-    bool isEnabled;
+    bool isVisible;
 
 private:
 };

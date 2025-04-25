@@ -23,13 +23,7 @@ int main() {
     InitAudioDevice();
     LoadTextures();
 
-    anchors.push_back(Anchor(500, 500, 50, 15, false));
-    anchors.push_back(Anchor(800, 600, 50, 15, true));
-
-    spikes.push_back(Spike(1000, 800, true));
-    spikes.push_back(Spike(70, 80, false));
-
-    rocks.push_back(Rock(1300, 300));
+    LoadLevel(curLevel);
     
 #if defined(PLATFORM_WEB)
     emscripten_set_main_loop(UpdateDrawFrame, 60, 1);

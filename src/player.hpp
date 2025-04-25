@@ -4,7 +4,7 @@
 
 class Player {
 public:
-    Player(int x, int y, bool isEnabled);
+    Player(int x, int y);
 
     void Update();
     void Render();
@@ -20,6 +20,7 @@ private:
     void Drag();
     void AnchorInteract();
     void SpikeInteract();
+    void ExitInteract();
 
     Vector2 Attract(int strength, Vector2 dir, float xDiff, float yDiff, float dist);
     Vector2 Repel(int strength, Vector2 dir, float xDiff, float yDiff, float dist);

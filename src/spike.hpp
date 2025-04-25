@@ -17,6 +17,7 @@ public:
     bool isRed;
     bool isActive;
     bool isEnabled;
+    bool isVisible;
 
 private:
     void Drag();
