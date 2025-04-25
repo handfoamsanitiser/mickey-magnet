@@ -5,6 +5,7 @@
 #include "player.hpp"
 #include "anchor.hpp"
 #include "spike.hpp"
+#include "rock.hpp"
 
 // #define PLATFORM_WEB
 #if defined(PLATFORM_WEB)

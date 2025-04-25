@@ -199,19 +199,19 @@ void Player::ClampVel() {
 }
 
 void Player::ClampPos() {
-    if (player.pos.x - player.spriteRadius < 0) {
-        player.pos.x = player.spriteRadius;
-        player.vel.x = 0;
-    } else if (player.pos.x + player.spriteRadius > SCREEN_WIDTH) {
-        player.pos.x = SCREEN_WIDTH - player.spriteRadius;
-        player.vel.x = 0;
+    if (pos.x - spriteRadius < 0) {
+        pos.x = spriteRadius;
+        vel.x = 0;
+    } else if (pos.x + spriteRadius > SCREEN_WIDTH) {
+        pos.x = SCREEN_WIDTH - spriteRadius;
+        vel.x = 0;
     }
 
-    if (player.pos.y - player.spriteRadius < 0) {
-        player.pos.y = player.spriteRadius;
-        player.vel.y = 0;
-    } else if (player.pos.y + player.spriteRadius > SCREEN_HEIGHT) {
-        player.pos.y = SCREEN_HEIGHT - player.spriteRadius;
-        player.vel.y = 0;
+    if (pos.y - spriteRadius < 0) {
+        pos.y = spriteRadius;
+        vel.y = 0;
+    } else if (pos.y + spriteRadius > SCREEN_HEIGHT) {
+        pos.y = SCREEN_HEIGHT - spriteRadius;
+        vel.y = 0;
     }
 }

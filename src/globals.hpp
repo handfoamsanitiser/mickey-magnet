@@ -3,10 +3,13 @@
 #include "player.hpp"
 #include "anchor.hpp"
 #include "spike.hpp"
+#include "rock.hpp"
 
+// game
 extern const int SCREEN_WIDTH;
 extern const int SCREEN_HEIGHT;
 
+// player
 extern Player player;
 extern const float PLAYER_MAX_SPEED;
 extern const float PLAYER_MIN_SPEED;
@@ -14,17 +17,27 @@ extern const float PLAYER_DRAG;
 extern const float MAX_DISTANCE;
 extern const float MIN_PLAYER_ACC_MULT;
 
+// anchors
 extern std::vector<Anchor> anchors;
 extern const float ANCHOR_ANIMATION_TIME;
 extern float anchorAnimationTimer;
 extern int anchorAnimationFrame;
 
+// spikes
 extern std::vector<Spike> spikes;
 extern int spikeAnimationFrame;
 extern float spikeAnimationTimer;
 extern float curSpikeAnimationTime;
 extern const float BASE_SPIKE_ANIMATION_TIME;
 
+// rocks
+extern std::vector<Rock> rocks;
+
+// exit
+
+// stars
+
+// textures
 extern Texture2D playerBase;
 extern Texture2D playerBody;
 extern Texture2D playerFace;

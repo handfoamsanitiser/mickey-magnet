@@ -15,8 +15,10 @@ public:
     int strength;
     bool isRed;
     bool isActive;
+    bool isEnabled;
 
 private:
     void Drag();
     void ClampVel();
+    void ClampPos();
 };
