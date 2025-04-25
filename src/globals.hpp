@@ -42,6 +42,19 @@ extern Exit levelExit;
 // stars
 
 // textures
+extern Texture2D playerBody1;
+extern Texture2D playerBody2;
+extern Texture2D playerBody3;
+extern Texture2D playerBody4;
+
+extern Texture2D redArm1;
+extern Texture2D redArm2;
+extern Texture2D redArm3;
+
+extern Texture2D blueArm1;
+extern Texture2D blueArm2;
+extern Texture2D blueArm3;
+
 extern Texture2D playerBase;
 extern Texture2D playerBody;
 extern Texture2D playerFace;

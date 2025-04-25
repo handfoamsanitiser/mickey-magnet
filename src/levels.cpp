@@ -36,9 +36,30 @@ void LoadLevel(int level) {
     default:
         break;
     }
+
+    EnableEverything();
 }
 
 void LoadLevel1() {
+    player = Player(200, SCREEN_HEIGHT / 2);
+
+    levelExit = Exit(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2);
+
+    anchors.push_back(Anchor(SCREEN_WIDTH - 200, SCREEN_HEIGHT / 2, false));
+}
+
+void LoadLevel2() {
+    player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2);
+
+    levelExit = Exit(SCREEN_WIDTH - 200, SCREEN_HEIGHT / 2);
+
+    anchors.push_back(Anchor(200, SCREEN_HEIGHT / 2, true));
+}
+
+void LoadLevel3() {}
+void LoadLevel4() {}
+
+void LoadLevel5() {
     player = Player(200, 200);
 
     levelExit = Exit(1200, 200);
@@ -50,22 +71,4 @@ void LoadLevel1() {
     spikes.push_back(Spike(70, 80, false));
 
     rocks.push_back(Rock(1300, 300));
-
-    // fade in TODO
-
-    EnableEverything();
 }
-
-void LoadLevel2() {
-    player = Player(800, 800);
-
-    levelExit = Exit(200, 200);
-
-    rocks.push_back(Rock(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2));
-
-    EnableEverything();
-}
-
-void LoadLevel3() {}
-void LoadLevel4() {}
-void LoadLevel5() {}

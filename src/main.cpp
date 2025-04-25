@@ -72,6 +72,19 @@ void UpdateDrawFrame() {
 }
 
 void LoadTextures() {
+    playerBody1 = LoadTextureFromImage(LoadImage("resources/magnet/magnet-body-1.png"));
+    playerBody2 = LoadTextureFromImage(LoadImage("resources/magnet/magnet-body-2.png"));
+    playerBody3 = LoadTextureFromImage(LoadImage("resources/magnet/magnet-body-3.png"));
+    playerBody4 = LoadTextureFromImage(LoadImage("resources/magnet/magnet-body-4.png"));
+
+    redArm1 = LoadTextureFromImage(LoadImage("resources/magnet/red-arm-1.png"));
+    redArm2 = LoadTextureFromImage(LoadImage("resources/magnet/red-arm-2.png"));
+    redArm3 = LoadTextureFromImage(LoadImage("resources/magnet/red-arm-3.png"));
+
+    blueArm1 = LoadTextureFromImage(LoadImage("resources/magnet/blue-arm-1.png"));
+    blueArm2 = LoadTextureFromImage(LoadImage("resources/magnet/blue-arm-2.png"));
+    blueArm3 = LoadTextureFromImage(LoadImage("resources/magnet/blue-arm-3.png"));
+
     playerBase = LoadTextureFromImage(LoadImage("resources/magnet/magnet-base.png"));
     playerBody = LoadTextureFromImage(LoadImage("resources/magnet/magnet-body.png"));
     playerFace = LoadTextureFromImage(LoadImage("resources/magnet/magnet-face.png"));
@@ -107,6 +120,19 @@ void LoadTextures() {
 }
 
 void UnloadTextures() {
+    UnloadTexture(playerBody1);
+    UnloadTexture(playerBody2);
+    UnloadTexture(playerBody3);
+    UnloadTexture(playerBody4);
+
+    UnloadTexture(redArm1);
+    UnloadTexture(redArm2);
+    UnloadTexture(redArm3);
+
+    UnloadTexture(blueArm1);
+    UnloadTexture(blueArm2);
+    UnloadTexture(blueArm3);
+
     UnloadTexture(playerBase);
     UnloadTexture(playerBody);
     UnloadTexture(playerFace);

@@ -15,6 +15,9 @@ public:
     int radius;
     int spriteRadius;
     bool isEnabled;
+    bool isDead;
+    bool isRedActive;
+    bool isBlueActive;
 
 private:
     void Drag();

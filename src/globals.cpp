@@ -8,7 +8,7 @@ int curLevel = 1;
 
 // player
 Player player(-1000, -1000);
-const float PLAYER_MAX_SPEED = 7;
+const float PLAYER_MAX_SPEED = 8;
 const float PLAYER_MIN_SPEED = 0.1f;
 const float PLAYER_DRAG = 3;
 const float MAX_DISTANCE = 1200;
@@ -37,6 +37,19 @@ Exit levelExit(-1000, -1000);
 // stars
 
 // textures
+Texture2D playerBody1;
+Texture2D playerBody2;
+Texture2D playerBody3;
+Texture2D playerBody4;
+
+Texture2D redArm1;
+Texture2D redArm2;
+Texture2D redArm3;
+
+Texture2D blueArm1;
+Texture2D blueArm2;
+Texture2D blueArm3;
+
 Texture2D playerBase;
 Texture2D playerBody;
 Texture2D playerFace;
