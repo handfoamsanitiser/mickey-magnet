@@ -18,6 +18,8 @@
 void UpdateDrawFrame();
 void LoadTextures();
 void UnloadTextures();
+void GodMode();
+void NotGodMode();
 
 int main() {
     InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "Mick");
@@ -43,6 +45,9 @@ int main() {
 }
 
 void UpdateDrawFrame() {
+    //GodMode();
+    NotGodMode();
+
     player.Update();
     for (int i = 0; i < (int)spikes.size(); ++i) {
         spikes[i].Update();
@@ -72,6 +77,24 @@ void UpdateDrawFrame() {
 
         player.Render();
     EndDrawing();
+}
+
+void GodMode() {
+    if (IsKeyPressed(KEY_SPACE)) {
+        curLevel++;
+        LoadLevel(curLevel);
+    }
+
+    if (IsKeyPressed(KEY_BACKSPACE)) {
+        curLevel--;
+        LoadLevel(curLevel);
+    }
+}
+
+void NotGodMode() {
+    if (IsKeyPressed(KEY_R)) {
+        LoadLevel(curLevel);
+    }
 }
 
 void LoadTextures() {

@@ -30,6 +30,7 @@ extern int anchorAnimationFrame;
 
 // spikes
 extern std::vector<Spike> spikes;
+extern const int SPIKE_RADIUS;
 extern int spikeAnimationFrame;
 extern float spikeAnimationTimer;
 extern const float SPIKE_ANIMATION_TIME;

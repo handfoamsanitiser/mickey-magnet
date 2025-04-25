@@ -23,6 +23,7 @@ int anchorAnimationFrame = 0;
 
 // spikes
 std::vector<Spike> spikes;
+extern const int SPIKE_RADIUS = 59;
 int spikeAnimationFrame = 0;
 float spikeAnimationTimer = 0.0f;
 extern const float SPIKE_ANIMATION_TIME = 1.0f;
