@@ -30,12 +30,12 @@ void Player::Update() {
     isBlueActive = false;
     AnchorInteract();
     SpikeInteract();
+    RockInteract();
     ExitInteract();
     ClampVel();
 }
 
 void Player::Render() {
-    if (!isEnabled) return;
     // DrawCircle(pos.x, pos.y, radius, RED);
     // DrawPoly(Vector2 { pos.x, pos.y }, 4, radius / 3, rotation * 180/PI, BLACK);
 
@@ -159,6 +159,14 @@ void Player::SpikeInteract() {
     rotation = atan2((GetMouseY() - pos.y), (GetMouseX() - pos.x));
 
     for (int i = 0; i < (int)spikes.size(); ++i) {
+        if (CheckCollisionCircles(pos, radius, spikes[i].pos, spikes[i].radius)) {
+            isDead = true;
+            isEnabled = false;
+
+            LoadLevel(curLevel);
+            return;
+        }
+
         float dist = Vector2Distance(pos, spikes[i].pos);
         float xDiff = dist * cos(rotation);
         float yDiff = dist * sin(rotation);
@@ -195,6 +203,18 @@ void Player::SpikeInteract() {
                     spikes[i].vel = Vector2Add(spikes[i].vel, Repel(spikes[i].strength, dir, xDiff, yDiff, dist));
                 }
             }
+        }
+    }
+}
+
+void Player::RockInteract() {
+    for (int i = 0; (float)i < rocks.size(); ++i) {
+        if (CheckCollisionCircles(pos, radius, rocks[i].pos, rocks[i].radius)) {
+            isDead = true;
+            isEnabled = false;
+
+            LoadLevel(curLevel);
+            return;
         }
     }
 }

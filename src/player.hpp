@@ -23,6 +23,7 @@ private:
     void Drag();
     void AnchorInteract();
     void SpikeInteract();
+    void RockInteract();
     void ExitInteract();
 
     Vector2 Attract(int strength, Vector2 dir, float xDiff, float yDiff, float dist);

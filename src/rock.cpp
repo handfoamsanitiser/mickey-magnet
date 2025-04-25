@@ -3,7 +3,7 @@
 
 Rock::Rock(int x, int y):
     pos(Vector2 { (float)x, (float)y }),
-    radius(50),
+    radius(59),
     spriteRadius(60),
     isVisible(true) {}
 

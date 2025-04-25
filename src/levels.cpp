@@ -1,8 +1,10 @@
 #include "levels.hpp"
 #include "globals.hpp"
+#include <cmath>
 
 void EnableEverything() {
     player.isEnabled = true;
+    player.rotation = atan2((GetMouseY() - player.pos.y), (GetMouseX() - player.pos.x));
 
     for (int i = 0; i < (int)spikes.size(); ++i) {
         spikes[i].isEnabled = true;
@@ -56,7 +58,15 @@ void LoadLevel2() {
     anchors.push_back(Anchor(200, SCREEN_HEIGHT / 2, true));
 }
 
-void LoadLevel3() {}
+void LoadLevel3() {
+    player = Player(200, SCREEN_HEIGHT / 2);
+
+    levelExit = Exit(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2);
+
+    anchors.push_back(Anchor(SCREEN_WIDTH - 200, SCREEN_HEIGHT / 2, false));
+
+    rocks.push_back(Rock(400, SCREEN_HEIGHT / 2));
+}
 void LoadLevel4() {}
 
 void LoadLevel5() {

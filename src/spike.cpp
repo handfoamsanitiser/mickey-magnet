@@ -4,7 +4,7 @@
 Spike::Spike(int x, int y, bool isRed): 
     pos(Vector2 { (float)x, (float)y }),
     vel(Vector2 { 0.0f, 0.0f }),
-    radius(50),
+    radius(59),
     spriteRadius(60),
     strength(10),
     isRed(isRed),
