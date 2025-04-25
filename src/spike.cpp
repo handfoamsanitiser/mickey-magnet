@@ -14,9 +14,16 @@ Spike::Spike(int x, int y, bool isRed):
 
 void Spike::UpdateAnimation() {
     spikeAnimationTimer += GetFrameTime();
-    if (spikeAnimationTimer > BASE_SPIKE_ANIMATION_TIME) {
-        spikeAnimationTimer -= BASE_SPIKE_ANIMATION_TIME;
+    if (spikeAnimationTimer > SPIKE_ANIMATION_TIME) {
+        spikeAnimationTimer -= SPIKE_ANIMATION_TIME;
         spikeAnimationFrame = (spikeAnimationFrame + 1) % 2;
+
+        if (star.isCollected && star.isVisible) {
+            star.cyclesSinceCollected++;
+            if (star.cyclesSinceCollected > 1) {
+                star.isVisible = false;
+            }
+        }
     }
 }
 

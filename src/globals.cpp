@@ -5,6 +5,7 @@ const int SCREEN_WIDTH = 1920;
 const int SCREEN_HEIGHT = 1080;
 
 int curLevel = 1;
+const int NUM_LEVELS = 10;
 
 // player
 Player player(-1000, -1000);
@@ -24,9 +25,7 @@ int anchorAnimationFrame = 0;
 std::vector<Spike> spikes;
 int spikeAnimationFrame = 0;
 float spikeAnimationTimer = 0.0f;
-extern const float BASE_SPIKE_ANIMATION_TIME = 1.0f;
-extern const float FAST_SPIKE_ANIMATION_TIME = 0.5f;
-float curSpikeAnimationTime = BASE_SPIKE_ANIMATION_TIME;
+extern const float SPIKE_ANIMATION_TIME = 1.0f;
 
 // rocks
 std::vector<Rock> rocks;
@@ -36,6 +35,7 @@ Exit levelExit(-1000, -1000);
 
 // star
 Star star(-1000, -1000);
+int starsCollected = 0;
 
 // textures
 Texture2D playerBody1;

@@ -12,6 +12,7 @@ extern const int SCREEN_WIDTH;
 extern const int SCREEN_HEIGHT;
 
 extern int curLevel;
+extern const int NUM_LEVELS;
 
 // player
 extern Player player;
@@ -31,8 +32,7 @@ extern int anchorAnimationFrame;
 extern std::vector<Spike> spikes;
 extern int spikeAnimationFrame;
 extern float spikeAnimationTimer;
-extern float curSpikeAnimationTime;
-extern const float BASE_SPIKE_ANIMATION_TIME;
+extern const float SPIKE_ANIMATION_TIME;
 
 // rocks
 extern std::vector<Rock> rocks;
@@ -42,6 +42,7 @@ extern Exit levelExit;
 
 // star
 extern Star star;
+extern int starsCollected;
 
 // textures
 extern Texture2D playerBody1;

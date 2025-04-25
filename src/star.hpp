@@ -10,5 +10,7 @@ public:
     Vector2 pos;
     int radius;
     int spriteRadius;
+    int cyclesSinceCollected;
     bool isCollected;
+    bool isVisible;
 };

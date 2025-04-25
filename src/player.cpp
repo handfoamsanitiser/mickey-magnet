@@ -31,6 +31,7 @@ void Player::Update() {
     AnchorInteract();
     SpikeInteract();
     RockInteract();
+    StarInteract();
     ExitInteract();
     ClampVel();
 }
@@ -114,6 +115,8 @@ void Player::Drag() {
 }
 
 void Player::AnchorInteract() {
+    if (!isEnabled) return;
+
     // targeting detection
     rotation = atan2((GetMouseY() - pos.y), (GetMouseX() - pos.x));
 
@@ -155,6 +158,8 @@ void Player::AnchorInteract() {
 }
 
 void Player::SpikeInteract() {
+    if (!isEnabled) return;
+
     // targeting detection
     rotation = atan2((GetMouseY() - pos.y), (GetMouseX() - pos.x));
 
@@ -208,6 +213,8 @@ void Player::SpikeInteract() {
 }
 
 void Player::RockInteract() {
+    if (!isEnabled) return;
+
     for (int i = 0; (float)i < rocks.size(); ++i) {
         if (CheckCollisionCircles(pos, radius, rocks[i].pos, rocks[i].radius)) {
             isDead = true;
@@ -220,9 +227,20 @@ void Player::RockInteract() {
 }
 
 void Player::ExitInteract() {
+    if (!isEnabled) return;
+
     if (CheckCollisionCircles(pos, radius, levelExit.pos, levelExit.radius)) {
         curLevel++;
         LoadLevel(curLevel);
+    }
+}
+
+void Player::StarInteract() {
+    if (!isEnabled) return;
+
+    if (CheckCollisionCircles(pos, radius, star.pos, star.radius)) {
+        starsCollected++;
+        star.isCollected = true;
     }
 }
 
