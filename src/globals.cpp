@@ -5,6 +5,7 @@ const int SCREEN_HEIGHT = 1080;
 
 Player player(50, SCREEN_HEIGHT / 2, true);
 const float PLAYER_MAX_SPEED = 7;
+const float PLAYER_MIN_SPEED = 0.1f;
 const float PLAYER_DRAG = 3;
 const float MAX_DISTANCE = 1200;
 const float MIN_PLAYER_ACC_MULT = 0.6f;

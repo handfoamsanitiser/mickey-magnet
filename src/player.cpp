@@ -9,6 +9,7 @@ Player::Player(int x, int y, bool isEnabled):
     vel(Vector2 { 0, 0 }),
     rotation(0),
     radius(100),
+    spriteRadius(100),
     isEnabled(isEnabled) {}
 
 void Player::Update() {
@@ -17,6 +18,7 @@ void Player::Update() {
     // update position
     pos.x += vel.x * GetFrameTime() * 50;
     pos.y += vel.y * GetFrameTime() * 50;
+    ClampPos();
 
     Drag();
     AnchorInteract();
@@ -168,7 +170,7 @@ Vector2 Player::Repel(int strength, Vector2 dir, float xDiff, float yDiff, float
 }
 
 void Player::ClampVel() {
-    // clamp velocity
+    // max velocity
     if (vel.x < 0 && vel.x < -PLAYER_MAX_SPEED) {
         vel.x = -PLAYER_MAX_SPEED;
     } else if (vel.x > 0 && vel.x > PLAYER_MAX_SPEED){
@@ -180,8 +182,36 @@ void Player::ClampVel() {
     } else if (vel.y > 0 && vel.y > PLAYER_MAX_SPEED){
         vel.y = PLAYER_MAX_SPEED;
     }
+
+    // min velocity
+    if (vel.x < 0 && vel.x > -PLAYER_MIN_SPEED) {
+        vel.x = 0;
+    } else if (vel.x > 0 && vel.x < PLAYER_MIN_SPEED) {
+        vel.x = 0;
+    }
+
+    // min velocity
+    if (vel.y < 0 && vel.y > -PLAYER_MIN_SPEED) {
+        vel.y = 0;
+    } else if (vel.y > 0 && vel.y < PLAYER_MIN_SPEED) {
+        vel.y = 0;
+    }
 }
 
 void Player::ClampPos() {
-    
+    if (player.pos.x - player.spriteRadius < 0) {
+        player.pos.x = player.spriteRadius;
+        player.vel.x = 0;
+    } else if (player.pos.x + player.spriteRadius > SCREEN_WIDTH) {
+        player.pos.x = SCREEN_WIDTH - player.spriteRadius;
+        player.vel.x = 0;
+    }
+
+    if (player.pos.y - player.spriteRadius < 0) {
+        player.pos.y = player.spriteRadius;
+        player.vel.y = 0;
+    } else if (player.pos.y + player.spriteRadius > SCREEN_HEIGHT) {
+        player.pos.y = SCREEN_HEIGHT - player.spriteRadius;
+        player.vel.y = 0;
+    }
 }

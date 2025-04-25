@@ -13,6 +13,7 @@ public:
     Vector2 vel;
     float rotation;
     int radius;
+    int spriteRadius;
     bool isEnabled;
 
 private:

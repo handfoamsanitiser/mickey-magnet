@@ -9,6 +9,7 @@ extern const int SCREEN_HEIGHT;
 
 extern Player player;
 extern const float PLAYER_MAX_SPEED;
+extern const float PLAYER_MIN_SPEED;
 extern const float PLAYER_DRAG;
 extern const float MAX_DISTANCE;
 extern const float MIN_PLAYER_ACC_MULT;
