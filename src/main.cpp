@@ -23,7 +23,7 @@ void NotGodMode();
 
 int main() {
     InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "Mick");
-    ToggleFullscreen();
+    //ToggleFullscreen();
     HideCursor();
 
     InitAudioDevice();
@@ -57,6 +57,10 @@ void UpdateDrawFrame() {
     player.Update();
     for (int i = 0; i < (int)spikes.size(); ++i) {
         spikes[i].Update();
+    }
+
+    for (int i = 0; i < (int)rocks.size(); ++i) {
+        rocks[i].Update();
     }
 
     Anchor::UpdateAnimation();

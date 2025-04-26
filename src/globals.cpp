@@ -4,7 +4,7 @@
 const int SCREEN_WIDTH = 1920;
 const int SCREEN_HEIGHT = 1080;
 
-int curLevel = 1;
+int curLevel = 8;
 const int NUM_LEVELS = 10;
 
 // player

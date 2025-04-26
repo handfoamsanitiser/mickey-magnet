@@ -203,7 +203,15 @@ void LoadLevel7() {
 }
 
 // star
-void LoadLevel8() { LoadLevel6(); }
+void LoadLevel8() { 
+    player = Player(200, SCREEN_HEIGHT / 2);
+
+    levelExit = Exit(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2);
+
+    anchors.push_back(Anchor(SCREEN_WIDTH - 200, SCREEN_HEIGHT / 2, false));
+
+    rocks.push_back(Rock(400, SCREEN_HEIGHT / 2, Vector2 { 400, (float)SCREEN_HEIGHT / 2 - 100 }, Vector2 { 400, (float)SCREEN_HEIGHT / 2 + 100 }, 100.0f));
+}
 
 // medium level
 void LoadLevel9() {}
