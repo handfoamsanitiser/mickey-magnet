@@ -116,13 +116,13 @@ void Player::AnchorInteract() {
     if (!isEnabled) return;
 
     // targeting detection
-    rotation = atan2((GetMouseY() - pos.y), (GetMouseX() - pos.x));
+    rotation = atan2((mousePos.y - pos.y), (mousePos.x - pos.x));
 
     for (int i = 0; i < (int)anchors.size(); ++i) {
         float dist = Vector2Distance(pos, anchors[i].pos);
         float xDiff = dist * cos(rotation);
         float yDiff = dist * sin(rotation);
-        Vector2 dir = Vector2Normalize(Vector2Subtract(GetMousePosition(), pos));
+        Vector2 dir = Vector2Normalize(Vector2Subtract(mousePos, pos));
 
         Vector2 final1 = { pos.x + xDiff, pos.y + yDiff };
         Vector2 final2 = { pos.x - xDiff, pos.y - yDiff };
@@ -159,7 +159,7 @@ void Player::SpikeInteract() {
     if (!isEnabled) return;
 
     // targeting detection
-    rotation = atan2((GetMouseY() - pos.y), (GetMouseX() - pos.x));
+    rotation = atan2((mousePos.y - pos.y), (mousePos.x - pos.x));
 
     for (int i = 0; i < (int)spikes.size(); ++i) {
         if (CheckCollisionCircles(pos, PLAYER_RADIUS, spikes[i].pos, SPIKE_RADIUS)) {
@@ -173,7 +173,7 @@ void Player::SpikeInteract() {
         float dist = Vector2Distance(pos, spikes[i].pos);
         float xDiff = dist * cos(rotation);
         float yDiff = dist * sin(rotation);
-        Vector2 dir = Vector2Normalize(Vector2Subtract(GetMousePosition(), pos));
+        Vector2 dir = Vector2Normalize(Vector2Subtract(mousePos, pos));
 
         Vector2 final1 = { pos.x + xDiff, pos.y + yDiff };
         Vector2 final2 = { pos.x - xDiff, pos.y - yDiff };

@@ -4,6 +4,8 @@
 const int SCREEN_WIDTH = 1920;
 const int SCREEN_HEIGHT = 1080;
 
+Vector2 mousePos;
+
 int curLevel = 1;
 const int NUM_LEVELS = 10;
 

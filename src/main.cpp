@@ -1,4 +1,5 @@
 #include "raylib.h"
+#include "raymath.h"
 #include <vector>
 
 #include "globals.hpp"
@@ -23,7 +24,6 @@ void NotGodMode();
 
 int main() {
     InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "Mick");
-    //ToggleFullscreen();
     HideCursor();
 
     InitAudioDevice();
@@ -48,6 +48,8 @@ int main() {
 }
 
 void UpdateDrawFrame() {
+    mousePos = Vector2Add(mousePos, GetMouseDelta());
+
     GodMode();
     NotGodMode();
 
@@ -89,10 +91,10 @@ void UpdateDrawFrame() {
 
         switch (spikeAnimationFrame) {
             case 0:
-                DrawTexturePro(cursor1, Rectangle { 0, 0, 32, 32 }, Rectangle { (float)GetMouseX(), (float)GetMouseY(), 32, 32 }, Vector2 { 0, 0}, 0, WHITE);
+                DrawTexturePro(cursor1, Rectangle { 0, 0, 32, 32 }, Rectangle { (float)mousePos.x, (float)mousePos.y, 32, 32 }, Vector2 { 0, 0}, 0, WHITE);
                 break;
             case 1:
-                DrawTexturePro(cursor2, Rectangle { 0, 0, 32, 32 }, Rectangle { (float)GetMouseX(), (float)GetMouseY(), 32, 32 }, Vector2 {0, 0 }, 0, WHITE);
+                DrawTexturePro(cursor2, Rectangle { 0, 0, 32, 32 }, Rectangle { (float)mousePos.x, (float)mousePos.y, 32, 32 }, Vector2 {0, 0 }, 0, WHITE);
                 break;
             default:
                 break;

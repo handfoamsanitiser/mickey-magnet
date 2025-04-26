@@ -4,7 +4,7 @@
 
 void EnableEverything() {
     player.isEnabled = true;
-    player.rotation = atan2((GetMouseY() - player.pos.y), (GetMouseX() - player.pos.x));
+    player.rotation = atan2((mousePos.y - player.pos.y), (mousePos.x - player.pos.x));
 
     for (int i = 0; i < (int)spikes.size(); ++i) {
         spikes[i].isEnabled = true;

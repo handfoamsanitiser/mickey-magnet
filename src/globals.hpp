@@ -11,6 +11,8 @@
 extern const int SCREEN_WIDTH;
 extern const int SCREEN_HEIGHT;
 
+extern Vector2 mousePos;
+
 extern int curLevel;
 extern const int NUM_LEVELS;
 
