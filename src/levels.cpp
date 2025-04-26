@@ -106,19 +106,41 @@ void LoadLevel4() {
 
 // medium level
 void LoadLevel5() {
-    
+    player = Player(150, 150);
+
+    levelExit = Exit(SCREEN_WIDTH - 250, SCREEN_HEIGHT / 2);
+
+    anchors.push_back(Anchor(SCREEN_WIDTH - SPIKE_RADIUS, SPIKE_RADIUS + 40, true));
+    anchors.push_back(Anchor(SCREEN_WIDTH / 4, SCREEN_HEIGHT - 150, false));
+    anchors.push_back(Anchor(SPIKE_RADIUS, SCREEN_HEIGHT / 2, true));
+
+    rocks.push_back(Rock(SCREEN_WIDTH - SPIKE_RADIUS * 3 - 30, SPIKE_RADIUS + 40));
+    rocks.push_back(Rock(SCREEN_WIDTH - SPIKE_RADIUS * 3 - 30, SPIKE_RADIUS * 3 + 70));
+    rocks.push_back(Rock(SCREEN_WIDTH - SPIKE_RADIUS, SPIKE_RADIUS * 3 + 70));
+
+    rocks.push_back(Rock(SCREEN_WIDTH / 4 - SPIKE_RADIUS * 2 - 30, SCREEN_HEIGHT - 150));
+    rocks.push_back(Rock(SCREEN_WIDTH / 4 - SPIKE_RADIUS * 2 - 30, SCREEN_HEIGHT - 180 - SPIKE_RADIUS * 2));
+    rocks.push_back(Rock(SCREEN_WIDTH / 4, SCREEN_HEIGHT - 180 - SPIKE_RADIUS * 2));
+    rocks.push_back(Rock(SCREEN_WIDTH / 4 + SPIKE_RADIUS * 2 + 30, SCREEN_HEIGHT - 180 - SPIKE_RADIUS * 2));
+    rocks.push_back(Rock(SCREEN_WIDTH / 4 + SPIKE_RADIUS * 2 + 30, SCREEN_HEIGHT - 150));
+
+    rocks.push_back(Rock(SPIKE_RADIUS, SCREEN_HEIGHT / 2 - 150));
+    rocks.push_back(Rock(SPIKE_RADIUS * 3 + 30, SCREEN_HEIGHT / 2 - 150));
+    rocks.push_back(Rock(SPIKE_RADIUS * 3 + 30, SCREEN_HEIGHT / 2));
+    rocks.push_back(Rock(SPIKE_RADIUS * 3 + 30, SCREEN_HEIGHT / 2 + 150));
+    rocks.push_back(Rock(SPIKE_RADIUS, SCREEN_HEIGHT / 2 + 150));
 }
 
 // blue spike
 void LoadLevel6() {}
 
-// red spike
+// medium level
 void LoadLevel7() {}
 
-// medium level
+// star
 void LoadLevel8() {}
 
-// star
+// medium level
 void LoadLevel9() {
     player = Player(200, SCREEN_HEIGHT / 2);
 
