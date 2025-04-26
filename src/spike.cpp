@@ -6,7 +6,7 @@ Spike::Spike(int x, int y, bool isRed):
     vel(Vector2 { 0.0f, 0.0f }),
     radius(59),
     spriteRadius(60),
-    strength(10),
+    strength(15),
     isRed(isRed),
     isActive(false),
     isEnabled(false),
@@ -33,9 +33,9 @@ void Spike::Update() {
     pos.x += vel.x * GetFrameTime() * 50;
     pos.y += vel.y * GetFrameTime() * 50;
 
-    Drag();
-    ClampVel();
     ClampPos();
+    //Drag();
+    ClampVel();
 }
 
 void Spike::Render() {
@@ -93,6 +93,19 @@ void Spike::ClampVel() {
         vel.y = -PLAYER_MAX_SPEED;
     } else if (vel.y > 0 && vel.y > PLAYER_MAX_SPEED){
         vel.y = PLAYER_MAX_SPEED;
+    }
+
+    // min velocity
+    if (vel.x < 0 && vel.x > -PLAYER_MIN_SPEED) {
+        vel.x = 0;
+    } else if (vel.x > 0 && vel.x < PLAYER_MIN_SPEED) {
+        vel.x = 0;
+    }
+
+    if (vel.y < 0 && vel.y > -PLAYER_MIN_SPEED) {
+        vel.y = 0;
+    } else if (vel.y > 0 && vel.y < PLAYER_MIN_SPEED) {
+        vel.y = 0;
     }
 }
 

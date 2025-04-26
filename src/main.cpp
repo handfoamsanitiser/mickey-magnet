@@ -45,9 +45,12 @@ int main() {
 }
 
 void UpdateDrawFrame() {
-    //GodMode();
+    GodMode();
     NotGodMode();
 
+    for (int i = 0; i < (int)spikes.size(); ++i) {
+        spikes[i].Drag();
+    }
     player.Update();
     for (int i = 0; i < (int)spikes.size(); ++i) {
         spikes[i].Update();

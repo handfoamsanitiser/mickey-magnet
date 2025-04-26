@@ -35,6 +35,21 @@ void LoadLevel(int level) {
     case 5:
         LoadLevel5();
         break;
+    case 6:
+        LoadLevel6();
+        break;
+    case 7:
+        LoadLevel7();
+        break;
+    case 8:
+        LoadLevel8();
+        break;
+    case 9:
+        LoadLevel9();
+        break;
+    case 10:
+        LoadLevel10();
+        break;
     default:
         break;
     }
@@ -131,11 +146,39 @@ void LoadLevel5() {
     rocks.push_back(Rock(SPIKE_RADIUS, SCREEN_HEIGHT / 2 + 150));
 }
 
-// blue spike
-void LoadLevel6() {}
+// magnetic spikes
+void LoadLevel6() {
+    player = Player(150, 150);
+
+    levelExit = Exit(SCREEN_WIDTH - 350, SCREEN_HEIGHT / 2 - 100);
+
+    anchors.push_back(Anchor(SCREEN_WIDTH - 100, SCREEN_HEIGHT / 2 - 100, false));
+
+    spikes.push_back(Spike(150, SCREEN_HEIGHT - 150, false));
+
+    rocks.push_back(Rock(SCREEN_WIDTH - 300 + SPIKE_RADIUS * 4, SCREEN_HEIGHT / 2 - 300));
+    rocks.push_back(Rock(SCREEN_WIDTH - 330 + SPIKE_RADIUS * 2, SCREEN_HEIGHT / 2 - 300));
+    rocks.push_back(Rock(SCREEN_WIDTH - 360, SCREEN_HEIGHT / 2 - 300));
+    rocks.push_back(Rock(SCREEN_WIDTH - 330 - SPIKE_RADIUS * 3, SCREEN_HEIGHT / 2 - 300));
+    rocks.push_back(Rock(SCREEN_WIDTH - 300 - SPIKE_RADIUS * 6, SCREEN_HEIGHT / 2 - 300));
+    rocks.push_back(Rock(SCREEN_WIDTH - 270 - SPIKE_RADIUS * 9, SCREEN_HEIGHT / 2 - 300));
+    rocks.push_back(Rock(SCREEN_WIDTH - 240 - SPIKE_RADIUS * 12, SCREEN_HEIGHT / 2 - 300));
+    rocks.push_back(Rock(SCREEN_WIDTH - 210 - SPIKE_RADIUS * 15, SCREEN_HEIGHT / 2 - 300));
+
+    rocks.push_back(Rock(SCREEN_WIDTH - 300 + SPIKE_RADIUS * 4, SCREEN_HEIGHT / 2 + 100));
+    rocks.push_back(Rock(SCREEN_WIDTH - 330 + SPIKE_RADIUS * 2, SCREEN_HEIGHT / 2 + 100));
+    rocks.push_back(Rock(SCREEN_WIDTH - 360, SCREEN_HEIGHT / 2 + 100));
+    rocks.push_back(Rock(SCREEN_WIDTH - 330 - SPIKE_RADIUS * 3, SCREEN_HEIGHT / 2 + 100));
+    rocks.push_back(Rock(SCREEN_WIDTH - 300 - SPIKE_RADIUS * 6, SCREEN_HEIGHT / 2 + 100));
+    rocks.push_back(Rock(SCREEN_WIDTH - 270 - SPIKE_RADIUS * 9, SCREEN_HEIGHT / 2 + 100));
+    rocks.push_back(Rock(SCREEN_WIDTH - 240 - SPIKE_RADIUS * 12, SCREEN_HEIGHT / 2 + 100));
+    rocks.push_back(Rock(SCREEN_WIDTH - 210 - SPIKE_RADIUS * 15, SCREEN_HEIGHT / 2 + 100));
+}
 
 // medium level
-void LoadLevel7() {}
+void LoadLevel7() {
+    
+}
 
 // star
 void LoadLevel8() {}

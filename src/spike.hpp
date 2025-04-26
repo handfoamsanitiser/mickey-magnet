@@ -6,6 +6,7 @@ public:
     Spike(int x, int y, bool isRed);
     static void UpdateAnimation();
 
+    void Drag();
     void Update();
     void Render();
 
@@ -20,7 +21,6 @@ public:
     bool isVisible;
 
 private:
-    void Drag();
     void ClampVel();
     void ClampPos();
 };
