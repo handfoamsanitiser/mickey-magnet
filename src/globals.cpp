@@ -88,3 +88,6 @@ Texture2D exit4;
 Texture2D star1;
 Texture2D star2;
 Texture2D star3;
+
+Texture2D cursor1;
+Texture2D cursor2;

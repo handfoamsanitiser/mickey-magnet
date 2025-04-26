@@ -95,3 +95,6 @@ extern Texture2D exit4;
 extern Texture2D star1;
 extern Texture2D star2;
 extern Texture2D star3;
+
+extern Texture2D cursor1;
+extern Texture2D cursor2;

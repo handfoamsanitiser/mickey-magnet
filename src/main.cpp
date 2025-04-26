@@ -24,6 +24,7 @@ void NotGodMode();
 int main() {
     InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "Mick");
     ToggleFullscreen();
+    HideCursor();
 
     InitAudioDevice();
     LoadTextures();
@@ -81,6 +82,17 @@ void UpdateDrawFrame() {
         }
 
         player.Render();
+
+        switch (spikeAnimationFrame) {
+            case 0:
+                DrawTexturePro(cursor1, Rectangle { 0, 0, 32, 32 }, Rectangle { (float)GetMouseX(), (float)GetMouseY(), 32, 32 }, Vector2 { 0, 0}, 0, WHITE);
+                break;
+            case 1:
+                DrawTexturePro(cursor2, Rectangle { 0, 0, 32, 32 }, Rectangle { (float)GetMouseX(), (float)GetMouseY(), 32, 32 }, Vector2 {0, 0 }, 0, WHITE);
+                break;
+            default:
+                break;
+        }
     EndDrawing();
 }
 
@@ -152,6 +164,9 @@ void LoadTextures() {
     star1 = LoadTextureFromImage(LoadImage("resources/star/star-1.png"));
     star2 = LoadTextureFromImage(LoadImage("resources/star/star-2.png"));
     star3 = LoadTextureFromImage(LoadImage("resources/star/star-3.png"));
+
+    cursor1 = LoadTextureFromImage(LoadImage("resources/cursor/cursor-1.png"));
+    cursor2 = LoadTextureFromImage(LoadImage("resources/cursor/cursor-2.png"));
 }
 
 void UnloadTextures() {
@@ -204,4 +219,7 @@ void UnloadTextures() {
     UnloadTexture(star1);
     UnloadTexture(star2);
     UnloadTexture(star3);
+
+    UnloadTexture(cursor1);
+    UnloadTexture(cursor2);
 }
