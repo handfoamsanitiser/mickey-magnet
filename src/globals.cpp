@@ -10,10 +10,10 @@ const int NUM_LEVELS = 10;
 // player
 Player player(-1000, -1000);
 const float PLAYER_MAX_SPEED = 8;
-const float PLAYER_MIN_SPEED = 0.1f;
+const float PLAYER_MIN_SPEED = 0.05f;
 const float PLAYER_DRAG = 3;
-const float MAX_DISTANCE = 1200;
-const float MIN_PLAYER_ACC_MULT = 0.6f;
+const float MAX_DISTANCE = 800;
+const float MIN_PLAYER_ACC_MULT = 0.5f;
 
 // anchors
 std::vector<Anchor> anchors;

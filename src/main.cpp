@@ -23,6 +23,8 @@ void NotGodMode();
 
 int main() {
     InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "Mick");
+    ToggleFullscreen();
+
     InitAudioDevice();
     LoadTextures();
 

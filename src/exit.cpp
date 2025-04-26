@@ -3,7 +3,7 @@
 
 Exit::Exit(int x, int y):
     pos(Vector2 { (float)x, (float)y }),
-    radius(70),
+    radius(80),
     spriteRadius(140) {}
 
 void Exit::Render() {

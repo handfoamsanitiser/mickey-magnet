@@ -50,7 +50,23 @@ void LoadLevel(int level) {
     case 10:
         LoadLevel10();
         break;
+    case 11:
+        LoadLevel11();
+        break;
+    case 12:
+        LoadLevel12();
+        break;
+    case 13:
+        LoadLevel13();
+        break;
+    case 14:
+        LoadLevel14();
+        break;
+    case 15:
+        LoadLevel15();
+        break;
     default:
+        LoadLevel1();
         break;
     }
 
@@ -177,25 +193,33 @@ void LoadLevel6() {
 
 // medium level
 void LoadLevel7() {
-    
+    player = Player(150, SCREEN_HEIGHT - 150);
+
+    levelExit = Exit(SCREEN_WIDTH - 200, 200);
+
+    spikes.push_back(Spike(SCREEN_WIDTH / 2, 150, false));
+    spikes.push_back(Spike(150, SCREEN_HEIGHT / 2 + 200, true));
+    spikes.push_back(Spike(SCREEN_WIDTH - 150, SCREEN_HEIGHT - 150, true));
 }
 
 // star
-void LoadLevel8() {}
+void LoadLevel8() { LoadLevel6(); }
 
 // medium level
-void LoadLevel9() {
-    player = Player(200, SCREEN_HEIGHT / 2);
-
-    levelExit = Exit(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2);
-
-    anchors.push_back(Anchor(SCREEN_WIDTH - 200, SCREEN_HEIGHT / 2, false));
-
-    rocks.push_back(Rock(400, SCREEN_HEIGHT / 2));
-}
+void LoadLevel9() {}
 
 // medium level
-void LoadLevel10() {
+void LoadLevel10() {}
+
+// 5 - 10 more medium to hard levels
+
+void LoadLevel11() {}
+void LoadLevel12() {}
+void LoadLevel13() {}
+void LoadLevel14() {}
+void LoadLevel15() {}
+
+void LoadLevelT1() {
     player = Player(200, 200);
 
     levelExit = Exit(1200, 200);
@@ -209,4 +233,12 @@ void LoadLevel10() {
     rocks.push_back(Rock(1300, 300));
 }
 
-// 5 - 10 more medium to hard levels
+void LoadLevelT2() {
+    player = Player(200, SCREEN_HEIGHT / 2);
+
+    levelExit = Exit(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2);
+
+    anchors.push_back(Anchor(SCREEN_WIDTH - 200, SCREEN_HEIGHT / 2, false));
+
+    rocks.push_back(Rock(400, SCREEN_HEIGHT / 2));
+}
