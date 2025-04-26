@@ -12,8 +12,6 @@ public:
     Vector2 pos;
     Vector2 vel;
     float rotation;
-    int radius;
-    int spriteRadius;
     bool isEnabled;
     bool isDead;
     bool isRedActive;

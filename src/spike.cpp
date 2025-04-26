@@ -4,8 +4,6 @@
 Spike::Spike(int x, int y, bool isRed): 
     pos(Vector2 { (float)x, (float)y }),
     vel(Vector2 { 0.0f, 0.0f }),
-    radius(59),
-    spriteRadius(60),
     strength(15),
     isRed(isRed),
     isActive(false),
@@ -44,10 +42,10 @@ void Spike::Render() {
     if (isRed) {
         switch (spikeAnimationFrame) {
             case 0:
-                DrawTexturePro(redSpike1, Rectangle { 22, 21, 61, 57 }, Rectangle { pos.x, pos.y, (float)spriteRadius * 2, (float)spriteRadius * 2 }, Vector2 { (float)spriteRadius, (float)spriteRadius}, 0, WHITE);
+                DrawTexturePro(redSpike1, Rectangle { 22, 21, 61, 57 }, Rectangle { pos.x, pos.y, (float)SPIKE_SPRITE_RADIUS * 2, (float)SPIKE_SPRITE_RADIUS * 2 }, Vector2 { (float)SPIKE_SPRITE_RADIUS, (float)SPIKE_SPRITE_RADIUS}, 0, WHITE);
                 break;
             case 1:
-                DrawTexturePro(redSpike2, Rectangle { 22, 21, 58, 61 }, Rectangle { pos.x, pos.y, (float)spriteRadius * 2, (float)spriteRadius * 2 }, Vector2 { (float)spriteRadius, (float)spriteRadius}, 0, WHITE);
+                DrawTexturePro(redSpike2, Rectangle { 22, 21, 58, 61 }, Rectangle { pos.x, pos.y, (float)SPIKE_SPRITE_RADIUS * 2, (float)SPIKE_SPRITE_RADIUS * 2 }, Vector2 { (float)SPIKE_SPRITE_RADIUS, (float)SPIKE_SPRITE_RADIUS}, 0, WHITE);
                 break;
             default:
                 break;
@@ -55,10 +53,10 @@ void Spike::Render() {
     } else {
         switch (spikeAnimationFrame) {
             case 0:
-                DrawTexturePro(blueSpike1, Rectangle { 22, 21, 61, 57 }, Rectangle { pos.x, pos.y, (float)spriteRadius * 2, (float)spriteRadius * 2 }, Vector2 { (float)spriteRadius, (float)spriteRadius}, 0, WHITE);
+                DrawTexturePro(blueSpike1, Rectangle { 22, 21, 61, 57 }, Rectangle { pos.x, pos.y, (float)SPIKE_SPRITE_RADIUS * 2, (float)SPIKE_SPRITE_RADIUS * 2 }, Vector2 { (float)SPIKE_SPRITE_RADIUS, (float)SPIKE_SPRITE_RADIUS}, 0, WHITE);
                 break;
             case 1:
-                DrawTexturePro(blueSpike2, Rectangle { 22, 21, 58, 61 }, Rectangle { pos.x, pos.y, (float)spriteRadius * 2, (float)spriteRadius * 2 }, Vector2 { (float)spriteRadius, (float)spriteRadius}, 0, WHITE);
+                DrawTexturePro(blueSpike2, Rectangle { 22, 21, 58, 61 }, Rectangle { pos.x, pos.y, (float)SPIKE_SPRITE_RADIUS * 2, (float)SPIKE_SPRITE_RADIUS * 2 }, Vector2 { (float)SPIKE_SPRITE_RADIUS, (float)SPIKE_SPRITE_RADIUS}, 0, WHITE);
                 break;
             default:
                 break;
@@ -110,19 +108,19 @@ void Spike::ClampVel() {
 }
 
 void Spike::ClampPos() {
-    if (pos.x - radius < 0) {
-        pos.x = radius;
+    if (pos.x - SPIKE_RADIUS< 0) {
+        pos.x = SPIKE_RADIUS;
         vel.x = 0;
-    } else if (pos.x + radius > SCREEN_WIDTH) {
-        pos.x = SCREEN_WIDTH - radius;
+    } else if (pos.x + SPIKE_RADIUS > SCREEN_WIDTH) {
+        pos.x = SCREEN_WIDTH - SPIKE_RADIUS;
         vel.x = 0;
     }
 
-    if (pos.y - radius < 0) {
-        pos.y = radius;
+    if (pos.y - SPIKE_RADIUS < 0) {
+        pos.y = SPIKE_RADIUS;
         vel.y = 0;
-    } else if (pos.y + radius > SCREEN_HEIGHT) {
-        pos.y = SCREEN_HEIGHT - radius;
+    } else if (pos.y + SPIKE_RADIUS > SCREEN_HEIGHT) {
+        pos.y = SCREEN_HEIGHT - SPIKE_RADIUS;
         vel.y = 0;
     }
 }

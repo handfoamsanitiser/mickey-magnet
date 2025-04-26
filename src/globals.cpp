@@ -9,6 +9,8 @@ const int NUM_LEVELS = 10;
 
 // player
 Player player(-1000, -1000);
+const int PLAYER_RADIUS = 33;
+const int PLAYER_SPRITE_RADIUS = 100;
 const float PLAYER_MAX_SPEED = 8;
 const float PLAYER_MIN_SPEED = 0.05f;
 const float PLAYER_DRAG = 3;
@@ -17,25 +19,31 @@ const float MIN_PLAYER_ACC_MULT = 0.5f;
 
 // anchors
 std::vector<Anchor> anchors;
-extern const float ANCHOR_ANIMATION_TIME = 0.25f;
+const int ANCHOR_RADIUS = 50;
+const float ANCHOR_ANIMATION_TIME = 0.25f;
 float anchorAnimationTimer = 0.0f;
 int anchorAnimationFrame = 0;
 
 // spikes
 std::vector<Spike> spikes;
-extern const int SPIKE_RADIUS = 59;
+const int SPIKE_RADIUS = 59;
+const int SPIKE_SPRITE_RADIUS = 60;
 int spikeAnimationFrame = 0;
 float spikeAnimationTimer = 0.0f;
-extern const float SPIKE_ANIMATION_TIME = 1.0f;
+const float SPIKE_ANIMATION_TIME = 1.0f;
 
 // rocks
 std::vector<Rock> rocks;
 
 // exit
 Exit levelExit(-1000, -1000);
+const int EXIT_RADIUS = 80;
+const int EXIT_SPRITE_RADIUS = 140;
 
 // star
 Star star(-1000, -1000);
+const int STAR_RADIUS = 50;
+const int STAR_SPRITE_RADIUS = 50;
 int starsCollected = 0;
 
 // textures

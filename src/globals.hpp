@@ -16,6 +16,8 @@ extern const int NUM_LEVELS;
 
 // player
 extern Player player;
+extern const int PLAYER_RADIUS;
+extern const int PLAYER_SPRITE_RADIUS;
 extern const float PLAYER_MAX_SPEED;
 extern const float PLAYER_MIN_SPEED;
 extern const float PLAYER_DRAG;
@@ -24,6 +26,7 @@ extern const float MIN_PLAYER_ACC_MULT;
 
 // anchors
 extern std::vector<Anchor> anchors;
+extern const int ANCHOR_RADIUS;
 extern const float ANCHOR_ANIMATION_TIME;
 extern float anchorAnimationTimer;
 extern int anchorAnimationFrame;
@@ -31,6 +34,7 @@ extern int anchorAnimationFrame;
 // spikes
 extern std::vector<Spike> spikes;
 extern const int SPIKE_RADIUS;
+extern const int SPIKE_SPRITE_RADIUS;
 extern int spikeAnimationFrame;
 extern float spikeAnimationTimer;
 extern const float SPIKE_ANIMATION_TIME;
@@ -40,9 +44,13 @@ extern std::vector<Rock> rocks;
 
 // exit
 extern Exit levelExit;
+extern const int EXIT_RADIUS;
+extern const int EXIT_SPRITE_RADIUS;
 
 // star
 extern Star star;
+extern const int STAR_RADIUS;
+extern const int STAR_SPRITE_RADIUS;
 extern int starsCollected;
 
 // textures

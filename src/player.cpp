@@ -9,8 +9,6 @@ Player::Player(int x, int y):
     pos(Vector2 { (float)x, (float)y }),
     vel(Vector2 { 0, 0 }),
     rotation(0),
-    radius(33),
-    spriteRadius(100),
     isEnabled(false),
     isDead(false),
     isRedActive(false),
@@ -46,56 +44,56 @@ void Player::Render() {
 
     // body
     if (isDead) {
-        DrawTexturePro(playerBody4, Rectangle { 0, 0, 100, 100 }, Rectangle { pos.x, pos.y, (float)spriteRadius * 2, (float)spriteRadius * 2 }, Vector2 { (float)spriteRadius, (float)spriteRadius}, 0, WHITE);
+        DrawTexturePro(playerBody4, Rectangle { 0, 0, 100, 100 }, Rectangle { pos.x, pos.y, (float)PLAYER_SPRITE_RADIUS * 2, (float)PLAYER_SPRITE_RADIUS * 2 }, Vector2 { (float)PLAYER_SPRITE_RADIUS, (float)PLAYER_SPRITE_RADIUS}, 0, WHITE);
     } else if (!isRedActive && !isBlueActive) {
         switch (spikeAnimationFrame) {
             case 0:
-                DrawTexturePro(playerBody1, Rectangle { 0, 0, 100, 100 }, Rectangle { pos.x, pos.y, (float)spriteRadius * 2, (float)spriteRadius * 2 }, Vector2 { (float)spriteRadius, (float)spriteRadius}, 0, WHITE);
+                DrawTexturePro(playerBody1, Rectangle { 0, 0, 100, 100 }, Rectangle { pos.x, pos.y, (float)PLAYER_SPRITE_RADIUS * 2, (float)PLAYER_SPRITE_RADIUS * 2 }, Vector2 { (float)PLAYER_SPRITE_RADIUS, (float)PLAYER_SPRITE_RADIUS}, 0, WHITE);
                 break;
             case 1:
-                DrawTexturePro(playerBody2, Rectangle { 0, 0, 100, 100 }, Rectangle { pos.x, pos.y, (float)spriteRadius * 2, (float)spriteRadius * 2 }, Vector2 { (float)spriteRadius, (float)spriteRadius}, 0, WHITE);
+                DrawTexturePro(playerBody2, Rectangle { 0, 0, 100, 100 }, Rectangle { pos.x, pos.y, (float)PLAYER_SPRITE_RADIUS * 2, (float)PLAYER_SPRITE_RADIUS * 2 }, Vector2 { (float)PLAYER_SPRITE_RADIUS, (float)PLAYER_SPRITE_RADIUS}, 0, WHITE);
                 break;
             default:
                 break;
         }
     } else {
-        DrawTexturePro(playerBody3, Rectangle { 0, 0, 100, 100 }, Rectangle { pos.x, pos.y, (float)spriteRadius * 2, (float)spriteRadius * 2 }, Vector2 { (float)spriteRadius, (float)spriteRadius}, 0, WHITE);
+        DrawTexturePro(playerBody3, Rectangle { 0, 0, 100, 100 }, Rectangle { pos.x, pos.y, (float)PLAYER_SPRITE_RADIUS * 2, (float)PLAYER_SPRITE_RADIUS * 2 }, Vector2 { (float)PLAYER_SPRITE_RADIUS, (float)PLAYER_SPRITE_RADIUS}, 0, WHITE);
     }
 
     // red arm
     if (isDead) {
-        DrawTexturePro(redArm3, Rectangle { 0, 0, 100, 100 }, Rectangle { pos.x, pos.y, (float)spriteRadius * 2, (float)spriteRadius * 2 }, Vector2 { (float)spriteRadius, (float)spriteRadius}, rotation * 180/PI + 135, WHITE);
+        DrawTexturePro(redArm3, Rectangle { 0, 0, 100, 100 }, Rectangle { pos.x, pos.y, (float)PLAYER_SPRITE_RADIUS * 2, (float)PLAYER_SPRITE_RADIUS * 2 }, Vector2 { (float)PLAYER_SPRITE_RADIUS, (float)PLAYER_SPRITE_RADIUS}, rotation * 180/PI + 135, WHITE);
     } else if (!isRedActive) {
         switch (spikeAnimationFrame) {
             case 0:
-                DrawTexturePro(redArm1, Rectangle { 0, 0, 100, 100 }, Rectangle { pos.x, pos.y, (float)spriteRadius * 2, (float)spriteRadius * 2 }, Vector2 { (float)spriteRadius, (float)spriteRadius}, rotation * 180/PI + 135, WHITE);
+                DrawTexturePro(redArm1, Rectangle { 0, 0, 100, 100 }, Rectangle { pos.x, pos.y, (float)PLAYER_SPRITE_RADIUS * 2, (float)PLAYER_SPRITE_RADIUS * 2 }, Vector2 { (float)PLAYER_SPRITE_RADIUS, (float)PLAYER_SPRITE_RADIUS}, rotation * 180/PI + 135, WHITE);
                 break;
             case 1:
-                DrawTexturePro(redArm2, Rectangle { 0, 0, 100, 100 }, Rectangle { pos.x, pos.y, (float)spriteRadius * 2, (float)spriteRadius * 2 }, Vector2 { (float)spriteRadius, (float)spriteRadius}, rotation * 180/PI + 135, WHITE);
+                DrawTexturePro(redArm2, Rectangle { 0, 0, 100, 100 }, Rectangle { pos.x, pos.y, (float)PLAYER_SPRITE_RADIUS * 2, (float)PLAYER_SPRITE_RADIUS * 2 }, Vector2 { (float)PLAYER_SPRITE_RADIUS, (float)PLAYER_SPRITE_RADIUS}, rotation * 180/PI + 135, WHITE);
                 break;
             default:
                 break;
         }
     } else {
-        DrawTexturePro(redArm3, Rectangle { 0, 0, 100, 100 }, Rectangle { pos.x, pos.y, (float)spriteRadius * 2, (float)spriteRadius * 2 }, Vector2 { (float)spriteRadius, (float)spriteRadius}, rotation * 180/PI + 135, WHITE);
+        DrawTexturePro(redArm3, Rectangle { 0, 0, 100, 100 }, Rectangle { pos.x, pos.y, (float)PLAYER_SPRITE_RADIUS * 2, (float)PLAYER_SPRITE_RADIUS * 2 }, Vector2 { (float)PLAYER_SPRITE_RADIUS, (float)PLAYER_SPRITE_RADIUS}, rotation * 180/PI + 135, WHITE);
     }
 
     // blue arm
     if (isDead) {
-        DrawTexturePro(blueArm3, Rectangle { 0, 0, 100, 100 }, Rectangle { pos.x, pos.y, (float)spriteRadius * 2, (float)spriteRadius * 2 }, Vector2 { (float)spriteRadius, (float)spriteRadius}, rotation * 180/PI + 135, WHITE);
+        DrawTexturePro(blueArm3, Rectangle { 0, 0, 100, 100 }, Rectangle { pos.x, pos.y, (float)PLAYER_SPRITE_RADIUS * 2, (float)PLAYER_SPRITE_RADIUS * 2 }, Vector2 { (float)PLAYER_SPRITE_RADIUS, (float)PLAYER_SPRITE_RADIUS}, rotation * 180/PI + 135, WHITE);
     } else if (!isBlueActive) {
         switch (spikeAnimationFrame) {
             case 0:
-                DrawTexturePro(blueArm1, Rectangle { 0, 0, 100, 100 }, Rectangle { pos.x, pos.y, (float)spriteRadius * 2, (float)spriteRadius * 2 }, Vector2 { (float)spriteRadius, (float)spriteRadius}, rotation * 180/PI + 135, WHITE);
+                DrawTexturePro(blueArm1, Rectangle { 0, 0, 100, 100 }, Rectangle { pos.x, pos.y, (float)PLAYER_SPRITE_RADIUS * 2, (float)PLAYER_SPRITE_RADIUS * 2 }, Vector2 { (float)PLAYER_SPRITE_RADIUS, (float)PLAYER_SPRITE_RADIUS}, rotation * 180/PI + 135, WHITE);
                 break;
             case 1:
-                DrawTexturePro(blueArm2, Rectangle { 0, 0, 100, 100 }, Rectangle { pos.x, pos.y, (float)spriteRadius * 2, (float)spriteRadius * 2 }, Vector2 { (float)spriteRadius, (float)spriteRadius}, rotation * 180/PI + 135, WHITE);
+                DrawTexturePro(blueArm2, Rectangle { 0, 0, 100, 100 }, Rectangle { pos.x, pos.y, (float)PLAYER_SPRITE_RADIUS * 2, (float)PLAYER_SPRITE_RADIUS * 2 }, Vector2 { (float)PLAYER_SPRITE_RADIUS, (float)PLAYER_SPRITE_RADIUS}, rotation * 180/PI + 135, WHITE);
                 break;
             default:
                 break;
         }
     } else {
-        DrawTexturePro(blueArm3, Rectangle { 0, 0, 100, 100 }, Rectangle { pos.x, pos.y, (float)spriteRadius * 2, (float)spriteRadius * 2 }, Vector2 { (float)spriteRadius, (float)spriteRadius}, rotation * 180/PI + 135, WHITE);
+        DrawTexturePro(blueArm3, Rectangle { 0, 0, 100, 100 }, Rectangle { pos.x, pos.y, (float)PLAYER_SPRITE_RADIUS * 2, (float)PLAYER_SPRITE_RADIUS * 2 }, Vector2 { (float)PLAYER_SPRITE_RADIUS, (float)PLAYER_SPRITE_RADIUS}, rotation * 180/PI + 135, WHITE);
     }
 }
 
@@ -133,7 +131,7 @@ void Player::AnchorInteract() {
         anchors[i].isActive = false;
         if (IsMouseButtonDown(MOUSE_BUTTON_LEFT)) {
             // forward check (red)
-            if (CheckCollisionPointCircle(final1, anchors[i].pos, anchors[i].radius)) {
+            if (CheckCollisionPointCircle(final1, anchors[i].pos, ANCHOR_RADIUS)) {
                 isRedActive = true;
                 anchors[i].isActive = true;
                 if (anchors[i].isRed) {
@@ -144,7 +142,7 @@ void Player::AnchorInteract() {
             }
 
             // backward check (blue)
-            if (CheckCollisionPointCircle(final2, anchors[i].pos, anchors[i].radius)) {
+            if (CheckCollisionPointCircle(final2, anchors[i].pos, ANCHOR_RADIUS)) {
                 isBlueActive = true;
                 anchors[i].isActive = true;
                 if (anchors[i].isRed) {
@@ -164,7 +162,7 @@ void Player::SpikeInteract() {
     rotation = atan2((GetMouseY() - pos.y), (GetMouseX() - pos.x));
 
     for (int i = 0; i < (int)spikes.size(); ++i) {
-        if (CheckCollisionCircles(pos, radius, spikes[i].pos, spikes[i].radius)) {
+        if (CheckCollisionCircles(pos, PLAYER_RADIUS, spikes[i].pos, SPIKE_RADIUS)) {
             isDead = true;
             isEnabled = false;
 
@@ -184,7 +182,7 @@ void Player::SpikeInteract() {
         spikes[i].isActive = false;
         if (IsMouseButtonDown(MOUSE_BUTTON_LEFT)) {
             // forward check (red)
-            if (CheckCollisionPointCircle(final1, spikes[i].pos, spikes[i].radius)) {
+            if (CheckCollisionPointCircle(final1, spikes[i].pos, SPIKE_RADIUS)) {
                 isRedActive = true;
                 spikes[i].isActive = true;
                 if (spikes[i].isRed) {
@@ -197,7 +195,7 @@ void Player::SpikeInteract() {
             }
 
             // backward check (blue)
-            if (CheckCollisionPointCircle(final2, spikes[i].pos, spikes[i].radius)) {
+            if (CheckCollisionPointCircle(final2, spikes[i].pos, SPIKE_RADIUS)) {
                 isBlueActive = true;
                 spikes[i].isActive = true;
                 if (spikes[i].isRed) {
@@ -216,7 +214,7 @@ void Player::RockInteract() {
     if (!isEnabled) return;
 
     for (int i = 0; (float)i < rocks.size(); ++i) {
-        if (CheckCollisionCircles(pos, radius, rocks[i].pos, rocks[i].radius)) {
+        if (CheckCollisionCircles(pos, PLAYER_RADIUS, rocks[i].pos, SPIKE_RADIUS)) {
             isDead = true;
             isEnabled = false;
 
@@ -229,7 +227,7 @@ void Player::RockInteract() {
 void Player::ExitInteract() {
     if (!isEnabled) return;
 
-    if (CheckCollisionCircles(pos, radius, levelExit.pos, levelExit.radius)) {
+    if (CheckCollisionCircles(pos, PLAYER_RADIUS, levelExit.pos, EXIT_RADIUS)) {
         curLevel++;
         LoadLevel(curLevel);
     }
@@ -238,7 +236,7 @@ void Player::ExitInteract() {
 void Player::StarInteract() {
     if (!isEnabled) return;
 
-    if (CheckCollisionCircles(pos, radius, star.pos, star.radius)) {
+    if (CheckCollisionCircles(pos, PLAYER_RADIUS, star.pos, STAR_RADIUS)) {
         starsCollected++;
         star.isCollected = true;
     }
@@ -310,19 +308,19 @@ void Player::ClampVel() {
 }
 
 void Player::ClampPos() {
-    if (pos.x - spriteRadius < 0) {
-        pos.x = spriteRadius;
+    if (pos.x - PLAYER_SPRITE_RADIUS < 0) {
+        pos.x = PLAYER_SPRITE_RADIUS;
         vel.x = 0;
-    } else if (pos.x + spriteRadius > SCREEN_WIDTH) {
-        pos.x = SCREEN_WIDTH - spriteRadius;
+    } else if (pos.x + PLAYER_SPRITE_RADIUS > SCREEN_WIDTH) {
+        pos.x = SCREEN_WIDTH - PLAYER_SPRITE_RADIUS;
         vel.x = 0;
     }
 
-    if (pos.y - spriteRadius < 0) {
-        pos.y = spriteRadius;
+    if (pos.y - PLAYER_SPRITE_RADIUS < 0) {
+        pos.y = PLAYER_SPRITE_RADIUS;
         vel.y = 0;
-    } else if (pos.y + spriteRadius > SCREEN_HEIGHT) {
-        pos.y = SCREEN_HEIGHT - spriteRadius;
+    } else if (pos.y + PLAYER_SPRITE_RADIUS > SCREEN_HEIGHT) {
+        pos.y = SCREEN_HEIGHT - PLAYER_SPRITE_RADIUS;
         vel.y = 0;
     }
 }

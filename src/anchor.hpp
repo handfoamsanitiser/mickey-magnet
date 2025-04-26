@@ -8,7 +8,6 @@ public:
     void Render();
 
     Vector2 pos;
-    int radius;
     int strength;
     bool isRed;
     bool isActive;
