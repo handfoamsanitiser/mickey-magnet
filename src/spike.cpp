@@ -1,5 +1,6 @@
 #include "spike.hpp"
 #include "raymath.h"
+#include <cmath>
 #include "globals.hpp"
 
 Spike::Spike(int x, int y, bool isRed): 
@@ -14,7 +15,7 @@ Spike::Spike(int x, int y, bool isRed):
 void Spike::UpdateAnimation() {
     spikeAnimationTimer += GetFrameTime();
     if (spikeAnimationTimer > SPIKE_ANIMATION_TIME) {
-        spikeAnimationTimer = Clamp(spikeAnimationTimer, 0, SPIKE_ANIMATION_TIME) - SPIKE_ANIMATION_TIME;
+        spikeAnimationTimer = remainder(spikeAnimationTimer, SPIKE_ANIMATION_TIME);
         spikeAnimationFrame = (spikeAnimationFrame + 1) % 2;
 
         if (star.isCollected && star.isVisible) {
