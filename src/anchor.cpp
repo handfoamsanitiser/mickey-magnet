@@ -1,4 +1,5 @@
 #include "anchor.hpp"
+#include "raymath.h"
 #include "globals.hpp"
 
 Anchor::Anchor(int x, int y, bool isRed): 
@@ -10,7 +11,7 @@ Anchor::Anchor(int x, int y, bool isRed):
 void Anchor::UpdateAnimation() {
     anchorAnimationTimer += GetFrameTime();
     if (anchorAnimationTimer > ANCHOR_ANIMATION_TIME) {
-        anchorAnimationTimer -= ANCHOR_ANIMATION_TIME;
+        anchorAnimationTimer = Clamp(anchorAnimationTimer, 0, ANCHOR_ANIMATION_TIME) - ANCHOR_ANIMATION_TIME;
         anchorAnimationFrame = (anchorAnimationFrame + 1) % 4;
     }
 }

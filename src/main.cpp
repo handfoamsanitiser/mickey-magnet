@@ -48,8 +48,10 @@ int main() {
 }
 
 void UpdateDrawFrame() {
-    mousePos = Vector2Add(mousePos, GetMouseDelta());
-
+    if (IsCursorOnScreen()) {
+        mousePos = GetMousePosition();
+    }
+    
     GodMode();
     NotGodMode();
 
@@ -89,15 +91,17 @@ void UpdateDrawFrame() {
 
         player.Render();
 
-        switch (spikeAnimationFrame) {
-            case 0:
-                DrawTexturePro(cursor1, Rectangle { 0, 0, 32, 32 }, Rectangle { (float)mousePos.x, (float)mousePos.y, 32, 32 }, Vector2 { 0, 0}, 0, WHITE);
-                break;
-            case 1:
-                DrawTexturePro(cursor2, Rectangle { 0, 0, 32, 32 }, Rectangle { (float)mousePos.x, (float)mousePos.y, 32, 32 }, Vector2 {0, 0 }, 0, WHITE);
-                break;
-            default:
-                break;
+        if (IsCursorOnScreen()) {
+            switch (spikeAnimationFrame) {
+                case 0:
+                    DrawTexturePro(cursor1, Rectangle { 0, 0, 32, 32 }, Rectangle { (float)mousePos.x, (float)mousePos.y, 32, 32 }, Vector2 { 0, 0}, 0, WHITE);
+                    break;
+                case 1:
+                    DrawTexturePro(cursor2, Rectangle { 0, 0, 32, 32 }, Rectangle { (float)mousePos.x, (float)mousePos.y, 32, 32 }, Vector2 {0, 0 }, 0, WHITE);
+                    break;
+                default:
+                    break;
+            }
         }
     EndDrawing();
 }
