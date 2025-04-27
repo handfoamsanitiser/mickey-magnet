@@ -25,6 +25,8 @@ private:
     void ExitInteract();
     void StarInteract();
 
+    void PlayRandomMagnetSound();
+
     Vector2 Attract(int strength, Vector2 dir, float xDiff, float yDiff, float dist);
     Vector2 Repel(int strength, Vector2 dir, float xDiff, float yDiff, float dist);
 

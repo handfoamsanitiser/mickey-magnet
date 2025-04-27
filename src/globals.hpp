@@ -55,6 +55,15 @@ extern const int STAR_RADIUS;
 extern const int STAR_SPRITE_RADIUS;
 extern int starsCollected;
 
+// sounds
+extern Sound buttonSound;
+extern Sound deathSound;
+extern Sound finishSound;
+extern Sound magnetSound;
+extern bool isMagnetSoundPlaying;
+extern Sound starSound;
+extern Sound unmagnetSound;
+
 // textures
 extern Texture2D playerBody1;
 extern Texture2D playerBody2;
@@ -90,9 +99,11 @@ extern Texture2D whiteAnchor4;
 
 extern Texture2D redSpike1;
 extern Texture2D redSpike2;
+extern Texture2D redSpike3;
 
 extern Texture2D blueSpike1;
 extern Texture2D blueSpike2;
+extern Texture2D blueSpike3;
 
 extern Texture2D greySpike1;
 extern Texture2D greySpike2;

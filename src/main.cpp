@@ -1,6 +1,7 @@
 #include "raylib.h"
 #include "raymath.h"
 #include <vector>
+#include "time.h"
 
 #include "globals.hpp"
 #include "levels.hpp"
@@ -17,8 +18,13 @@
 #endif
 
 void UpdateDrawFrame();
+
 void LoadTextures();
 void UnloadTextures();
+
+void LoadSounds();
+void UnloadSounds();
+
 void GodMode();
 void NotGodMode();
 
@@ -26,8 +32,11 @@ int main() {
     InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "Mick");
     HideCursor();
 
+    srand(time(NULL));
+
     InitAudioDevice();
     LoadTextures();
+    LoadSounds();
 
     LoadLevel(curLevel);
     
@@ -41,6 +50,7 @@ int main() {
     }
 #endif
 
+    UnloadSounds();
     UnloadTextures();
     CloseAudioDevice();
     CloseWindow();
@@ -159,9 +169,11 @@ void LoadTextures() {
 
     redSpike1 = LoadTextureFromImage(LoadImage("resources/red-spike/red-spike-1.png"));
     redSpike2 = LoadTextureFromImage(LoadImage("resources/red-spike/red-spike-2.png"));
+    redSpike3 = LoadTextureFromImage(LoadImage("resources/red-spike/red-spike-3.png"));
 
     blueSpike1 = LoadTextureFromImage(LoadImage("resources/blue-spike/blue-spike-1.png"));
     blueSpike2 = LoadTextureFromImage(LoadImage("resources/blue-spike/blue-spike-2.png"));
+    blueSpike3 = LoadTextureFromImage(LoadImage("resources/blue-spike/blue-spike-3.png"));
 
     greySpike1 = LoadTextureFromImage(LoadImage("resources/grey-spike/grey-spike-1.png"));
     greySpike2 = LoadTextureFromImage(LoadImage("resources/grey-spike/grey-spike-2.png"));
@@ -214,9 +226,11 @@ void UnloadTextures() {
 
     UnloadTexture(redSpike1);
     UnloadTexture(redSpike2);
+    UnloadTexture(redSpike3);
 
     UnloadTexture(blueSpike1);
     UnloadTexture(blueSpike2);
+    UnloadTexture(blueSpike3);
 
     UnloadTexture(greySpike1);
     UnloadTexture(greySpike2);
@@ -232,4 +246,22 @@ void UnloadTextures() {
 
     UnloadTexture(cursor1);
     UnloadTexture(cursor2);
+}
+
+void LoadSounds() {
+    buttonSound = LoadSound("resources/sounds/button.wav");
+    deathSound = LoadSound("resources/sounds/death.wav");
+    finishSound = LoadSound("resources/sounds/finish.wav");
+    magnetSound = LoadSound("resources/sounds/magnet.wav");
+    starSound = LoadSound("resources/sounds/star.wav");
+    unmagnetSound = LoadSound("resources/sounds/unmagnet.wav");
+}
+
+void UnloadSounds() {
+    UnloadSound(buttonSound);
+    UnloadSound(deathSound);
+    UnloadSound(finishSound);
+    UnloadSound(magnetSound);
+    UnloadSound(starSound);
+    UnloadSound(unmagnetSound);
 }

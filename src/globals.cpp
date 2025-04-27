@@ -48,6 +48,15 @@ const int STAR_RADIUS = 50;
 const int STAR_SPRITE_RADIUS = 50;
 int starsCollected = 0;
 
+// sounds
+Sound buttonSound;
+Sound deathSound;
+Sound finishSound;
+Sound magnetSound;
+bool isMagnetSoundPlaying;
+Sound starSound;
+Sound unmagnetSound;
+
 // textures
 Texture2D playerBody1;
 Texture2D playerBody2;
@@ -83,9 +92,11 @@ Texture2D whiteAnchor4;
 
 Texture2D redSpike1;
 Texture2D redSpike2;
+Texture2D redSpike3;
 
 Texture2D blueSpike1;
 Texture2D blueSpike2;
+Texture2D blueSpike3;
 
 Texture2D greySpike1;
 Texture2D greySpike2;

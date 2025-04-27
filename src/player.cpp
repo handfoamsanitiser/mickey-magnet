@@ -132,6 +132,7 @@ void Player::AnchorInteract() {
         if (IsMouseButtonDown(MOUSE_BUTTON_LEFT)) {
             // forward check (red)
             if (CheckCollisionPointCircle(final1, anchors[i].pos, ANCHOR_RADIUS)) {
+                PlayRandomMagnetSound();
                 isRedActive = true;
                 anchors[i].isActive = true;
                 if (anchors[i].isRed) {
@@ -143,6 +144,7 @@ void Player::AnchorInteract() {
 
             // backward check (blue)
             if (CheckCollisionPointCircle(final2, anchors[i].pos, ANCHOR_RADIUS)) {
+                PlayRandomMagnetSound();
                 isBlueActive = true;
                 anchors[i].isActive = true;
                 if (anchors[i].isRed) {
@@ -151,6 +153,9 @@ void Player::AnchorInteract() {
                     vel = Vector2Add(vel, Repel(anchors[i].strength, dir, -xDiff, -yDiff, dist)); 
                 }
             }
+        } else {
+            isMagnetSoundPlaying = false;
+            StopSound(magnetSound);
         }
     }
 }
@@ -165,6 +170,8 @@ void Player::SpikeInteract() {
         if (CheckCollisionCircles(pos, PLAYER_RADIUS, spikes[i].pos, SPIKE_RADIUS)) {
             isDead = true;
             isEnabled = false;
+
+            PlaySound(deathSound);
 
             LoadLevel(curLevel);
             return;
@@ -183,6 +190,7 @@ void Player::SpikeInteract() {
         if (IsMouseButtonDown(MOUSE_BUTTON_LEFT)) {
             // forward check (red)
             if (CheckCollisionPointCircle(final1, spikes[i].pos, SPIKE_RADIUS)) {
+                PlayRandomMagnetSound();
                 isRedActive = true;
                 spikes[i].isActive = true;
                 if (spikes[i].isRed) {
@@ -196,6 +204,7 @@ void Player::SpikeInteract() {
 
             // backward check (blue)
             if (CheckCollisionPointCircle(final2, spikes[i].pos, SPIKE_RADIUS)) {
+                PlayRandomMagnetSound();
                 isBlueActive = true;
                 spikes[i].isActive = true;
                 if (spikes[i].isRed) {
@@ -206,6 +215,9 @@ void Player::SpikeInteract() {
                     spikes[i].vel = Vector2Add(spikes[i].vel, Repel(spikes[i].strength, dir, xDiff, yDiff, dist));
                 }
             }
+        } else {
+            isMagnetSoundPlaying = false;
+            StopSound(magnetSound);
         }
     }
 }
@@ -218,6 +230,8 @@ void Player::RockInteract() {
             isDead = true;
             isEnabled = false;
 
+            PlaySound(deathSound);
+
             LoadLevel(curLevel);
             return;
         }
@@ -229,15 +243,17 @@ void Player::ExitInteract() {
 
     if (CheckCollisionCircles(pos, PLAYER_RADIUS, levelExit.pos, EXIT_RADIUS)) {
         curLevel++;
+        PlaySound(finishSound);
         LoadLevel(curLevel);
     }
 }
 
 void Player::StarInteract() {
-    if (!isEnabled) return;
+    if (!isEnabled || star.isCollected) return;
 
     if (CheckCollisionCircles(pos, PLAYER_RADIUS, star.pos, STAR_RADIUS)) {
         starsCollected++;
+        PlaySound(starSound);
         star.isCollected = true;
     }
 }
@@ -322,5 +338,15 @@ void Player::ClampPos() {
     } else if (pos.y + PLAYER_SPRITE_RADIUS > SCREEN_HEIGHT) {
         pos.y = SCREEN_HEIGHT - PLAYER_SPRITE_RADIUS;
         vel.y = 0;
+    }
+}
+
+void Player::PlayRandomMagnetSound() {
+    if (isMagnetSoundPlaying) return;
+
+    if (!IsSoundPlaying(magnetSound)) {
+        isMagnetSoundPlaying = true;
+        SetSoundPitch(magnetSound, Remap(rand(), 0, RAND_MAX, 0.5, 1.5));
+        PlaySound(magnetSound);
     }
 }

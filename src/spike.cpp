@@ -41,6 +41,10 @@ void Spike::Render() {
     if (!isVisible) return;
 
     if (isRed) {
+        if (isActive) {
+            DrawTexturePro(redSpike3, Rectangle { 22, 21, 58, 61 }, Rectangle { pos.x, pos.y, (float)SPIKE_SPRITE_RADIUS * 2, (float)SPIKE_SPRITE_RADIUS * 2 }, Vector2 { (float)SPIKE_SPRITE_RADIUS, (float)SPIKE_SPRITE_RADIUS}, 0, WHITE);
+            return;
+        }
         switch (spikeAnimationFrame) {
             case 0:
                 DrawTexturePro(redSpike1, Rectangle { 22, 21, 61, 57 }, Rectangle { pos.x, pos.y, (float)SPIKE_SPRITE_RADIUS * 2, (float)SPIKE_SPRITE_RADIUS * 2 }, Vector2 { (float)SPIKE_SPRITE_RADIUS, (float)SPIKE_SPRITE_RADIUS}, 0, WHITE);
@@ -52,6 +56,10 @@ void Spike::Render() {
                 break;
         }
     } else {
+        if (isActive) {
+            DrawTexturePro(blueSpike3, Rectangle { 22, 21, 58, 61 }, Rectangle { pos.x, pos.y, (float)SPIKE_SPRITE_RADIUS * 2, (float)SPIKE_SPRITE_RADIUS * 2 }, Vector2 { (float)SPIKE_SPRITE_RADIUS, (float)SPIKE_SPRITE_RADIUS}, 0, WHITE);
+            return;            
+        }
         switch (spikeAnimationFrame) {
             case 0:
                 DrawTexturePro(blueSpike1, Rectangle { 22, 21, 61, 57 }, Rectangle { pos.x, pos.y, (float)SPIKE_SPRITE_RADIUS * 2, (float)SPIKE_SPRITE_RADIUS * 2 }, Vector2 { (float)SPIKE_SPRITE_RADIUS, (float)SPIKE_SPRITE_RADIUS}, 0, WHITE);
