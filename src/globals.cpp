@@ -54,7 +54,11 @@ Sound buttonSound;
 Sound deathSound;
 Sound finishSound;
 Sound magnetSound;
-bool isMagnetSoundPlaying;
+Sound magnetStartSound;
+Sound magnetEndSound;
+bool isMagnetSoundPlaying = false;
+bool isMagneting = false;
+bool wasMagnetingLastUpdate = false;
 Sound starSound;
 Sound unmagnetSound;
 

@@ -118,6 +118,7 @@ void Player::AnchorInteract() {
     // targeting detection
     rotation = atan2((mousePos.y - pos.y), (mousePos.x - pos.x));
 
+    isMagnetSoundPlaying = false;
     for (int i = 0; i < (int)anchors.size(); ++i) {
         float dist = Vector2Distance(pos, anchors[i].pos);
         float xDiff = dist * cos(rotation);
@@ -132,7 +133,7 @@ void Player::AnchorInteract() {
         if (IsMouseButtonDown(MOUSE_BUTTON_LEFT)) {
             // forward check (red)
             if (CheckCollisionPointCircle(final1, anchors[i].pos, ANCHOR_RADIUS)) {
-                PlayRandomMagnetSound();
+                PlayMagnetStartSound();
                 isRedActive = true;
                 anchors[i].isActive = true;
                 if (anchors[i].isRed) {
@@ -144,7 +145,7 @@ void Player::AnchorInteract() {
 
             // backward check (blue)
             if (CheckCollisionPointCircle(final2, anchors[i].pos, ANCHOR_RADIUS)) {
-                PlayRandomMagnetSound();
+                PlayMagnetStartSound();
                 isBlueActive = true;
                 anchors[i].isActive = true;
                 if (anchors[i].isRed) {
@@ -153,11 +154,11 @@ void Player::AnchorInteract() {
                     vel = Vector2Add(vel, Repel(anchors[i].strength, dir, -xDiff, -yDiff, dist)); 
                 }
             }
-        } else {
-            isMagnetSoundPlaying = false;
-            StopSound(magnetSound);
         }
     }
+
+    PlayMagnetEndSound();
+    wasMagnetingLastUpdate = isMagnetSoundPlaying;
 }
 
 void Player::SpikeInteract() {
@@ -350,4 +351,23 @@ void Player::PlayRandomMagnetSound() {
         SetSoundPitch(magnetSound, Remap(rand(), 0, RAND_MAX, 0.5, 1.5));
         PlaySound(magnetSound);
     }
+}
+
+void Player::PlayMagnetStartSound() {
+    isMagnetSoundPlaying = true;
+    if (IsSoundPlaying(magnetStartSound) || isMagneting) return;
+    isMagneting = true;
+    if (IsSoundPlaying(magnetEndSound)) {
+        StopSound(magnetEndSound);
+    }
+    PlaySound(magnetStartSound);
+}
+
+void Player::PlayMagnetEndSound() {
+    if (IsSoundPlaying(magnetEndSound) || isMagnetSoundPlaying || !wasMagnetingLastUpdate) return;
+    isMagneting = false;
+    if (IsSoundPlaying(magnetStartSound)) {
+        StopSound(magnetStartSound);
+    }
+    PlaySound(magnetEndSound);
 }

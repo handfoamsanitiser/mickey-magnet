@@ -263,6 +263,8 @@ void LoadSounds() {
     deathSound = LoadSound("resources/sounds/death.wav");
     finishSound = LoadSound("resources/sounds/finish.wav");
     magnetSound = LoadSound("resources/sounds/magnet.wav");
+    magnetStartSound = LoadSound("resources/sounds/magnet-start.wav");
+    magnetEndSound = LoadSound("resources/sounds/magnet-end.wav");
     starSound = LoadSound("resources/sounds/star.wav");
     unmagnetSound = LoadSound("resources/sounds/unmagnet.wav");
 }
@@ -272,6 +274,8 @@ void UnloadSounds() {
     UnloadSound(deathSound);
     UnloadSound(finishSound);
     UnloadSound(magnetSound);
+    UnloadSound(magnetStartSound);
+    UnloadSound(magnetEndSound);
     UnloadSound(starSound);
     UnloadSound(unmagnetSound);
 }

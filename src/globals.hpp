@@ -61,7 +61,11 @@ extern Sound buttonSound;
 extern Sound deathSound;
 extern Sound finishSound;
 extern Sound magnetSound;
+extern Sound magnetStartSound;
+extern Sound magnetEndSound;
 extern bool isMagnetSoundPlaying;
+extern bool isMagneting;
+extern bool wasMagnetingLastUpdate;
 extern Sound starSound;
 extern Sound unmagnetSound;
 
