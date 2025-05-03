@@ -48,6 +48,7 @@ extern std::vector<Rock> rocks;
 extern Exit levelExit;
 extern const int EXIT_RADIUS;
 extern const int EXIT_SPRITE_RADIUS;
+extern bool isExitOn;
 
 // star
 extern Star star;
@@ -112,6 +113,11 @@ extern Texture2D exit1;
 extern Texture2D exit2;
 extern Texture2D exit3;
 extern Texture2D exit4;
+
+extern Texture2D exitOff1;
+extern Texture2D exitOff2;
+extern Texture2D exitOff3;
+extern Texture2D exitOff4;
 
 extern Texture2D star1;
 extern Texture2D star2;

@@ -41,6 +41,7 @@ std::vector<Rock> rocks;
 Exit levelExit(-1000, -1000);
 const int EXIT_RADIUS = 80;
 const int EXIT_SPRITE_RADIUS = 140;
+bool isExitOn = true;
 
 // star
 Star star(-1000, -1000);
@@ -105,6 +106,11 @@ Texture2D exit1;
 Texture2D exit2;
 Texture2D exit3;
 Texture2D exit4;
+
+Texture2D exitOff1;
+Texture2D exitOff2;
+Texture2D exitOff3;
+Texture2D exitOff4;
 
 Texture2D star1;
 Texture2D star2;

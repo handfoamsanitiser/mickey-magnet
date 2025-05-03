@@ -137,7 +137,7 @@ void LoadLevel4() {
 
 // medium level
 void LoadLevel5() {
-    player = Player(150, 150);
+    player = Player(150, SPIKE_RADIUS + 40);
     levelExit = Exit(SCREEN_WIDTH - 250, SCREEN_HEIGHT / 2);
     star = Star(-1000, -1000);
 
@@ -203,9 +203,10 @@ void LoadLevel7() {
 }
 
 // star
-void LoadLevel8() { 
+void LoadLevel8() {
     player = Player(200, SCREEN_HEIGHT / 2);
 
+    isExitOn = false;
     levelExit = Exit(SCREEN_WIDTH - 200, 200);
 
     star = Star(SCREEN_WIDTH - 200, SCREEN_HEIGHT - 200);

@@ -183,6 +183,11 @@ void LoadTextures() {
     exit3 = LoadTextureFromImage(LoadImage("resources/exit/exit-3.png"));
     exit4 = LoadTextureFromImage(LoadImage("resources/exit/exit-4.png"));
 
+    exitOff1 = LoadTextureFromImage(LoadImage("resources/exit/exit-off-1.png"));
+    exitOff2 = LoadTextureFromImage(LoadImage("resources/exit/exit-off-2.png"));
+    exitOff3 = LoadTextureFromImage(LoadImage("resources/exit/exit-off-3.png"));
+    exitOff4 = LoadTextureFromImage(LoadImage("resources/exit/exit-off-4.png"));
+
     star1 = LoadTextureFromImage(LoadImage("resources/star/star-1.png"));
     star2 = LoadTextureFromImage(LoadImage("resources/star/star-2.png"));
     star3 = LoadTextureFromImage(LoadImage("resources/star/star-3.png"));
@@ -239,6 +244,11 @@ void UnloadTextures() {
     UnloadTexture(exit2);
     UnloadTexture(exit3);
     UnloadTexture(exit4);
+
+    UnloadTexture(exitOff1);
+    UnloadTexture(exitOff2);
+    UnloadTexture(exitOff3);
+    UnloadTexture(exitOff4);
 
     UnloadTexture(star1);
     UnloadTexture(star2);

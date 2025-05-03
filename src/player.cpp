@@ -241,7 +241,7 @@ void Player::RockInteract() {
 void Player::ExitInteract() {
     if (!isEnabled) return;
 
-    if (CheckCollisionCircles(pos, PLAYER_RADIUS, levelExit.pos, EXIT_RADIUS)) {
+    if (CheckCollisionCircles(pos, PLAYER_RADIUS, levelExit.pos, EXIT_RADIUS) && isExitOn) {
         curLevel++;
         PlaySound(finishSound);
         LoadLevel(curLevel);
@@ -255,6 +255,7 @@ void Player::StarInteract() {
         starsCollected++;
         PlaySound(starSound);
         star.isCollected = true;
+        isExitOn = true;
     }
 }
 

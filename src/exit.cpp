@@ -21,20 +21,40 @@ void Exit::Render() {
     //     default:
     //         break;
     // }
-    switch (anchorAnimationFrame) {
-        case 0:
-            DrawTexturePro(exit1, Rectangle { 0, 0, 100, 100 }, Rectangle { pos.x, pos.y, (float)EXIT_SPRITE_RADIUS * 2, (float)EXIT_SPRITE_RADIUS * 2 }, Vector2 { (float)EXIT_SPRITE_RADIUS, (float)EXIT_SPRITE_RADIUS}, 0, WHITE);
-            break;
-        case 1:
-            DrawTexturePro(exit2, Rectangle { 0, 0, 100, 100 }, Rectangle { pos.x, pos.y, (float)EXIT_SPRITE_RADIUS * 2, (float)EXIT_SPRITE_RADIUS * 2 }, Vector2 { (float)EXIT_SPRITE_RADIUS, (float)EXIT_SPRITE_RADIUS}, 0, WHITE);
-            break;
-        case 2:
-            DrawTexturePro(exit3, Rectangle { 0, 0, 100, 100 }, Rectangle { pos.x, pos.y, (float)EXIT_SPRITE_RADIUS * 2, (float)EXIT_SPRITE_RADIUS * 2 }, Vector2 { (float)EXIT_SPRITE_RADIUS, (float)EXIT_SPRITE_RADIUS}, 0, WHITE);
-            break;
-        case 3: 
-            DrawTexturePro(exit4, Rectangle { 0, 0, 100, 100 }, Rectangle { pos.x, pos.y, (float)EXIT_SPRITE_RADIUS * 2, (float)EXIT_SPRITE_RADIUS * 2 }, Vector2 { (float)EXIT_SPRITE_RADIUS, (float)EXIT_SPRITE_RADIUS}, 0, WHITE);
-            break;
-        default:
-            break;
+    if (isExitOn) {
+        switch (anchorAnimationFrame) {
+            case 0:
+                DrawTexturePro(exit1, Rectangle { 0, 0, 100, 100 }, Rectangle { pos.x, pos.y, (float)EXIT_SPRITE_RADIUS * 2, (float)EXIT_SPRITE_RADIUS * 2 }, Vector2 { (float)EXIT_SPRITE_RADIUS, (float)EXIT_SPRITE_RADIUS}, 0, WHITE);
+                break;
+            case 1:
+                DrawTexturePro(exit2, Rectangle { 0, 0, 100, 100 }, Rectangle { pos.x, pos.y, (float)EXIT_SPRITE_RADIUS * 2, (float)EXIT_SPRITE_RADIUS * 2 }, Vector2 { (float)EXIT_SPRITE_RADIUS, (float)EXIT_SPRITE_RADIUS}, 0, WHITE);
+                break;
+            case 2:
+                DrawTexturePro(exit3, Rectangle { 0, 0, 100, 100 }, Rectangle { pos.x, pos.y, (float)EXIT_SPRITE_RADIUS * 2, (float)EXIT_SPRITE_RADIUS * 2 }, Vector2 { (float)EXIT_SPRITE_RADIUS, (float)EXIT_SPRITE_RADIUS}, 0, WHITE);
+                break;
+            case 3: 
+                DrawTexturePro(exit4, Rectangle { 0, 0, 100, 100 }, Rectangle { pos.x, pos.y, (float)EXIT_SPRITE_RADIUS * 2, (float)EXIT_SPRITE_RADIUS * 2 }, Vector2 { (float)EXIT_SPRITE_RADIUS, (float)EXIT_SPRITE_RADIUS}, 0, WHITE);
+                break;
+            default:
+                break;
+        }
+    } else {
+        switch (anchorAnimationFrame) {
+            case 0:
+                DrawTexturePro(exitOff1, Rectangle { 0, 0, 100, 100 }, Rectangle { pos.x, pos.y, (float)EXIT_SPRITE_RADIUS * 2, (float)EXIT_SPRITE_RADIUS * 2 }, Vector2 { (float)EXIT_SPRITE_RADIUS, (float)EXIT_SPRITE_RADIUS}, 0, WHITE);
+                break;
+            case 1:
+                DrawTexturePro(exitOff2, Rectangle { 0, 0, 100, 100 }, Rectangle { pos.x, pos.y, (float)EXIT_SPRITE_RADIUS * 2, (float)EXIT_SPRITE_RADIUS * 2 }, Vector2 { (float)EXIT_SPRITE_RADIUS, (float)EXIT_SPRITE_RADIUS}, 0, WHITE);
+                break;
+            case 2:
+                DrawTexturePro(exitOff3, Rectangle { 0, 0, 100, 100 }, Rectangle { pos.x, pos.y, (float)EXIT_SPRITE_RADIUS * 2, (float)EXIT_SPRITE_RADIUS * 2 }, Vector2 { (float)EXIT_SPRITE_RADIUS, (float)EXIT_SPRITE_RADIUS}, 0, WHITE);
+                break;
+            case 3: 
+                DrawTexturePro(exitOff4, Rectangle { 0, 0, 100, 100 }, Rectangle { pos.x, pos.y, (float)EXIT_SPRITE_RADIUS * 2, (float)EXIT_SPRITE_RADIUS * 2 }, Vector2 { (float)EXIT_SPRITE_RADIUS, (float)EXIT_SPRITE_RADIUS}, 0, WHITE);
+                break;
+            default:
+                break;
+        }
     }
+    
 }
