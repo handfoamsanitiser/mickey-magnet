@@ -118,7 +118,7 @@ void Player::AnchorInteract() {
     // targeting detection
     rotation = atan2((mousePos.y - pos.y), (mousePos.x - pos.x));
 
-    isMagnetSoundPlaying = false;
+    isMagnetSoundPlaying1 = false;
     for (int i = 0; i < (int)anchors.size(); ++i) {
         float dist = Vector2Distance(pos, anchors[i].pos);
         float xDiff = dist * cos(rotation);
@@ -133,7 +133,7 @@ void Player::AnchorInteract() {
         if (IsMouseButtonDown(MOUSE_BUTTON_LEFT)) {
             // forward check (red)
             if (CheckCollisionPointCircle(final1, anchors[i].pos, ANCHOR_RADIUS)) {
-                PlayMagnetStartSound();
+                PlayMagnetStartSound1();
                 isRedActive = true;
                 anchors[i].isActive = true;
                 if (anchors[i].isRed) {
@@ -145,7 +145,7 @@ void Player::AnchorInteract() {
 
             // backward check (blue)
             if (CheckCollisionPointCircle(final2, anchors[i].pos, ANCHOR_RADIUS)) {
-                PlayMagnetStartSound();
+                PlayMagnetStartSound1();
                 isBlueActive = true;
                 anchors[i].isActive = true;
                 if (anchors[i].isRed) {
@@ -157,8 +157,8 @@ void Player::AnchorInteract() {
         }
     }
 
-    PlayMagnetEndSound();
-    wasMagnetingLastUpdate = isMagnetSoundPlaying;
+    PlayMagnetEndSound1();
+    wasMagnetingLastUpdate1 = isMagnetSoundPlaying1;
 }
 
 void Player::SpikeInteract() {
@@ -167,12 +167,15 @@ void Player::SpikeInteract() {
     // targeting detection
     rotation = atan2((mousePos.y - pos.y), (mousePos.x - pos.x));
 
+    isMagnetSoundPlaying2 = false;
     for (int i = 0; i < (int)spikes.size(); ++i) {
         if (CheckCollisionCircles(pos, PLAYER_RADIUS, spikes[i].pos, SPIKE_RADIUS)) {
             isDead = true;
             isEnabled = false;
 
-            PlaySound(deathSound);
+            if (isSoundsEnabled) {
+                PlaySound(deathSound);
+            }
 
             LoadLevel(curLevel);
             return;
@@ -191,7 +194,7 @@ void Player::SpikeInteract() {
         if (IsMouseButtonDown(MOUSE_BUTTON_LEFT)) {
             // forward check (red)
             if (CheckCollisionPointCircle(final1, spikes[i].pos, SPIKE_RADIUS)) {
-                PlayRandomMagnetSound();
+                PlayMagnetStartSound2();
                 isRedActive = true;
                 spikes[i].isActive = true;
                 if (spikes[i].isRed) {
@@ -205,7 +208,7 @@ void Player::SpikeInteract() {
 
             // backward check (blue)
             if (CheckCollisionPointCircle(final2, spikes[i].pos, SPIKE_RADIUS)) {
-                PlayRandomMagnetSound();
+                PlayMagnetStartSound2();
                 isBlueActive = true;
                 spikes[i].isActive = true;
                 if (spikes[i].isRed) {
@@ -216,11 +219,11 @@ void Player::SpikeInteract() {
                     spikes[i].vel = Vector2Add(spikes[i].vel, Repel(spikes[i].strength, dir, xDiff, yDiff, dist));
                 }
             }
-        } else {
-            isMagnetSoundPlaying = false;
-            StopSound(magnetSound);
         }
     }
+
+    PlayMagnetEndSound2();
+    wasMagnetingLastUpdate2 = isMagnetSoundPlaying2;
 }
 
 void Player::RockInteract() {
@@ -231,7 +234,9 @@ void Player::RockInteract() {
             isDead = true;
             isEnabled = false;
 
-            PlaySound(deathSound);
+            if (isSoundsEnabled) {
+                PlaySound(deathSound);
+            }
 
             LoadLevel(curLevel);
             return;
@@ -244,7 +249,9 @@ void Player::ExitInteract() {
 
     if (CheckCollisionCircles(pos, PLAYER_RADIUS, levelExit.pos, EXIT_RADIUS) && isExitOn) {
         curLevel++;
-        PlaySound(finishSound);
+        if (isSoundsEnabled) {
+            PlaySound(finishSound);
+        }
         LoadLevel(curLevel);
     }
 }
@@ -254,7 +261,9 @@ void Player::StarInteract() {
 
     if (CheckCollisionCircles(pos, PLAYER_RADIUS, star.pos, STAR_RADIUS)) {
         starsCollected++;
-        PlaySound(starSound);
+        if (isSoundsEnabled) {
+            PlaySound(starSound);
+        }
         star.isCollected = true;
         isExitOn = true;
     }
@@ -343,29 +352,42 @@ void Player::ClampPos() {
     }
 }
 
-void Player::PlayRandomMagnetSound() {
-    if (isMagnetSoundPlaying) return;
-
-    if (!IsSoundPlaying(magnetSound)) {
-        isMagnetSoundPlaying = true;
-        SetSoundPitch(magnetSound, Remap(rand(), 0, RAND_MAX, 0.5, 1.5));
-        PlaySound(magnetSound);
-    }
-}
-
-void Player::PlayMagnetStartSound() {
-    isMagnetSoundPlaying = true;
-    if (IsSoundPlaying(magnetStartSound) || isMagneting) return;
-    isMagneting = true;
+void Player::PlayMagnetStartSound1() {
+    if (!isSoundsEnabled) return;
+    isMagnetSoundPlaying1 = true;
+    if (IsSoundPlaying(magnetStartSound) || isMagneting1) return;
+    isMagneting1 = true;
     if (IsSoundPlaying(magnetEndSound)) {
         StopSound(magnetEndSound);
     }
     PlaySound(magnetStartSound);
 }
 
-void Player::PlayMagnetEndSound() {
-    if (IsSoundPlaying(magnetEndSound) || isMagnetSoundPlaying || !wasMagnetingLastUpdate) return;
-    isMagneting = false;
+void Player::PlayMagnetEndSound1() {
+    if (!isSoundsEnabled) return;
+    if (IsSoundPlaying(magnetEndSound) || isMagnetSoundPlaying1 || !wasMagnetingLastUpdate1) return;
+    isMagneting1 = false;
+    if (IsSoundPlaying(magnetStartSound)) {
+        StopSound(magnetStartSound);
+    }
+    PlaySound(magnetEndSound);
+}
+
+void Player::PlayMagnetStartSound2() {
+    if (!isSoundsEnabled) return;
+    isMagnetSoundPlaying2 = true;
+    if (IsSoundPlaying(magnetStartSound) || isMagneting2) return;
+    isMagneting2 = true;
+    if (IsSoundPlaying(magnetEndSound)) {
+        StopSound(magnetEndSound);
+    }
+    PlaySound(magnetStartSound);
+}
+
+void Player::PlayMagnetEndSound2() {
+    if (!isSoundsEnabled) return;
+    if (IsSoundPlaying(magnetEndSound) || isMagnetSoundPlaying2 || !wasMagnetingLastUpdate2) return;
+    isMagneting2 = false;
     if (IsSoundPlaying(magnetStartSound)) {
         StopSound(magnetStartSound);
     }

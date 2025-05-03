@@ -9,6 +9,9 @@ Vector2 mousePos = Vector2 { 0, 0 };
 int curLevel = 1;
 const int NUM_LEVELS = 10;
 
+bool isMusicEnabled = true;
+bool isSoundsEnabled = true;
+
 // player
 Player player(-1000, -1000);
 const int PLAYER_RADIUS = 33;
@@ -56,9 +59,15 @@ Sound finishSound;
 Sound magnetSound;
 Sound magnetStartSound;
 Sound magnetEndSound;
-bool isMagnetSoundPlaying = false;
-bool isMagneting = false;
-bool wasMagnetingLastUpdate = false;
+
+bool isMagnetSoundPlaying1 = false;
+bool isMagneting1 = false;
+bool wasMagnetingLastUpdate1 = false;
+
+bool isMagnetSoundPlaying2 = false;
+bool isMagneting2 = false;
+bool wasMagnetingLastUpdate2 = false;
+
 Sound starSound;
 Sound unmagnetSound;
 
@@ -122,3 +131,5 @@ Texture2D star3;
 
 Texture2D cursor1;
 Texture2D cursor2;
+
+Texture2D background;

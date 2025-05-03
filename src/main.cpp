@@ -81,7 +81,7 @@ void UpdateDrawFrame() {
     Spike::UpdateAnimation();
 
     BeginDrawing();
-        ClearBackground(BLACK);
+        DrawTexture(background, 0, 0, WHITE);
 
         levelExit.Render();
 
@@ -194,6 +194,8 @@ void LoadTextures() {
 
     cursor1 = LoadTextureFromImage(LoadImage("resources/cursor/cursor-1.png"));
     cursor2 = LoadTextureFromImage(LoadImage("resources/cursor/cursor-2.png"));
+
+    background = LoadTextureFromImage(LoadImage("resources/background/background.png"));
 }
 
 void UnloadTextures() {
@@ -256,6 +258,8 @@ void UnloadTextures() {
 
     UnloadTexture(cursor1);
     UnloadTexture(cursor2);
+
+    UnloadTexture(background);
 }
 
 void LoadSounds() {

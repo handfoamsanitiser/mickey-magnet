@@ -16,6 +16,9 @@ extern Vector2 mousePos;
 extern int curLevel;
 extern const int NUM_LEVELS;
 
+extern bool isMusicEnabled;
+extern bool isSoundsEnabled;
+
 // player
 extern Player player;
 extern const int PLAYER_RADIUS;
@@ -63,9 +66,15 @@ extern Sound finishSound;
 extern Sound magnetSound;
 extern Sound magnetStartSound;
 extern Sound magnetEndSound;
-extern bool isMagnetSoundPlaying;
-extern bool isMagneting;
-extern bool wasMagnetingLastUpdate;
+
+extern bool isMagnetSoundPlaying1;
+extern bool isMagneting1;
+extern bool wasMagnetingLastUpdate1;
+
+extern bool isMagnetSoundPlaying2;
+extern bool isMagneting2;
+extern bool wasMagnetingLastUpdate2;
+
 extern Sound starSound;
 extern Sound unmagnetSound;
 
@@ -129,3 +138,5 @@ extern Texture2D star3;
 
 extern Texture2D cursor1;
 extern Texture2D cursor2;
+
+extern Texture2D background;
