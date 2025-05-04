@@ -1,6 +1,9 @@
 #pragma once
 #include "raylib.h"
 
+void EnableEverything();
+void ClearEverything();
+
 void LoadLevel(int level);
 void LoadLevel1();
 void LoadLevel2();

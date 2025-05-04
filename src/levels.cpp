@@ -1,5 +1,6 @@
 #include "levels.hpp"
 #include "globals.hpp"
+#include "game.hpp"
 #include <cmath>
 
 void EnableEverything() {
@@ -64,6 +65,9 @@ void LoadLevel(int level) {
         break;
     case 15:
         LoadLevel15();
+        break;
+    case 16:
+         LoadWinMenu();
         break;
     default:
         LoadLevelT1();

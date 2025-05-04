@@ -12,6 +12,7 @@
 #include "exit.hpp"
 #include "star.hpp"
 #include "button.hpp"
+#include "game.hpp"
 
 //#define PLATFORM_WEB
 #if defined(PLATFORM_WEB)
@@ -31,21 +32,6 @@ void UnmuteMusic();
 
 void MuteSounds();
 void UnmuteSounds();
-
-void GodMode();
-void NotGodMode();
-
-void UpdateMainMenu();
-void UpdateGame();
-void UpdateWinMenu();
-
-void LoadMainMenu();
-void DrawMainMenu();
-
-void DrawGame();
-
-void LoadWinMenu();
-void DrawWinMenu();
 
 int main() {
     InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "Mick");
@@ -130,96 +116,6 @@ void UpdateDrawFrame() {
             }
         }
     EndDrawing();
-}
-
-void UpdateGame() {
-    GodMode();
-    NotGodMode();
-
-    for (int i = 0; i < (int)spikes.size(); ++i) {
-        spikes[i].Drag();
-    }
-    player.Update();
-    for (int i = 0; i < (int)spikes.size(); ++i) {
-        spikes[i].Update();
-    }
-
-    for (int i = 0; i < (int)rocks.size(); ++i) {
-        rocks[i].Update();
-    }
-}
-
-void DrawGame() {
-    levelExit.Render();
-
-    star.Render();
-
-    for (Anchor anchor : anchors) {
-        anchor.Render();
-    }
-
-    for (Spike spike : spikes) {
-        spike.Render();
-    }
-
-    for (Rock rock : rocks) {
-        rock.Render();
-    }
-
-    player.Render();
-}
-
-void LoadMainMenu() {
-    buttons.push_back(Button(200, 200, 100, 100, "mickey   magnet", 80, false));
-    buttons.push_back(Button(200, SCREEN_HEIGHT - 400, 100, 100, "play!", 40, true));
-
-    player = Player(500, 500);
-}
-
-void UpdateMainMenu() {
-    if (buttons[1].isClicked()) {
-        buttons.clear();
-        LoadLevel(curLevel);
-        gameState = 1;
-    }
-}
-
-void DrawMainMenu() {
-    for (Button button : buttons) {
-        button.Render();
-    }
-
-    player.Render();
-}
-
-void LoadWinMenu() {
-
-}
-
-void UpdateWinMenu() {
-
-}
-
-void DrawWinMenu() {
-
-}
-
-void GodMode() {
-    if (IsKeyPressed(KEY_SPACE)) {
-        curLevel++;
-        LoadLevel(curLevel);
-    }
-
-    if (IsKeyPressed(KEY_BACKSPACE)) {
-        curLevel--;
-        LoadLevel(curLevel);
-    }
-}
-
-void NotGodMode() {
-    if (IsKeyPressed(KEY_R)) {
-        LoadLevel(curLevel);
-    }
 }
 
 void LoadTextures() {
