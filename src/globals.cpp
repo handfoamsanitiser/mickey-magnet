@@ -53,6 +53,8 @@ const int STAR_SPRITE_RADIUS = 50;
 int starsCollected = 0;
 
 // sounds
+Music music;
+
 Sound buttonSound;
 Sound deathSound;
 Sound finishSound;

@@ -60,6 +60,8 @@ extern const int STAR_SPRITE_RADIUS;
 extern int starsCollected;
 
 // sounds
+extern Music music;
+
 extern Sound buttonSound;
 extern Sound deathSound;
 extern Sound finishSound;

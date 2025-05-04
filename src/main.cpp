@@ -25,6 +25,12 @@ void UnloadTextures();
 void LoadSounds();
 void UnloadSounds();
 
+void MuteMusic();
+void UnmuteMusic();
+
+void MuteSounds();
+void UnmuteSounds();
+
 void GodMode();
 void NotGodMode();
 
@@ -37,6 +43,9 @@ int main() {
     InitAudioDevice();
     LoadTextures();
     LoadSounds();
+    
+    UnmuteMusic();
+    PlayMusicStream(music);
 
     LoadLevel(curLevel);
     
@@ -64,6 +73,7 @@ void UpdateDrawFrame() {
     
     GodMode();
     NotGodMode();
+    UpdateMusicStream(music);
 
     for (int i = 0; i < (int)spikes.size(); ++i) {
         spikes[i].Drag();
@@ -263,23 +273,47 @@ void UnloadTextures() {
 }
 
 void LoadSounds() {
+    music = LoadMusicStream("resources/music/music.wav");
     buttonSound = LoadSound("resources/sounds/button.wav");
     deathSound = LoadSound("resources/sounds/death.wav");
     finishSound = LoadSound("resources/sounds/finish.wav");
-    magnetSound = LoadSound("resources/sounds/magnet.wav");
     magnetStartSound = LoadSound("resources/sounds/magnet-start.wav");
     magnetEndSound = LoadSound("resources/sounds/magnet-end.wav");
     starSound = LoadSound("resources/sounds/star.wav");
-    unmagnetSound = LoadSound("resources/sounds/unmagnet.wav");
 }
 
 void UnloadSounds() {
+    UnloadMusicStream(music);
     UnloadSound(buttonSound);
     UnloadSound(deathSound);
     UnloadSound(finishSound);
-    UnloadSound(magnetSound);
     UnloadSound(magnetStartSound);
     UnloadSound(magnetEndSound);
     UnloadSound(starSound);
-    UnloadSound(unmagnetSound);
+}
+
+void MuteMusic() {
+    SetMusicVolume(music, 0);
+}
+
+void UnmuteMusic() {
+    SetMusicVolume(music, 0.5);
+}
+
+void MuteSounds() {
+    SetSoundVolume(buttonSound, 0);
+    SetSoundVolume(deathSound, 0);
+    SetSoundVolume(finishSound, 0);
+    SetSoundVolume(magnetStartSound, 0);
+    SetSoundVolume(magnetEndSound, 0);
+    SetSoundVolume(starSound, 0);
+}
+
+void UnmuteSounds() {
+    SetSoundVolume(buttonSound, 1);
+    SetSoundVolume(deathSound, 1);
+    SetSoundVolume(finishSound, 1);
+    SetSoundVolume(magnetStartSound, 1);
+    SetSoundVolume(magnetEndSound, 1);
+    SetSoundVolume(starSound, 1);
 }
