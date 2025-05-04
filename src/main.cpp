@@ -92,6 +92,7 @@ void UpdateDrawFrame() {
 
     BeginDrawing();
         DrawTexture(background, 0, 0, WHITE);
+        DrawTextEx(font, "test", Vector2 { 0, 0 }, 50, 0, WHITE);
 
         levelExit.Render();
 
@@ -206,6 +207,7 @@ void LoadTextures() {
     cursor2 = LoadTextureFromImage(LoadImage("resources/cursor/cursor-2.png"));
 
     background = LoadTextureFromImage(LoadImage("resources/background/background.png"));
+    font = LoadFont("resources/font/goofy/goofy.fnt");
 }
 
 void UnloadTextures() {
@@ -270,6 +272,7 @@ void UnloadTextures() {
     UnloadTexture(cursor2);
 
     UnloadTexture(background);
+    UnloadFont(font);
 }
 
 void LoadSounds() {

@@ -142,3 +142,4 @@ extern Texture2D cursor1;
 extern Texture2D cursor2;
 
 extern Texture2D background;
+extern Font font;

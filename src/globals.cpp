@@ -135,3 +135,4 @@ Texture2D cursor1;
 Texture2D cursor2;
 
 Texture2D background;
+Font font;
