@@ -6,6 +6,7 @@
 #include "rock.hpp"
 #include "exit.hpp"
 #include "star.hpp"
+#include "button.hpp"
 
 // game
 extern const int SCREEN_WIDTH;
@@ -13,11 +14,15 @@ extern const int SCREEN_HEIGHT;
 
 extern Vector2 mousePos;
 
+extern int gameState;
+
 extern int curLevel;
 extern const int NUM_LEVELS;
 
 extern bool isMusicEnabled;
 extern bool isSoundsEnabled;
+
+extern std::vector<Button> buttons;
 
 // player
 extern Player player;

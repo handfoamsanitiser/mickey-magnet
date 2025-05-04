@@ -6,11 +6,15 @@ const int SCREEN_HEIGHT = 1080;
 
 Vector2 mousePos = Vector2 { 0, 0 };
 
+int gameState = 0;
+
 int curLevel = 1;
 const int NUM_LEVELS = 10;
 
 bool isMusicEnabled = true;
 bool isSoundsEnabled = true;
+
+std::vector<Button> buttons;
 
 // player
 Player player(-1000, -1000);

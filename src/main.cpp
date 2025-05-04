@@ -11,6 +11,7 @@
 #include "rock.hpp"
 #include "exit.hpp"
 #include "star.hpp"
+#include "button.hpp"
 
 //#define PLATFORM_WEB
 #if defined(PLATFORM_WEB)
@@ -34,6 +35,18 @@ void UnmuteSounds();
 void GodMode();
 void NotGodMode();
 
+void UpdateMainMenu();
+void UpdateGame();
+void UpdateWinMenu();
+
+void LoadMainMenu();
+void DrawMainMenu();
+
+void DrawGame();
+
+void LoadWinMenu();
+void DrawWinMenu();
+
 int main() {
     InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "Mick");
     HideCursor();
@@ -47,7 +60,8 @@ int main() {
     UnmuteMusic();
     PlayMusicStream(music);
 
-    LoadLevel(curLevel);
+    LoadMainMenu();
+    //LoadLevel(curLevel);
     
 #if defined(PLATFORM_WEB)
     emscripten_set_main_loop(UpdateDrawFrame, 60, 1);
@@ -70,21 +84,19 @@ void UpdateDrawFrame() {
     if (IsCursorOnScreen()) {
         mousePos = GetMousePosition();
     }
-    
-    GodMode();
-    NotGodMode();
+
     UpdateMusicStream(music);
 
-    for (int i = 0; i < (int)spikes.size(); ++i) {
-        spikes[i].Drag();
-    }
-    player.Update();
-    for (int i = 0; i < (int)spikes.size(); ++i) {
-        spikes[i].Update();
-    }
-
-    for (int i = 0; i < (int)rocks.size(); ++i) {
-        rocks[i].Update();
+    switch (gameState) {
+        case 0:
+            UpdateMainMenu();
+            break;
+        case 1:
+            UpdateGame();
+            break;
+        case 2:
+            UpdateWinMenu();
+            break;
     }
 
     Anchor::UpdateAnimation();
@@ -92,25 +104,18 @@ void UpdateDrawFrame() {
 
     BeginDrawing();
         DrawTexture(background, 0, 0, WHITE);
-        DrawTextEx(font, "test", Vector2 { 0, 0 }, 50, 0, WHITE);
 
-        levelExit.Render();
-
-        star.Render();
-
-        for (Anchor anchor : anchors) {
-            anchor.Render();
+        switch (gameState) {
+            case 0:
+                DrawMainMenu();
+                break;
+            case 1:
+                DrawGame();
+                break;
+            case 2:
+                DrawWinMenu();
+                break;
         }
-
-        for (Spike spike : spikes) {
-            spike.Render();
-        }
-
-        for (Rock rock : rocks) {
-            rock.Render();
-        }
-
-        player.Render();
 
         if (IsCursorOnScreen()) {
             switch (spikeAnimationFrame) {
@@ -125,6 +130,78 @@ void UpdateDrawFrame() {
             }
         }
     EndDrawing();
+}
+
+void UpdateGame() {
+    GodMode();
+    NotGodMode();
+
+    for (int i = 0; i < (int)spikes.size(); ++i) {
+        spikes[i].Drag();
+    }
+    player.Update();
+    for (int i = 0; i < (int)spikes.size(); ++i) {
+        spikes[i].Update();
+    }
+
+    for (int i = 0; i < (int)rocks.size(); ++i) {
+        rocks[i].Update();
+    }
+}
+
+void DrawGame() {
+    levelExit.Render();
+
+    star.Render();
+
+    for (Anchor anchor : anchors) {
+        anchor.Render();
+    }
+
+    for (Spike spike : spikes) {
+        spike.Render();
+    }
+
+    for (Rock rock : rocks) {
+        rock.Render();
+    }
+
+    player.Render();
+}
+
+void LoadMainMenu() {
+    buttons.push_back(Button(200, 200, 100, 100, "mickey   magnet", 80, false));
+    buttons.push_back(Button(200, SCREEN_HEIGHT - 400, 100, 100, "play!", 40, true));
+
+    player = Player(500, 500);
+}
+
+void UpdateMainMenu() {
+    if (buttons[1].isClicked()) {
+        buttons.clear();
+        LoadLevel(curLevel);
+        gameState = 1;
+    }
+}
+
+void DrawMainMenu() {
+    for (Button button : buttons) {
+        button.Render();
+    }
+
+    player.Render();
+}
+
+void LoadWinMenu() {
+
+}
+
+void UpdateWinMenu() {
+
+}
+
+void DrawWinMenu() {
+
 }
 
 void GodMode() {
