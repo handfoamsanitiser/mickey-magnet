@@ -42,8 +42,8 @@ void DrawGame() {
 void LoadMainMenu() {
     ClearEverything();
 
-    buttons.push_back(Button(200, 200, 100, 100, "mickey   magnet", 80, false));
-    buttons.push_back(Button(200, SCREEN_HEIGHT - 400, 100, 100, "play!", 40, true));
+    buttons.push_back(Button(200, 200, 0, 0, "mickey   magnet", 80, false));
+    buttons.push_back(Button(200, SCREEN_HEIGHT - 400, 180, 33, "play!", 40, true));
 
     player = Player(500, 500);
 }
@@ -69,7 +69,7 @@ void LoadWinMenu() {
     ClearEverything();
 
     buttons.push_back(Button(600, 600, 0, 0, "win!", 250, false));
-    buttons.push_back(Button(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 300, 50, "back   to   menu", 60, true));
+    buttons.push_back(Button(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 630, 50, "back   to   menu", 60, true));
 
     player = Player(500, 500);
 }

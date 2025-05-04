@@ -12,6 +12,5 @@ public:
     int fontSize;
     bool isEnabled;
 
-private:
     Rectangle rec;
 };
