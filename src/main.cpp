@@ -36,6 +36,7 @@ void UnmuteSounds();
 int main() {
     InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "Mick");
     HideCursor();
+    ToggleFullscreen();
 
     srand(time(NULL));
 

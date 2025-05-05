@@ -3,7 +3,6 @@
 #include "levels.hpp"
 
 void UpdateGame() {
-    GodMode();
     NotGodMode();
 
     for (int i = 0; i < (int)spikes.size(); ++i) {
@@ -51,7 +50,7 @@ void LoadMainMenu() {
 void UpdateMainMenu() {
     if (buttons[1].isClicked()) {
         buttons.clear();
-        curLevel = 12;
+        curLevel = 1;
         LoadLevel(curLevel);
         gameState = 1;
     }
