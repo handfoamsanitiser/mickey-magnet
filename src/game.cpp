@@ -3,6 +3,7 @@
 #include "levels.hpp"
 
 void UpdateGame() {
+    GodMode();
     NotGodMode();
 
     for (int i = 0; i < (int)spikes.size(); ++i) {
@@ -19,6 +20,10 @@ void UpdateGame() {
 }
 
 void DrawGame() {
+    for (Button button : buttons) {
+        button.Render();
+    }
+
     levelExit.Render();
 
     star.Render();

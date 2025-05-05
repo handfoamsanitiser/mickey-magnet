@@ -16,6 +16,7 @@ void ClearEverything() {
     anchors.clear();
     spikes.clear();
     rocks.clear();
+    buttons.clear();
 }
 
 void LoadLevel(int level) {
@@ -76,6 +77,9 @@ void LoadLevel1() {
     star = Star(-1000, -1000);
 
     anchors.push_back(Anchor(SCREEN_WIDTH - 200, SCREEN_HEIGHT / 2, false));
+
+    buttons.push_back(Button(300, 200, 0, 0, "opposite   colours   attract!", 40, false));
+    buttons.push_back(Button(300, SCREEN_HEIGHT - 200, 0, 0, "the   green   portal   is   the   exit", 40, false));
 }
 
 // repelling
@@ -86,6 +90,8 @@ void LoadLevel2() {
     star = Star(-1000, -1000);
 
     anchors.push_back(Anchor(200, SCREEN_HEIGHT / 2, true));
+
+    buttons.push_back(Button(300, 200, 0, 0, "identical   colours   repel!", 40, false));
 }
 
 // medium level with spikes
@@ -106,6 +112,9 @@ void LoadLevel3() {
     rocks.push_back(Rock(SPIKE_RADIUS * 10 + 120, SCREEN_HEIGHT / 2 + 100));
     rocks.push_back(Rock(SPIKE_RADIUS * 12 + 150, SCREEN_HEIGHT / 2 + 100));
     rocks.push_back(Rock(SPIKE_RADIUS * 14 + 180, SCREEN_HEIGHT / 2 + 100));
+
+    buttons.push_back(Button(1300, 700, 0, 0, "spikes   hurt!", 40, false));
+    buttons.push_back(Button(1300, 800, 0, 0, "flames   don't", 40, false));
 }
 
 // backwards attraction and repelling
@@ -133,6 +142,8 @@ void LoadLevel4() {
     rocks.push_back(Rock(SCREEN_WIDTH - SPIKE_RADIUS * 18 - 240, SCREEN_HEIGHT / 2 + SPIKE_RADIUS * 4 - 40));
     rocks.push_back(Rock(SCREEN_WIDTH - SPIKE_RADIUS * 18 - 240, SCREEN_HEIGHT / 2 + SPIKE_RADIUS * 6 - 10));
     rocks.push_back(Rock(SCREEN_WIDTH - SPIKE_RADIUS * 18 - 240, SCREEN_HEIGHT / 2 + SPIKE_RADIUS * 8 + 20));
+
+    buttons.push_back(Button(800, 800, 0, 0, "the   back   magnet   also   works!", 40, false));
 }
 
 // medium level
@@ -191,6 +202,8 @@ void LoadLevel6() {
     rocks.push_back(Rock(SCREEN_WIDTH - 270 - SPIKE_RADIUS * 9, SCREEN_HEIGHT / 2 + 100));
     rocks.push_back(Rock(SCREEN_WIDTH - 240 - SPIKE_RADIUS * 12, SCREEN_HEIGHT / 2 + 100));
     rocks.push_back(Rock(SCREEN_WIDTH - 210 - SPIKE_RADIUS * 15, SCREEN_HEIGHT / 2 + 100));
+
+    buttons.push_back(Button(800, 800, 0, 0, "some   spikes   are   magnetic", 40, false));
 }
 
 // medium level
@@ -228,7 +241,10 @@ void LoadLevel8() {
     rocks.push_back(Rock(SCREEN_WIDTH - SPIKE_RADIUS * 18 - 240, SCREEN_HEIGHT / 2));
     rocks.push_back(Rock(SCREEN_WIDTH - SPIKE_RADIUS * 20 - 270, SCREEN_HEIGHT / 2));
 
-    rocks.push_back(Rock(0, 0, Vector2 { 800, (float)SCREEN_HEIGHT / 2 + 200 }, Vector2 { 800, (float)SCREEN_HEIGHT / 2 + 400 }, 70.0f));
+    rocks.push_back(Rock(0, 0, Vector2 { 800, (float)SCREEN_HEIGHT / 2 + 150 }, Vector2 { 800, (float)SCREEN_HEIGHT / 2 + 450 }, 100.0f));
+
+    buttons.push_back(Button(800, 200, 0, 0, "to   open   the   exit...", 40, false));
+    buttons.push_back(Button(1000, SCREEN_HEIGHT - 200, 0, 0, "collect   the   star", 40, false));
 }
 
 // maze-ish level
