@@ -17,9 +17,6 @@ void LoadLevel9();
 void LoadLevel10();
 void LoadLevel11();
 void LoadLevel12();
-void LoadLevel13();
-void LoadLevel14();
-void LoadLevel15();
 
 void LoadLevelT1();
 void LoadLevelT2();

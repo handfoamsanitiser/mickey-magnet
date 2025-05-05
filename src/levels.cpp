@@ -58,16 +58,7 @@ void LoadLevel(int level) {
         LoadLevel12();
         break;
     case 13:
-        LoadLevel13();
-        break;
-    case 14:
-        LoadLevel14();
-        break;
-    case 15:
-        LoadLevel15();
-        break;
-    case 16:
-         LoadWinMenu();
+        LoadWinMenu();
         break;
     default:
         LoadLevelT1();
@@ -80,6 +71,7 @@ void LoadLevel(int level) {
 // attracting
 void LoadLevel1() {
     player = Player(200, SCREEN_HEIGHT / 2);
+    isExitOn = true;
     levelExit = Exit(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2);
     star = Star(-1000, -1000);
 
@@ -89,6 +81,7 @@ void LoadLevel1() {
 // repelling
 void LoadLevel2() {
     player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2);
+    isExitOn = true;
     levelExit = Exit(SCREEN_WIDTH - 200, SCREEN_HEIGHT / 2);
     star = Star(-1000, -1000);
 
@@ -98,6 +91,7 @@ void LoadLevel2() {
 // medium level with spikes
 void LoadLevel3() {
     player = Player(500, SCREEN_HEIGHT - 200);
+    isExitOn = true;
     levelExit = Exit(500, 250);
     star = Star(-1000, -1000);
 
@@ -117,6 +111,7 @@ void LoadLevel3() {
 // backwards attraction and repelling
 void LoadLevel4() {
     player = Player(SCREEN_WIDTH - 400, 200);
+    isExitOn = true;
     levelExit = Exit(250, SCREEN_HEIGHT / 2);
     star = Star(-1000, -1000);
 
@@ -142,6 +137,7 @@ void LoadLevel4() {
 // medium level
 void LoadLevel5() {
     player = Player(150, SPIKE_RADIUS + 40);
+    isExitOn = true;
     levelExit = Exit(SCREEN_WIDTH - 250, SCREEN_HEIGHT / 2);
     star = Star(-1000, -1000);
 
@@ -169,6 +165,7 @@ void LoadLevel5() {
 // magnetic spikes
 void LoadLevel6() {
     player = Player(150, 150);
+    isExitOn = true;
     levelExit = Exit(SCREEN_WIDTH - 350, SCREEN_HEIGHT / 2 - 100);
     star = Star(-1000, -1000);
 
@@ -198,6 +195,7 @@ void LoadLevel6() {
 // medium level
 void LoadLevel7() {
     player = Player(150, SCREEN_HEIGHT - 150);
+    isExitOn = true;
     levelExit = Exit(SCREEN_WIDTH - 200, 200);
     star = Star(-1000, -1000);
 
@@ -206,7 +204,7 @@ void LoadLevel7() {
     spikes.push_back(Spike(SCREEN_WIDTH - 150, SCREEN_HEIGHT - 150, true));
 }
 
-// star
+// star maze
 void LoadLevel8() {
     player = Player(200, SCREEN_HEIGHT / 2);
 
@@ -232,19 +230,84 @@ void LoadLevel8() {
     rocks.push_back(Rock(0, 0, Vector2 { 800, (float)SCREEN_HEIGHT / 2 + 200 }, Vector2 { 800, (float)SCREEN_HEIGHT / 2 + 400 }, 70.0f));
 }
 
-// medium level
-void LoadLevel9() {}
+// maze-ish level
+void LoadLevel9() {
+    player = Player(200, 500);
 
-// medium level
-void LoadLevel10() {}
+    isExitOn = false;
+    levelExit = Exit(200, 200);
 
-// 5 - 10 more medium to hard levels
+    star = Star(SCREEN_WIDTH - 200, SCREEN_HEIGHT - 200);
 
-void LoadLevel11() {}
-void LoadLevel12() {}
-void LoadLevel13() {}
-void LoadLevel14() {}
-void LoadLevel15() {}
+    anchors.push_back(Anchor(200, SCREEN_HEIGHT - 300, true));
+    anchors.push_back(Anchor(900, 200, false));
+    anchors.push_back(Anchor(SCREEN_WIDTH - 200, 200, false));
+
+    rocks.push_back(Rock(500, 100));
+    rocks.push_back(Rock(500, 230));
+    rocks.push_back(Rock(500, 360));
+    rocks.push_back(Rock(500, 490));
+    rocks.push_back(Rock(500, 620));
+
+    rocks.push_back(Rock(500, SCREEN_HEIGHT / 2, Vector2 { 650, (float)SCREEN_HEIGHT / 2 }, Vector2 { 1150, (float)SCREEN_HEIGHT / 2 }, 150.0f));
+
+    rocks.push_back(Rock(1450, SCREEN_HEIGHT / 2, Vector2 { 1450, (float)SCREEN_HEIGHT / 2 }, Vector2 { 1800, (float)SCREEN_HEIGHT / 2 }, 100.0f));
+    rocks.push_back(Rock(1650, (float)SCREEN_HEIGHT / 2 + 300, Vector2 { 1450, (float)SCREEN_HEIGHT / 2 + 150 }, Vector2 { 1800, (float)SCREEN_HEIGHT / 2 + 150 }, 100.0f));
+
+    rocks.push_back(Rock(SCREEN_WIDTH - 650, 360));
+    rocks.push_back(Rock(SCREEN_WIDTH - 650, 490));
+    rocks.push_back(Rock(SCREEN_WIDTH - 650, 620));
+    rocks.push_back(Rock(SCREEN_WIDTH - 650, 750));
+    rocks.push_back(Rock(SCREEN_WIDTH - 650, 880));
+    spikes.push_back(Spike(SCREEN_WIDTH - 650, 1010, true));
+}
+
+// gauntlet
+void LoadLevel10() {
+    player = Player(200, 200);
+
+    isExitOn = true;
+    levelExit = Exit(200, SCREEN_HEIGHT - 200);
+
+    star = Star(-1000, -1000);
+
+    anchors.push_back(Anchor(SCREEN_WIDTH - 100, 200, false));
+    anchors.push_back(Anchor(SCREEN_WIDTH - 300, 200, false));
+
+    anchors.push_back(Anchor(500, SCREEN_HEIGHT - 200, true));
+
+    rocks.push_back(Rock(100, SCREEN_HEIGHT / 2));
+    rocks.push_back(Rock(250, SCREEN_HEIGHT / 2));
+    rocks.push_back(Rock(400, SCREEN_HEIGHT / 2));
+    rocks.push_back(Rock(550, SCREEN_HEIGHT / 2));
+    rocks.push_back(Rock(700, SCREEN_HEIGHT / 2));
+    rocks.push_back(Rock(850, SCREEN_HEIGHT / 2));
+    rocks.push_back(Rock(1000, SCREEN_HEIGHT / 2));
+    rocks.push_back(Rock(1150, SCREEN_HEIGHT / 2));
+    rocks.push_back(Rock(1300, SCREEN_HEIGHT / 2));
+    rocks.push_back(Rock(1450, SCREEN_HEIGHT / 2));
+    rocks.push_back(Rock(SCREEN_WIDTH - 100, SCREEN_HEIGHT / 2));
+
+    rocks.push_back(Rock(500, 320, Vector2 { 500, 100 }, Vector2 { 500, 400 }, 120.0f));
+    rocks.push_back(Rock(700, 340, Vector2 { 700, 100 }, Vector2 { 700, 400 }, 120.0f));
+    rocks.push_back(Rock(900, 360, Vector2 { 900, 100 }, Vector2 { 900, 400 }, 120.0f));
+    rocks.push_back(Rock(1100, 380, Vector2 { 1100, 100 }, Vector2 { 1100, 400 }, 120.0f));
+    rocks.push_back(Rock(1300, 400, Vector2 { 1300, 100 }, Vector2 { 1300, 400 }, 120.0f));
+
+    rocks.push_back(Rock(1300, 680, Vector2 { 1300, 680 }, Vector2 { 1300, 980 }, 120.0f));
+    rocks.push_back(Rock(1100, 700, Vector2 { 1100, 680 }, Vector2 { 1100, 980 }, 120.0f));
+    rocks.push_back(Rock(900, 720, Vector2 { 900, 680 }, Vector2 { 900, 980 }, 120.0f));
+}
+
+// open-ish
+void LoadLevel11() {
+    isExitOn = true;
+}
+
+// final
+void LoadLevel12() {
+    isExitOn = true;
+}
 
 void LoadLevelT1() {
     player = Player(200, 200);

@@ -51,7 +51,8 @@ void LoadMainMenu() {
 void UpdateMainMenu() {
     if (buttons[1].isClicked()) {
         buttons.clear();
-        LoadLevel(1);
+        curLevel = 10;
+        LoadLevel(curLevel);
         gameState = 1;
     }
 }

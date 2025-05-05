@@ -43,11 +43,10 @@ int main() {
     LoadTextures();
     LoadSounds();
     
-    UnmuteMusic();
+    MuteMusic();
     PlayMusicStream(music);
 
     LoadMainMenu();
-    //LoadLevel(curLevel);
     
 #if defined(PLATFORM_WEB)
     emscripten_set_main_loop(UpdateDrawFrame, 60, 1);
