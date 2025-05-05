@@ -3,7 +3,7 @@
 #include "levels.hpp"
 
 void UpdateGame() {
-    GodMode();
+    //GodMode();
     NotGodMode();
 
     for (int i = 0; i < (int)spikes.size(); ++i) {
@@ -49,13 +49,20 @@ void LoadMainMenu() {
     buttons.push_back(Button(200, 200, 0, 0, "mickey   magnet", 80, false));
     buttons.push_back(Button(200, SCREEN_HEIGHT - 400, 180, 33, "play!", 40, true));
 
+    buttons.push_back(Button(1000, 600, 0, 0, "controls:", 40, false));
+    buttons.push_back(Button(1000, 700, 0, 0, "move   mouse   -   rotate   player", 30, false));
+    buttons.push_back(Button(1000, 750, 0, 0, "lmb   -   use   magnets", 30, false));
+    buttons.push_back(Button(1000, 800, 0, 0, "r   -   reset   level", 30, false));
+
     player = Player(500, 500);
+    star = Star(SCREEN_WIDTH - 150, 150);
 }
 
 void UpdateMainMenu() {
     if (buttons[1].isClicked()) {
+        PlaySound(buttonSound);
         buttons.clear();
-        curLevel = 1;
+        curLevel = 12;
         LoadLevel(curLevel);
         gameState = 1;
     }
@@ -67,20 +74,23 @@ void DrawMainMenu() {
     }
 
     player.Render();
+    star.Render();
 }
 
 void LoadWinMenu() {
     gameState = 2;
     ClearEverything();
 
-    buttons.push_back(Button(600, 600, 0, 0, "win!", 250, false));
-    buttons.push_back(Button(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 630, 50, "back   to   menu", 60, true));
+    buttons.push_back(Button(500, 300, 0, 0, "win!", 250, false));
+    buttons.push_back(Button(700, SCREEN_HEIGHT / 2 + 200, 630, 50, "back   to   menu", 40, true));
 
-    player = Player(500, 500);
+    player = Player(300, 700);
+    star = Star(SCREEN_WIDTH - 300, 700);
 }
 
 void UpdateWinMenu() {
     if (buttons[1].isClicked()) {
+        PlaySound(buttonSound);
         buttons.clear();
         gameState = 0;
         LoadMainMenu();
@@ -93,6 +103,7 @@ void DrawWinMenu() {
     }
 
     player.Render();
+    star.Render();
 }
 
 void GodMode() {
