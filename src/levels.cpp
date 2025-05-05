@@ -301,12 +301,38 @@ void LoadLevel10() {
 
 // open-ish
 void LoadLevel11() {
-    isExitOn = true;
+    player = Player(700, SCREEN_HEIGHT / 2 + 50);
+
+    isExitOn = false;
+    levelExit = Exit(700, SCREEN_HEIGHT / 2 + 50);
+
+    star = Star(SCREEN_WIDTH - 100, 100);
+
+    rocks.push_back(Rock(550, 400));
+    rocks.push_back(Rock(700, 400));
+    rocks.push_back(Rock(850, 400));
+    rocks.push_back(Rock(550, 550));
+    rocks.push_back(Rock(850, 550));
+    rocks.push_back(Rock(550, 700));
+    rocks.push_back(Rock(850, 700));
+
+    rocks.push_back(Rock(SCREEN_WIDTH - 250, 100));
+    spikes.push_back(Spike(SCREEN_WIDTH - 250, 250, true));
+    rocks.push_back(Rock(SCREEN_WIDTH - 250, 400));
+    rocks.push_back(Rock(SCREEN_WIDTH - 250, 550));
+    rocks.push_back(Rock(SCREEN_WIDTH - 250, 700));
+    rocks.push_back(Rock(SCREEN_WIDTH - 250, 850));
+    rocks.push_back(Rock(SCREEN_WIDTH - 250, 1000));
+
+    anchors.push_back(Anchor(700, SCREEN_HEIGHT - 100, true));
+    anchors.push_back(Anchor(100, 250, false));
+    anchors.push_back(Anchor(SCREEN_WIDTH - 400, 250, false));
+    anchors.push_back(Anchor(SCREEN_WIDTH - 100, SCREEN_HEIGHT - 100, true));
 }
 
 // final
 void LoadLevel12() {
-    isExitOn = true;
+    isExitOn = false;
 }
 
 void LoadLevelT1() {

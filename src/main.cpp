@@ -43,7 +43,7 @@ int main() {
     LoadTextures();
     LoadSounds();
     
-    MuteMusic();
+    UnmuteMusic();
     PlayMusicStream(music);
 
     LoadMainMenu();
