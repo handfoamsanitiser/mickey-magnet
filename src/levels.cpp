@@ -344,7 +344,7 @@ void LoadLevel11() {
     anchors.push_back(Anchor(700, SCREEN_HEIGHT - 100, true));
     anchors.push_back(Anchor(100, 250, false));
     anchors.push_back(Anchor(SCREEN_WIDTH - 400, 250, false));
-    anchors.push_back(Anchor(SCREEN_WIDTH - 100, SCREEN_HEIGHT - 100, true));
+    anchors.push_back(Anchor(SCREEN_WIDTH - 100, SCREEN_HEIGHT - 400, true));
 }
 
 // final

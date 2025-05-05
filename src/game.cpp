@@ -62,7 +62,7 @@ void UpdateMainMenu() {
     if (buttons[1].isClicked()) {
         PlaySound(buttonSound);
         buttons.clear();
-        curLevel = 12;
+        curLevel = 1;
         LoadLevel(curLevel);
         gameState = 1;
     }

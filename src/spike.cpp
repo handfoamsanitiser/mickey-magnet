@@ -17,13 +17,6 @@ void Spike::UpdateAnimation() {
     if (spikeAnimationTimer > SPIKE_ANIMATION_TIME) {
         spikeAnimationTimer = remainder(spikeAnimationTimer, SPIKE_ANIMATION_TIME);
         spikeAnimationFrame = (spikeAnimationFrame + 1) % 2;
-
-        if (star.isCollected && star.isVisible) {
-            star.cyclesSinceCollected++;
-            if (star.cyclesSinceCollected > 1) {
-                star.isVisible = false;
-            }
-        }
     }
 }
 

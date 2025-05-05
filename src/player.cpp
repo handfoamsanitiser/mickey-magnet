@@ -265,6 +265,7 @@ void Player::StarInteract() {
             PlaySound(starSound);
         }
         star.isCollected = true;
+        star.isVisible = false;
         isExitOn = true;
     }
 }
