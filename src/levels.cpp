@@ -332,7 +332,54 @@ void LoadLevel11() {
 
 // final
 void LoadLevel12() {
+    player = Player(250, 250);
+
     isExitOn = false;
+    levelExit = Exit(1525, 625);
+
+    star = Star(1600, 250);
+
+    rocks.push_back(Rock(100, 100));
+    rocks.push_back(Rock(250, 100));
+    rocks.push_back(Rock(400, 100));
+    rocks.push_back(Rock(550, 100));
+    rocks.push_back(Rock(700, 100));
+    rocks.push_back(Rock(850, 100));
+    //rocks.push_back(Rock(1000, 100));
+    //rocks.push_back(Rock(1150, 100));
+    rocks.push_back(Rock(1300, 100));
+    rocks.push_back(Rock(1450, 100));
+    rocks.push_back(Rock(1600, 100));
+    rocks.push_back(Rock(1750, 100));
+
+    spikes.push_back(Spike(100, 250, true));
+    rocks.push_back(Rock(100, 400));
+
+    rocks.push_back(Rock(250, 400));
+    rocks.push_back(Rock(400, 400));
+    rocks.push_back(Rock(550, 400));
+    rocks.push_back(Rock(700, 400));
+    rocks.push_back(Rock(850, 400));
+    //rocks.push_back(Rock(1000, 400));
+    spikes.push_back(Spike(1000, 400, false));
+    //rocks.push_back(Rock(1150, 400));
+    spikes.push_back(Spike(1150, 400, false));
+    rocks.push_back(Rock(1300, 400));
+    rocks.push_back(Rock(1450, 400));
+    rocks.push_back(Rock(1600, 400));
+    rocks.push_back(Rock(1750, 400));
+
+    rocks.push_back(Rock(1750, 250));
+
+    rocks.push_back(Rock(1300, 550));
+    rocks.push_back(Rock(1300, 700));
+    rocks.push_back(Rock(1300, 850));
+    rocks.push_back(Rock(850, 850));
+    rocks.push_back(Rock(700, 850));
+    rocks.push_back(Rock(550, 850));
+
+    anchors.push_back(Anchor(100, 550, false));
+    anchors.push_back(Anchor(1525, SCREEN_HEIGHT - 100, true));
 }
 
 void LoadLevelT1() {
